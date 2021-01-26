@@ -1,5 +1,6 @@
 <template>
-  <div class="ThreeDContainer kg-box-analyse" :style="{ width: '200px' }">
+  <div class="ThreeDContainer kg-box-analyse" :style="{ width: '300px' }">
+    <div>盒子高度：{{ sliderValue }}</div>
     <div class="slider-wrapper" @click.stop>
       <el-slider
         @change="changeValue"
@@ -10,10 +11,12 @@
         :disabled="!dataDone"
       ></el-slider>
     </div>
+    <KgLegend />
   </div>
 </template>
 <script>
 import { mapActions } from "vuex";
+import KgLegend from "./components/KgLegend";
 export default {
   name: "KgBoxAnalyse",
   data() {
@@ -25,6 +28,7 @@ export default {
       dataDone: false,
     };
   },
+  components: { KgLegend },
   async mounted() {
     this.initBimScene();
   },
@@ -37,6 +41,7 @@ export default {
     initBimScene() {
       if (window.extraHash.kgKml) {
         this.entityVisible(true);
+        this.dataDone = true;
       } else {
         window.earth.dataSources
           .add(
@@ -49,6 +54,7 @@ export default {
           .then((data) => {
             window.extraHash.kgKml = data;
             window.earth.zoomTo(data);
+            this.dataDone = true;
             //  初始高度1
             this.changeValue(1);
           });
@@ -61,6 +67,7 @@ export default {
       });
     },
     entityVisible(boolean) {
+      this.changeValue(1);
       window.extraHash.kgKml.entities.values.map((v) => {
         v.show = boolean;
       });
@@ -72,3 +79,26 @@ export default {
   },
 };
 </script>
+
+<style lang="less" scoped>
+.kg-box-analyse {
+  overflow: hidden;
+  padding: 0 10px;
+  display: flex;
+  background: rgba(11, 20, 35, 0.8);
+  border: 1px solid rgba(81, 161, 201, 0.6);
+  > div {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 4px;
+    color: #fff;
+    line-height: 38px;
+    &:first-child {
+      width: 120px;
+    }
+    &:nth-child(2) {
+      flex: 1;
+    }
+  }
+}
+</style>

@@ -18,6 +18,8 @@
       <UnderGround ref="underground" v-if="showSubFrame == '3d4'" />
       <NanTangModel v-if="showSubFrame == '3d6'" />
       <Riversline ref="riversline" v-if="showSubFrame == '3d7'" />
+      <KgBoxAnalyse ref="kgboxanalyse" v-if="showSubFrame == '3d10'" />
+      <CivilizationCenter ref="civilizationcenter" v-if="showSubFrame == '3d11'" />
       <CesiumMapTool ref="cesiummaptool" v-if="showSubTool == '3t1'" />
       <VisualizationAnalyse ref="visualizationanalyse" v-if="showSubTool == '3t2'" />
       <SectionAnalyse ref="sectionanalyse" v-if="showSubTool == '3t3'" />
@@ -46,6 +48,8 @@ import BimAnalyse from "./basicTools/BimAnalyse";
 import StationTour from "./basicTools/StationTour";
 import trackBIM from "./basicTools/trackBIM";
 import Riversline from "./basicTools/Riversline";
+import KgBoxAnalyse from "./basicTools/KgBoxAnalyse";
+import CivilizationCenter from "./basicTools/CivilizationCenter";
 import UnderGround from "./basicTools/UnderGround";
 import VisualizationAnalyse from "./basicTools/VisualizationAnalyse";
 import SectionAnalyse from "./basicTools/SectionAnalyse";
@@ -86,6 +90,8 @@ export default {
     BimAnalyse,
     StationTour,
     trackBIM,
+    KgBoxAnalyse,
+    CivilizationCenter,
     UnderGround,
     Riversline,
     VisualizationAnalyse,

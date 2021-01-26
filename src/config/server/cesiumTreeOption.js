@@ -9,31 +9,31 @@
 const TOP_LEVEL_OPTION_SSFL = [
   {
     label: "养老设施",
-    ids:"成果汇总_设施点@成果#1_养老设施",
+    ids: "成果汇总_设施点@成果#1_养老设施",
   },
   {
     label: "医疗设施",
-    ids:"成果汇总_设施点@成果#1_医疗设施",
+    ids: "成果汇总_设施点@成果#1_医疗设施",
   },
   {
     label: "商业设施",
-    ids:"成果汇总_设施点@成果#1_商业设施",
+    ids: "成果汇总_设施点@成果#1_商业设施",
   },
   {
     label: "教育设施",
-    ids:"成果汇总_设施点@成果#1_教育设施",
+    ids: "成果汇总_设施点@成果#1_教育设施",
   },
   {
     label: "体育设施",
-    ids:"成果汇总_设施点@成果#1_体育设施",
+    ids: "成果汇总_设施点@成果#1_体育设施",
   },
   {
     label: "文化设施",
-    ids:"成果汇总_设施点@成果#1_文化设施",
+    ids: "成果汇总_设施点@成果#1_文化设施",
   },
   {
     label: "绿化设施",
-    ids:"成果汇总_设施点@成果#1_绿化设施",
+    ids: "成果汇总_设施点@成果#1_绿化设施",
   },
 ];
 //瓯海二级
@@ -43,7 +43,7 @@ const LEAN_GRAPHIS_OPTION_OH_SY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_ShaHeDanDongCun_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2877352.20531456,
       y: 4843909.64217383,
@@ -56,7 +56,7 @@ const LEAN_GRAPHIS_OPTION_OH_SY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_ShangYang/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2880299.714666278,
       y: 4844586.066833377,
@@ -69,7 +69,7 @@ const LEAN_GRAPHIS_OPTION_OH_SY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_ChiDiCun_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2877180.2891030647,
       y: 4845180.748142598,
@@ -84,7 +84,7 @@ const LEAN_GRAPHIS_OPTION_OH_LQ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_DongFengCun_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2870750.288029349,
       y: 4847999.546336255,
@@ -97,7 +97,7 @@ const LEAN_GRAPHIS_OPTION_OH_LQ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_LvJiaJiang_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2868014.459160964,
       y: 4849187.252250286,
@@ -110,7 +110,7 @@ const LEAN_GRAPHIS_OPTION_OH_LQ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_HuanXiDongNanCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2871651.6776698376,
       y: 4850156.152520998,
@@ -125,7 +125,7 @@ const LEAN_GRAPHIS_OPTION_OH_NB = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_HengGangTou/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2875538.9140962446,
       y: 4845432.857616331,
@@ -140,7 +140,7 @@ const LEAN_GRAPHIS_OPTION_OH_CS = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_ShanGen/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2877091.9260217217,
       y: 4847924.183468532,
@@ -153,7 +153,7 @@ const LEAN_GRAPHIS_OPTION_OH_CS = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_ChaShan/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2887419.1209149817,
       y: 4849246.980593689,
@@ -168,7 +168,7 @@ const LEAN_GRAPHIS_OPTION_OH_TT = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_LaoDianHouCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2875964.872470631,
       y: 4844972.574680709,
@@ -181,7 +181,7 @@ const LEAN_GRAPHIS_OPTION_OH_TT = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_LinCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2875626.45247481,
       y: 4844209.730257807,
@@ -194,7 +194,7 @@ const LEAN_GRAPHIS_OPTION_OH_TT = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_XiTangCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2874504.1889599315,
       y: 4845234.248616295,
@@ -210,7 +210,7 @@ const LEAN_GRAPHIS_OPTION_OH_JS = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_JinShui/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2873992.17612299,
       y: 4848140.3617488,
@@ -225,7 +225,7 @@ const LEAN_GRAPHIS_OPTION_OH_GX = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_MeiYuCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2868183.2822279595,
       y: 4849508.153741011,
@@ -234,13 +234,13 @@ const LEAN_GRAPHIS_OPTION_OH_GX = [
     cameraDone: true
   },
 ];
-const LEAN_GRAPHIS_OPTION_OH_LO =[
+const LEAN_GRAPHIS_OPTION_OH_LO = [
   {
     label: "王宅、下川村(2017)",
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_WangZhai_XiaChuanC/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2876820.6070802826,
       y: 4849155.477909199,
@@ -255,7 +255,7 @@ const LEAN_GRAPHIS_OPTION_OH_ZY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_BeiLinYang/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2852654.7679743455,
       y: 4860943.482194311,
@@ -270,7 +270,7 @@ const LEAN_GRAPHIS_OPTION_OH_QX = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_XiongXiCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2867893.845822856,
       y: 4853974.459679007,
@@ -286,7 +286,7 @@ const LEAN_GRAPHIS_OPTION_LW_YX = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_HuangShanCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2888499.4709190894,
       y: 4838769.525295092,
@@ -299,7 +299,7 @@ const LEAN_GRAPHIS_OPTION_LW_YX = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_LongDongCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2887069.567825718,
       y: 4839223.949873874,
@@ -314,7 +314,7 @@ const LEAN_GRAPHIS_OPTION_LW_PZ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_TangXiC_ShuangCheTouC/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2877995.4435694623,
       y: 4843063.168354934,
@@ -329,7 +329,7 @@ const LEAN_GRAPHIS_OPTION_LW_YONGX = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_YongXingGongYeQu/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2890928.4798702295,
       y: 4841915.57105087,
@@ -344,7 +344,7 @@ const LEAN_GRAPHIS_OPTION_LW_YONGZ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_ShiPuCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2894877.700065756,
       y: 4841124.726071257,
@@ -359,7 +359,7 @@ const LEAN_GRAPHIS_OPTION_LW_ZY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_SanLangQiaoCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2880982.606426352,
       y: 4843783.907221606,
@@ -372,9 +372,9 @@ const LEAN_GRAPHIS_OPTION_LW_ZY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_ZhuangYuanQiaoCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
-      x:-2885728.208692684,
+      x: -2885728.208692684,
       y: 4841634.87846383,
       z: 2989752.7162536522
     },
@@ -388,7 +388,7 @@ const LEAN_GRAPHIS_OPTION_YQ_LC = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_JiangQainCun_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2892993.5928656766,
       y: 4825120.741512467,
@@ -404,7 +404,7 @@ const LEAN_GRAPHIS_OPTION_LC_BJ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_LiErCun_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2874373.9409043617,
       y: 4842755.802654327,
@@ -415,9 +415,9 @@ const LEAN_GRAPHIS_OPTION_LC_BJ = [
   {
     label: "蒲州村(2016)",
     url:
-       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_PuZhouCun_2016/config",
+      "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_PuZhouCun_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2878334.593677301,
       y: 4841573.940842317,
@@ -430,7 +430,7 @@ const LEAN_GRAPHIS_OPTION_LC_BJ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_ShanXiaCun_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2875802.2412011586,
       y: 4842351.036691747,
@@ -445,7 +445,7 @@ const LEAN_GRAPHIS_OPTION_LC_GH = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_ShuangQiaoCun_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2869584.1739701116,
       y: 4846417.852837862,
@@ -460,7 +460,7 @@ const LEAN_GRAPHIS_OPTION_LC_NH = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_HengDuCun_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2875396.824866244,
       y: 4843322.049050793,
@@ -473,7 +473,7 @@ const LEAN_GRAPHIS_OPTION_LC_NH = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_YuLinJiaCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2874720.333475346,
       y: 4844221.774554205,
@@ -486,10 +486,10 @@ const LEAN_GRAPHIS_OPTION_LC_NH = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_LongShenCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2875018.7552788774,
-      y:  4843382.7408750495,
+      y: 4843382.7408750495,
       z: 2993382.274890433
     },
     cameraDone: true
@@ -499,7 +499,7 @@ const LEAN_GRAPHIS_OPTION_LC_NH = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_LongFangNanTang/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2874317.7779393964,
       y: 4844754.702301374,
@@ -512,7 +512,7 @@ const LEAN_GRAPHIS_OPTION_LC_NH = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_LaoTuCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2875396.824866244,
       y: 4843322.049050793,
@@ -527,7 +527,7 @@ const LEAN_GRAPHIS_OPTION_LC_NJ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_DongFengCun_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2871268.2924297373,
       y: 4848061.367879729,
@@ -540,7 +540,7 @@ const LEAN_GRAPHIS_OPTION_LC_NJ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_NiuQiaoDi_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2872544.4231165173,
       y: 4846110.714556757,
@@ -553,9 +553,9 @@ const LEAN_GRAPHIS_OPTION_LC_NJ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_LiYangDeiZhengCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
-      x:  -2872833.3714544587,
+      x: -2872833.3714544587,
       y: 4846101.342735429,
       z: 2991779.134398041
     },
@@ -568,7 +568,7 @@ const LEAN_GRAPHIS_OPTION_LC_PX = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_GuiHuShuiXiang/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2873136.49087782,
       y: 4844106.552984252,
@@ -581,7 +581,7 @@ const LEAN_GRAPHIS_OPTION_LC_PX = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_JiangJiaQiao_2016/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2873982.181581846,
       y: 4843195.448322195,
@@ -594,7 +594,7 @@ const LEAN_GRAPHIS_OPTION_LC_PX = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_WenRuiDaDaoErQi/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2876133.6524552405,
       y: 4844983.272297854,
@@ -609,7 +609,7 @@ const LEAN_GRAPHIS_OPTION_LC_SY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_NiuLingCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2868428.5588743063,
       y: 4847216.127112101,
@@ -622,7 +622,7 @@ const LEAN_GRAPHIS_OPTION_LC_SY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_OuPuYangCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2869233.368994665,
       y: 4846147.573573825,
@@ -635,7 +635,7 @@ const LEAN_GRAPHIS_OPTION_LC_SY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_ZhongYangTu_2016_2/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2868406.778311407,
       y: 4845735.803338195,
@@ -648,7 +648,7 @@ const LEAN_GRAPHIS_OPTION_LC_SY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_YingLouQiaoCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2868869.7877248093,
       y: 4846839.993914358,
@@ -661,7 +661,7 @@ const LEAN_GRAPHIS_OPTION_LC_SY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_RuoLiAoCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2873795.0356278843,
       y: 4850371.166768714,
@@ -674,7 +674,7 @@ const LEAN_GRAPHIS_OPTION_LC_SY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_LuChengGongYeQu/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2867894.3569503627,
       y: 4846543.302366893,
@@ -689,7 +689,7 @@ const LEAN_GRAPHIS_OPTION_LC_ST = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_HeTongQiaoCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2870734.148235354,
       y: 4845114.862540317,
@@ -702,7 +702,7 @@ const LEAN_GRAPHIS_OPTION_LC_ST = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_ShuiXinCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2872561.8910888894,
       y: 4845638.49530471,
@@ -717,7 +717,7 @@ const LEAN_GRAPHIS_OPTION_LC_TQ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_WaiYangCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2861947.585081498,
       y: 4844949.216878983,
@@ -730,7 +730,7 @@ const LEAN_GRAPHIS_OPTION_LC_TQ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_BeiAnCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2858145.507425709,
       y: 4849576.3850830365,
@@ -743,7 +743,7 @@ const LEAN_GRAPHIS_OPTION_LC_TQ = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_FangLongCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2860770.774568575,
       y: 4847830.049761502,
@@ -758,7 +758,7 @@ const LEAN_GRAPHIS_OPTION_LC_SF = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2017/rest/realspace/datas/QX_LC_MaoYangCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2853520.505232264,
       y: 4851544.837889139,
@@ -773,7 +773,7 @@ const LEAN_GRAPHIS_OPTION_LC_WM = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_GongYuanLu/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2871467.348951032,
       y: 4843704.12433426,
@@ -788,7 +788,7 @@ const LEAN_GRAPHIS_OPTION_LC_YY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_TaiShanDu/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2865699.3123852406,
       y: 4845450.716355758,
@@ -801,7 +801,7 @@ const LEAN_GRAPHIS_OPTION_LC_YY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_YuDuCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2863870.9220196246,
       y: 4843889.363407535,
@@ -814,7 +814,7 @@ const LEAN_GRAPHIS_OPTION_LC_YY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_LinLiCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2862798.0001200936,
       y: 4849166.798534856,
@@ -827,7 +827,7 @@ const LEAN_GRAPHIS_OPTION_LC_YY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_ManTouZhuCun/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2865000.1989481887,
       y: 4850883.836363642,
@@ -840,7 +840,7 @@ const LEAN_GRAPHIS_OPTION_LC_YY = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_LongChuan/config",
     fwmurl:
-      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",  
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     camera: {
       x: -2863843.282001079,
       y: 4846326.173704938,
@@ -855,7 +855,7 @@ const LEAN_GRAPHIS_OPTION_LC = [
     id: "滨江街道",
     label: "滨江街道",
     children: LEAN_GRAPHIS_OPTION_LC_BJ.map(v => {
-      return { ...v, id: v.label ,type: "qxsy"};
+      return { ...v, id: v.label, type: "qxsy" };
     })
   },
   {
@@ -1100,7 +1100,7 @@ const BIM_GRAPHIS_OPTION = [
   }
 ];
 //建筑三维模型
-const TOP_LEVEL_OPTION_SKXX_SW_JZSW=[
+const TOP_LEVEL_OPTION_SKXX_SW_JZSW = [
   {
     label: "白模",
     url:
@@ -1113,9 +1113,9 @@ const TOP_LEVEL_OPTION_SKXX_SW_JZSW=[
     dataurl:
       "http://172.20.83.223:8098/iserver/services/data-SW_DATA/rest/data",
     dlurl:
-    "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/FJZ/config",
+      "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/FJZ/config",
     riverurl:
-     "http://172.20.83.223:8098/iserver/services/3D-River_Slow/rest/realspace/datas/River@%E7%B2%BE%E6%A8%A1_%E5%AF%BC%E5%87%BA_2012/config",
+      "http://172.20.83.223:8098/iserver/services/3D-River_Slow/rest/realspace/datas/River@%E7%B2%BE%E6%A8%A1_%E5%AF%BC%E5%87%BA_2012/config",
     dataBind: {
       dataSourceName: "172.20.83.196_swdata",
       dataSetName: "%E5%BB%BA%E7%AD%91_table"
@@ -1134,37 +1134,37 @@ const TOP_LEVEL_OPTION_SKXX_SW_JZSW=[
   }
 ];
 //行政区
-const TOP_LEVEL_OPTION_SKXX_XZQ=[
+const TOP_LEVEL_OPTION_SKXX_XZQ = [
   {
     label: "国家行政区",
-    url:"",
+    url: "",
   },
   {
     label: "省级行政区",
-    url:"",
+    url: "",
   },
   {
     label: "地级行政区",
-    url:"",
+    url: "",
   },
   {
     label: "县级行政区",
-    url:"",
+    url: "",
   },
   {
     label: "乡级行政区",
-    url:"",
+    url: "",
   },
   {
     label: "其它行政区",
-    url:"",
+    url: "",
   }
 ];
 //测绘遥感
 const TOP_LEVEL_OPTION_SKXX_CHYG = [
   {
     label: "数字正射影像图",
-    url:"",
+    url: "",
   },
   {
     id: "倾斜摄影",
@@ -1175,14 +1175,14 @@ const TOP_LEVEL_OPTION_SKXX_CHYG = [
   },
   {
     label: "全景VR",
-    url:"",
+    url: "",
   }
 ];
 //三维模型
-const TOP_LEVEL_OPTION_SKXX_SW=[
+const TOP_LEVEL_OPTION_SKXX_SW = [
   {
     label: "数字高程模型",
-    url:"",
+    url: "",
   },
   {
     id: "建筑三维模型",
@@ -1193,27 +1193,27 @@ const TOP_LEVEL_OPTION_SKXX_SW=[
   },
   {
     label: "交通三维模型",
-    url:"",
+    url: "",
   },
   {
     label: "轨道交通模型",
-    url:"",
+    url: "",
   },
   {
     label: "管线管廊三维模型",
-    url:"",
+    url: "",
   },
   {
     label: "地下空间三维模型",
-    url:"",
+    url: "",
   },
   {
     label: "场地三维模型",
-    url:"",
+    url: "",
   },
   {
     label: "植被三维模型",
-    url:"",
+    url: "",
   },
   {
     id: "BIM",
@@ -1225,7 +1225,7 @@ const TOP_LEVEL_OPTION_SKXX_SW=[
   },
   {
     label: "其它三维模型",
-    url:"",
+    url: "",
   },
 ];
 //时空基础
@@ -1253,70 +1253,70 @@ const TOP_LEVEL_OPTION_SKXX = [
   },
 ];
 //地质调查
-const TOP_LEVEL_OPTION_ZYDC_DZDC=[
+const TOP_LEVEL_OPTION_ZYDC_DZDC = [
   {
     label: "基础地质",
-    url:"",
+    url: "",
   },
   {
     label: "地质灾害",
-    url:"",
+    url: "",
   },
 ];
 //耕地资源
-const TOP_LEVEL_OPTION_ZYDC_GDZY=[
+const TOP_LEVEL_OPTION_ZYDC_GDZY = [
   {
     label: "耕地资源",
-    url:"",
+    url: "",
   },
   {
     label: "永久基本农田",
-    url:"",
+    url: "",
   },
 ];
 //水资源
-const TOP_LEVEL_OPTION_ZYDC_SZY=[
+const TOP_LEVEL_OPTION_ZYDC_SZY = [
   {
     label: "水系水文",
-    url:"",
+    url: "",
   },
   {
     label: "水利工程",
-    url:"",
+    url: "",
   },
 ];
 //城市部件
-const TOP_LEVEL_OPTION_ZYDC_CSBJ=[
+const TOP_LEVEL_OPTION_ZYDC_CSBJ = [
   {
     label: "公用设施",
-    url:"",
+    url: "",
   },
   {
     label: "道路交通",
-    url:"",
+    url: "",
   },
   {
     label: "市容环境",
-    url:"",
+    url: "",
   },
   {
     label: "园林绿化",
-    url:"",
+    url: "",
   },
   {
     label: "房屋土地",
-    url:"",
+    url: "",
   },
   {
     label: "其它设施",
-    url:"",
+    url: "",
   },
 ];
 //资源调查
-const TOP_LEVEL_OPTION_ZYDC=[
+const TOP_LEVEL_OPTION_ZYDC = [
   {
     label: "国土调查",
-    url:"",
+    url: "",
   },
   {
     id: "地质调查",
@@ -1348,41 +1348,41 @@ const TOP_LEVEL_OPTION_ZYDC=[
   },
 ];
 //国土空间规划
-const TOP_LEVEL_OPTION_GHGK_GTKJ=[
+const TOP_LEVEL_OPTION_GHGK_GTKJ = [
   {
     label: "总体规划",
-    url:"",
+    url: "",
   },
   {
     label: "详细规划",
-    url:"",
+    url: "",
   },
 ];
 //专项规划
-const TOP_LEVEL_OPTION_GHGK_ZXGK=[
+const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     label: "自然资源行业专项规划",
-    url:"",
+    url: "",
   },
   {
     label: "环保规划",
-    url:"",
+    url: "",
   },
   {
     label: "水利规划",
-    url:"",
+    url: "",
   },
   {
     label: "交通规划",
-    url:"",
+    url: "",
   },
   {
     label: "历史文化名城保护规划",
-    url:"",
+    url: "",
   },
 ];
 //规划管控
-const TOP_LEVEL_OPTION_GHGK=[
+const TOP_LEVEL_OPTION_GHGK = [
   {
     id: "国土空间规划",
     label: "国土空间规划",
@@ -1404,24 +1404,31 @@ const TOP_LEVEL_OPTION_GHGK=[
       return { ...v, id: v.label };
     })
   },
-
+  {
+    label: "控规盒子",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d10"
+  },
 ];
 //市民中心
-const TOP_LEVEL_OPTION_GCJS_SMZX=[
-
+const TOP_LEVEL_OPTION_GCJS_SMZX = [
+  {
+    label: "市民中心",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d11",
+  }
 ];
 //工程建设其他
-const TOP_LEVEL_OPTION_GCJS_QT=[
+const TOP_LEVEL_OPTION_GCJS_QT = [
 
 ];
 //工程建设
-const TOP_LEVEL_OPTION_GCJS=[
+const TOP_LEVEL_OPTION_GCJS = [
   {
     id: "市民中心",
     label: "市民中心",
-    children: TOP_LEVEL_OPTION_GCJS_SMZX.map(v => {
-      return { ...v, id: v.label };
-    })
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d11",
   },
   {
     id: "其他",
@@ -1432,37 +1439,37 @@ const TOP_LEVEL_OPTION_GCJS=[
   },
 ];
 //法人数据
-const TOP_LEVEL_OPTION_GGZT_FRSJ=[
+const TOP_LEVEL_OPTION_GGZT_FRSJ = [
   {
     label: "机关",
-    url:"",
+    url: "",
   },
   {
     label: "事业单位",
-    url:"",
+    url: "",
   },
   {
     label: "企业",
-    url:"",
+    url: "",
   },
   {
     label: "社团",
-    url:"",
+    url: "",
   },
 ];
 //兴趣点数据
-const TOP_LEVEL_OPTION_GGZT_XQDSJ=[
+const TOP_LEVEL_OPTION_GGZT_XQDSJ = [
   {
     label: "篮球场",
-    url:"",
+    url: "",
   },
   {
     label: "图书馆",
-    url:"",
+    url: "",
   },
 ];
 //公共专题
-const TOP_LEVEL_OPTION_GGZT=[
+const TOP_LEVEL_OPTION_GGZT = [
   {
     id: "法人数据",
     label: "法人数据",
@@ -1477,99 +1484,99 @@ const TOP_LEVEL_OPTION_GGZT=[
       return { ...v, id: v.label };
     })
   },
-  
+
 ];
 //市政设施监测数据
-const TOP_LEVEL_OPTION_WLGZ_SZSS=[
+const TOP_LEVEL_OPTION_WLGZ_SZSS = [
   {
     label: "城市道路桥梁",
-    url:"",
+    url: "",
   },
   {
     label: "轨道交通",
-    url:"",
+    url: "",
   },
   {
     label: "供水",
-    url:"",
+    url: "",
   },
   {
     label: "排水",
-    url:"",
+    url: "",
   },
   {
     label: "燃气",
-    url:"",
+    url: "",
   },
 
   {
     label: "热力",
-    url:"",
+    url: "",
   },
   {
     label: "园林绿化",
-    url:"",
+    url: "",
   },
   {
     label: "环境卫生",
-    url:"",
+    url: "",
   },
   {
     label: "道路照明",
-    url:"",
+    url: "",
   },
   {
     label: "垃圾处理设施",
-    url:"",
+    url: "",
   },
   {
     label: "附属设施",
-    url:"",
+    url: "",
   },
 ];
 //气象监测数据
-const TOP_LEVEL_OPTION_WLGZ_QXJC=[
+const TOP_LEVEL_OPTION_WLGZ_QXJC = [
   {
     label: "雨量",
-    url:"",
+    url: "",
   },
   {
     label: "气温",
-    url:"",
+    url: "",
   },
   {
     label: "气压",
-    url:"",
+    url: "",
   },
   {
     label: "湿度",
-    url:"",
+    url: "",
   },
 ];
 //交通监测数据
-const TOP_LEVEL_OPTION_WLGZ_JTJC=[
+const TOP_LEVEL_OPTION_WLGZ_JTJC = [
   {
     label: "电子监控信息",
-    url:"",
+    url: "",
   },
 ];
 //城市安防数据
-const TOP_LEVEL_OPTION_WLGZ_CSAF=[
+const TOP_LEVEL_OPTION_WLGZ_CSAF = [
   {
     label: "治安视频",
-    url:"",
+    url: "",
   },
   {
     label: "三防监测数据",
-    url:"",
+    url: "",
   },
   {
     label: "其他",
-    url:"",
+    url: "",
   },
 ];
 //物联感知
-const TOP_LEVEL_OPTION_WLGZ=[
+const TOP_LEVEL_OPTION_WLGZ = [
   {
     id: "市政设施监测数据",
     label: "市政设施监测数据",
@@ -1654,9 +1661,9 @@ const TOP_LEVEL_OPTION = [
     dataurl:
       "http://172.20.83.223:8098/iserver/services/data-SW_DATA/rest/data",
     dlurl:
-    "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/FJZ/config",
+      "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/FJZ/config",
     riverurl:
-     "http://172.20.83.223:8098/iserver/services/3D-River_Slow/rest/realspace/datas/River@%E7%B2%BE%E6%A8%A1_%E5%AF%BC%E5%87%BA_2012/config",
+      "http://172.20.83.223:8098/iserver/services/3D-River_Slow/rest/realspace/datas/River@%E7%B2%BE%E6%A8%A1_%E5%AF%BC%E5%87%BA_2012/config",
     dataBind: {
       dataSourceName: "172.20.83.196_swdata",
       dataSetName: "%E5%BB%BA%E7%AD%91_table"
@@ -1686,5 +1693,5 @@ export const CESIUM_TREE_OPTION = [
   ...TOP_LEVEL_OPTION.map(v => {
     return { ...v, id: v.label, type: "model" };
   }),
- 
+
 ];
