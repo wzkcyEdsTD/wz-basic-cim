@@ -122,7 +122,7 @@ export default {
       IDS: [],
       FLOOR_ON: false,
       //  cesium Object
-      viewer: undefined,
+      
       handler: undefined,
       lastHouseEntity: undefined,
       //  节流

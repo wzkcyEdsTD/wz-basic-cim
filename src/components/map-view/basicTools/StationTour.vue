@@ -87,7 +87,7 @@ export default {
       StationTreeData: [{ id: "all", label: "图层控制", children: [] }],
       tourOn: false,
       // cesium Object
-      viewer: undefined,
+      
       flyManager: undefined
     };
   },

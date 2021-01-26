@@ -34,7 +34,7 @@ export default {
       shallTree: false,
       keys: [],
       tourOn: false,
-      viewer: undefined,
+      
       flyManager: undefined,
       count: 0,
       overGroundLayer: undefined,

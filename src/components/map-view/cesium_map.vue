@@ -110,7 +110,7 @@ export default {
   mounted() {
     this.init3DMap(() => {
       this.mapLoaded = true;
-      this.initPostRender();
+      // this.initPostRender();
       this.initHandler();
     });
     this.eventRegsiter();
@@ -343,32 +343,7 @@ export default {
     },
     init3DMap(fn) {
       const that = this;
-      // 加载地图和影像地图
-      //       var viewer = new Cesium.Viewer("cesiumContainer", {
-      //   infoBox: false, // 是否显示信息框
-      //   selectionIndicator: false, // 是否显示选取指示器组件
-      //   // 创建地形服务提供者的实例，url为SuperMap iServer发布的TIN地形服务
-      //   terrainProvider: new Cesium.CesiumTerrainProvider({
-      //     url: ServiceUrl.YJDem, // 政务网永嘉地形
-      //   }),
-      // });
 
-      // // 添加三维影像
-      // var imagelayer = viewer.imageryLayers.addImageryProvider(
-      //   new Cesium.SuperMapImageryProvider({
-      //     url: ServiceUrl.SWImage,
-      //   })
-      // );
-      // imagelayer.transparentBackColor = new Cesium.Color(0.0, 0.0, 0.0, 1);
-      // imagelayer.transparentBackColorTolerance = 0.1;
-      // var viewer = new Cesium.Viewer("cesiumContainer", {
-      //   infoBox: false, // 是否显示信息框
-      //   selectionIndicator: false, // 是否显示选取指示器组件
-      //   // 创建地形服务提供者的实例，url为SuperMap iServer发布的TIN地形服务
-      //   terrainProvider: new Cesium.CesiumTerrainProvider({
-      //     url: ServiceUrl.YJDem, // 政务网永嘉地形
-      //   }),
-      // });
       var viewer = new Cesium.Viewer("cesiumContainer", {
         infoBox: false, // 是否显示信息框
         selectionIndicator: false, // 是否显示选取指示器组件
@@ -377,6 +352,9 @@ export default {
           url: ServiceUrl.YJDem, // 政务网永嘉地形
         }),
       });
+      window.earth = viewer; // 全局变量（优化性能）
+      //开启地下模式
+      window.earth.scene.undergroundMode = true;
       // 添加三维影像
       var imagelayer = viewer.imageryLayers.addImageryProvider(
         new Cesium.SuperMapImageryProvider({
@@ -434,7 +412,6 @@ export default {
       // 移除缓冲圈
       $(".cesium-widget-credits").hide();
       //viewer.scene.globe.depthTestAgainstTerrain = false;
-      window.earth = viewer; // 全局变量（优化性能）
       this.cameraMove();
       fn && fn();
       viewer.pickEvent.addEventListener((feature) => {

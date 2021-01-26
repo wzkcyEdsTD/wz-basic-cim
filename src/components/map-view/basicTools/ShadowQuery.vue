@@ -100,7 +100,7 @@ export default {
       bottomHeight: 10, //底部高度
       extrudeHeight: 15, //拉伸高度
       ShadowQuery: undefined,
-      viewer: undefined,
+      
       show: true,
       polygon: undefined,
       layers: undefined,
@@ -158,11 +158,11 @@ export default {
       //创建阴影查询对象 ShadowQuery
       that.handlerPolygon.activeEvt.addEventListener(function (isActive) {
         if (isActive == true) {
-          that.viewer.enableCursorStyle = false;
-          that.viewer._element.style.cursor = "";
+          window.earth.enableCursorStyle = false;
+          window.earth._element.style.cursor = "";
           document.body.classList.add("drawCur");
         } else {
-          that.viewer.enableCursorStyle = true;
+          window.earth.enableCursorStyle = true;
           document.body.classList.remove("drawCur");
         }
       });

@@ -56,7 +56,7 @@ export default {
   data() {
     return {
       // cesium Object
-      viewer: undefined,
+      
       handlerPolygon: undefined,
       overGroundLayer: undefined,
       globe: undefined,
@@ -107,19 +107,19 @@ export default {
           function (newValue) {
             that.overGroundLayer.transparentBackColorTolerance = newValue;
             if (newValue == 1) {
-              that.viewer.scene.globe.globeAlpha = 0;
+              window.earth.scene.globe.globeAlpha = 0;
             } else if (newValue != 1) {
-              that.viewer.scene.globe.globeAlpha = 1;
+              window.earth.scene.globe.globeAlpha = 1;
             }
           }
         );
         that.handlerPolygon.activeEvt.addEventListener(function (isActive) {
           if (isActive == true) {
-            that.viewer.enableCursorStyle = false;
-            that.viewer._element.style.cursor = "";
+            window.earth.enableCursorStyle = false;
+            window.earth._element.style.cursor = "";
             $("body").removeClass("drawCur").addClass("drawCur");
           } else {
-            that.viewer.enableCursorStyle = true;
+            window.earth.enableCursorStyle = true;
             $("body").removeClass("drawCur");
           }
         });
@@ -135,9 +135,9 @@ export default {
       };
       Cesium.when(this.promise, function (layers) {
         //这里要跟图层一起加载，不能放到场景初始化的时候，否则会找不到这个图层导致没有效果进行
-        //that.viewer.scene.globe.globeAlpha = 0;
+        //window.earth.scene.globe.globeAlpha = 0;
         //获取地球表面的透明度 默认为1 1为不透明 0为完全透明
-        //const abc = that.viewer.scene.globe.globeAlpha;
+        //const abc = window.earth.scene.globe.globeAlpha;
         //这里是用来找到这个场景里的所有图层
         const imageryLayers = window.earth.scene.imageryLayers;
         //console.log("images", imageryLayers);
@@ -152,20 +152,20 @@ export default {
           function (newValue) {
             that.overGroundLayer.transparentBackColorTolerance = newValue;
             if (newValue == 1) {
-              that.viewer.scene.globe.globeAlpha = 0;
+              window.earth.scene.globe.globeAlpha = 0;
             } else if (newValue != 1) {
-              that.viewer.scene.globe.globeAlpha = 1;
+              window.earth.scene.globe.globeAlpha = 1;
             }
           }
         );
         $("#eventRegsiter").on("click", function () {
           that.handlerPolygon.activeEvt.addEventListener(function (isActive) {
             if (isActive == true) {
-              that.viewer.enableCursorStyle = false;
-              that.viewer._element.style.cursor = "";
+              window.earth.enableCursorStyle = false;
+              window.earth._element.style.cursor = "";
               $("body").removeClass("drawCur").addClass("drawCur");
             } else {
-              that.viewer.enableCursorStyle = true;
+              window.earth.enableCursorStyle = true;
               $("body").removeClass("drawCur");
             }
           });
@@ -204,9 +204,9 @@ export default {
                 positions.push(height);
               }
             }
-            that.viewer.scene.globe.removeAllExcavationRegion();
+            window.earth.scene.globe.removeAllExcavationRegion();
             //开挖深度
-            that.viewer.scene.globe.addExcavationRegion({
+            window.earth.scene.globe.addExcavationRegion({
               name: "ggg",
               position: positions,
               height: 50,
@@ -236,13 +236,11 @@ export default {
         LAYER_NAME.map(
           (d) => (window.earth.scene.layers.find(d).visible = true)
         );
-        that.globe = that.viewer.scene.globe;
-        //开启地下模式
-        that.viewer.scene.undergroundMode = true;
+        that.globe = window.earth.scene.globe;
         //设置相机最小缩放距离,距离地表-1000米
-        that.viewer.scene.screenSpaceCameraController.minimumZoomDistance = -1000;
+        window.earth.scene.screenSpaceCameraController.minimumZoomDistance = -1000;
         // 关闭裙边
-        that.viewer.scene.terrainProvider.isCreateSkirt = false;
+        window.earth.scene.terrainProvider.isCreateSkirt = false;
         window.earth.scene.camera.setView({
           destination: {
             x: -2875539.090787695,
@@ -275,13 +273,11 @@ export default {
             isMerge: true,
           });
         });
-        that.globe = that.viewer.scene.globe;
-        //开启地下模式
-        that.viewer.scene.undergroundMode = true;
+        that.globe = window.earth.scene.globe;
         //设置相机最小缩放距离,距离地表-1000米
-        that.viewer.scene.screenSpaceCameraController.minimumZoomDistance = -1000;
+        window.earth.scene.screenSpaceCameraController.minimumZoomDistance = -1000;
         // 关闭裙边
-        that.viewer.scene.terrainProvider.isCreateSkirt = false;
+        window.earth.scene.terrainProvider.isCreateSkirt = false;
         window.earth.scene.camera.setView({
           destination: {
             x: -2875539.090787695,
@@ -297,7 +293,7 @@ export default {
       }
 
       //打开地下管线
-      //that.promise = that.viewer.scene.open(UNDERGROUND_SCENE_URL);
+      //that.promise = window.earth.scene.open(UNDERGROUND_SCENE_URL);
       //console.log("管线",that.promise);
     },
     //  倾斜开挖
@@ -336,7 +332,7 @@ export default {
     //  清除选中内容
     clearUnderGround() {
       const that = this;
-      that.viewer.scene.globe.removeAllExcavationRegion();
+      window.earth.scene.globe.removeAllExcavationRegion();
 
       //that.handlerPolygon.polygon.show = false;
       //that.handlerPolygon.polyline.show = false;

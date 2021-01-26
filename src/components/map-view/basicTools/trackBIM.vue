@@ -43,7 +43,7 @@ export default {
       keys: [],
       tourOn: false,
       // cesium Object
-      viewer: undefined,
+      
       flyManager: undefined,
       count: 0,
       fnScroll: () => {},

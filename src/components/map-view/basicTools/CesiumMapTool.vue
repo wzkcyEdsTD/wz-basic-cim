@@ -60,7 +60,7 @@ export default {
       ],
       toolType: "空间测量",
       // cesium Object
-      viewer: undefined,
+      
       handlerDis: undefined,
       handlerArea: undefined,
       handlerHeight: undefined,
@@ -105,11 +105,11 @@ export default {
       });
       that.handlerDis.activeEvt.addEventListener(function (isActive) {
         if (isActive == true) {
-          that.viewer.enableCursorStyle = false;
-          that.viewer._element.style.cursor = "";
+          window.earth.enableCursorStyle = false;
+          window.earth._element.style.cursor = "";
           $("body").removeClass("measureCur").addClass("measureCur");
         } else {
-          that.viewer.enableCursorStyle = true;
+          window.earth.enableCursorStyle = true;
           $("body").removeClass("measureCur");
         }
       });
@@ -124,11 +124,11 @@ export default {
       });
       that.handlerArea.activeEvt.addEventListener(function (isActive) {
         if (isActive == true) {
-          that.viewer.enableCursorStyle = false;
-          that.viewer._element.style.cursor = "";
+          window.earth.enableCursorStyle = false;
+          window.earth._element.style.cursor = "";
           $("body").removeClass("measureCur").addClass("measureCur");
         } else {
-          that.viewer.enableCursorStyle = true;
+          window.earth.enableCursorStyle = true;
           $("body").removeClass("measureCur");
         }
       });
@@ -151,11 +151,11 @@ export default {
       });
       that.handlerHeight.activeEvt.addEventListener(function (isActive) {
         if (isActive == true) {
-          that.viewer.enableCursorStyle = false;
-          that.viewer._element.style.cursor = "";
+          window.earth.enableCursorStyle = false;
+          window.earth._element.style.cursor = "";
           $("body").removeClass("measureCur").addClass("measureCur");
         } else {
-          that.viewer.enableCursorStyle = true;
+          window.earth.enableCursorStyle = true;
           $("body").removeClass("measureCur");
         }
       });

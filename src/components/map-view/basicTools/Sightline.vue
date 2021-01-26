@@ -35,7 +35,7 @@ export default {
       visibleColor: "rbg(0,200,0)", // 可见区域显示的颜色
       hiddenColor: "rbg(255,0,0)", // 不可见区域显示的颜色
       viewPosition: {}, //获取或设置观察者的位置，位置由经度、纬度和高程组成的数组表示
-      viewer: undefined, //
+       //
       HandlerFlag: true,
       sightLineHandler: undefined, //通视分析
       pointHandler: undefined,
@@ -76,11 +76,11 @@ export default {
       //that.tooltip = createTooltip(document.body);
       that.sightLineHandler.activeEvt.addEventListener((isActive) => {
         if (isActive == true) {
-          that.viewer.enableCursorStyle = false;
-          that.viewer._element.style.cursor = "";
+          window.earth.enableCursorStyle = false;
+          window.earth._element.style.cursor = "";
           document.body.classList.add("drawCur");
         } else {
-          that.viewer.enableCursorStyle = true;
+          window.earth.enableCursorStyle = true;
           document.body.classList.remove("drawCur");
         }
       });
@@ -121,7 +121,7 @@ export default {
           if (that.HandlerFlag) {
             that.sightLineHandler.polyline &&
               (that.sightLineHandler.polyline.show = false);
-            const pick = that.viewer.scene.pickPosition(evt.position);
+            const pick = window.earth.scene.pickPosition(evt.position);
             const ecartographic = Cesium.Cartographic.fromCartesian(pick);
             const elongitude = Cesium.Math.toDegrees(ecartographic.longitude);
             const elatitude = Cesium.Math.toDegrees(ecartographic.latitude);
@@ -157,7 +157,7 @@ export default {
       if (that.pointHandler) {
         this.pointHandler.deactivate();
       }
-      that.viewer.entities.removeAll();
+      window.earth.entities.removeAll();
       that.sightline && this.sightline.removeAllTargetPoint();
     },
     sightlineClose() {

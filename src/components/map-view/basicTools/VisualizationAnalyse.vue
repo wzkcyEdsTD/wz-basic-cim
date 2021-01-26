@@ -41,7 +41,7 @@ export default {
     handler: undefined,
     viewshed3D: undefined,
     viewPosition: undefined,
-    viewer: undefined,
+    
   },
   created() {
     this.pointHandler = new Cesiums.DrawHandler(
@@ -70,10 +70,10 @@ export default {
       that.handler.setInputAction(function (e) {
         if (!that.viewPosition) return;
         // 若此标记为false，则激活对可视域分析对象的操作
-        if (!that.viewer.scene.viewFlag) {
+        if (!window.earth.scene.viewFlag) {
           //获取鼠标屏幕坐标,并将其转化成笛卡尔坐标
           const position = e.endPosition;
-          const last = that.viewer.scene.pickPosition(position);
+          const last = window.earth.scene.pickPosition(position);
           //计算该点与视口位置点坐标的距离
           const distance = Cesiums.Cartesian3.distance(that.viewPosition, last);
           if (distance > 0) {
@@ -89,7 +89,7 @@ export default {
       }, Cesiums.ScreenSpaceEventType.MOUSE_MOVE);
       that.handler.setInputAction(function (e) {
         //鼠标右键事件回调，不再执行鼠标移动事件中对可视域的操作
-        that.viewer.scene.viewFlag = true;
+        window.earth.scene.viewFlag = true;
       }, Cesiums.ScreenSpaceEventType.RIGHT_CLICK);
       
       that.pointHandler.drawEvt.addEventListener(function (result) {
@@ -107,12 +107,12 @@ export default {
           latitude,
           height
         );
-        if (that.viewer.scene.viewFlag) {
+        if (window.earth.scene.viewFlag) {
           // 设置视口位置
           that.viewshed3D.viewPosition = [longitude, latitude, height];
           that.viewshed3D.build();
           // 将标记置为false以激活鼠标移动回调里面的设置可视域操作
-          that.viewer.scene.viewFlag = false;
+          window.earth.scene.viewFlag = false;
         }
       });
     },
