@@ -36,203 +36,6 @@ const TOP_LEVEL_OPTION_SSFL = [
     ids:"成果汇总_设施点@成果#1_绿化设施",
   },
 ];
-const TOP_LEVEL_OPTION = [
-  {
-    id: "注记分类",
-    label: "注记分类",
-    children: TOP_LEVEL_OPTION_SSFL.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    label: "白模",
-    url:
-      //"http://172.20.83.223:8098/iserver/services/3D-CM_LC/rest/realspace/datas/RES_LC_EraseMAX_Z_Model@baimo/config"
-      "http://172.20.83.223:8098/iserver/services/3D-BaiMo/rest/realspace/datas/BaiMo_central/config"
-      //"https://ditu.wzcitybrain.com/iserver/services/3D-mongodb-BaiMo/rest/realspace/datas/BaiMo/config"
-  },
-  {
-    label: "精模",
-    url:
-      //"http://172.20.83.223:8098/iserver/services/3D-mongodb-MAXShijuJZ/rest/realspace/datas/MAX_Shiju_JZ/config",
-      "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/JZ/config",
-    dataurl:
-      "http://172.20.83.223:8098/iserver/services/data-SW_DATA/rest/data",
-      //"http://172.20.83.223:8098/iserver/services/data-SW_Data/rest/data",
-    dlurl:
-    //"http://172.20.83.223:8098/iserver/services/3D-mongodb/rest/realspace/datas/DL/config",
-    "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/FJZ/config",
-    // zburl:
-    // "http://172.20.83.223:8098/iserver/services/3D-mongodb/rest/realspace/datas/ZB/config",
-    // qturl:
-    // "http://172.20.83.223:8098/iserver/services/3D-mongodb/rest/realspace/datas/QT/config",
-    // dxurl:
-    // "http://172.20.83.223:8098/iserver/services/3D-mongodb/rest/realspace/datas/DX/config",
-    // lurl:
-    // "http://172.20.83.223:8098/iserver/services/3D-mongodb/rest/realspace/datas/JZ/config",
-    riverurl:
-     "http://172.20.83.223:8098/iserver/services/3D-River_Slow/rest/realspace/datas/River@%E7%B2%BE%E6%A8%A1_%E5%AF%BC%E5%87%BA_2012/config",
-    // newurl:
-    // "http://172.20.83.223:8098/iserver/services/3D-mongodb/rest/realspace/datas/max_Shiju_QT/config",
-      //"http://172.20.83.223:8098/iserver/services/map-mvt-XiaoQuLvDi/restjsr/v1/vectortile/maps/%E5%B0%8F%E5%8C%BA%E7%BB%BF%E5%9C%B0",
-    dataBind: {
-      dataSourceName: "172.20.83.196_swdata",
-      dataSetName: "%E5%BB%BA%E7%AD%91_table"
-    },
-    camera: {
-      x: -2877074.5261789295,
-      y: 4842678.649871697,
-      z: 2993284.6421134197
-    },
-    cameraDone: true
-  },
-  // {
-  //   label: "2017精模",
-  //   url:
-  //     "http://172.20.83.223:8098/iserver/services/3D-MAX_LuCheng/rest/realspace/datas/%E5%B8%82%E5%8C%BA_2017/config",
-  //   dataurl:
-  //     "http://172.20.83.223:8098/iserver/services/data-ChengShiJingMo/rest/data",
-  //   fgmurl:
-  //     "http://172.20.83.223:8098/iserver/services/map-mvt-XiaoQuLvDi/restjsr/v1/vectortile/maps/%E5%B0%8F%E5%8C%BA%E7%BB%BF%E5%9C%B0",  
-  //   dataBind: {
-  //     dataSourceName: "精模_市区",
-  //     dataSetName: "max_2017"
-  //   },
-  //   camera: {
-  //     x: -2877074.5261789295,
-  //     y: 4842678.649871697,
-  //     z: 2993284.6421134197
-  //   },
-  //   cameraDone: true
-  // },
-  {
-    label: "河流动态场景",
-    componentEvent: "cesium-3d-event",
-    componentKey: "3d7",
-  }
-  /*   {
-      label: "山区村落自然灾害易发区",
-      url:
-        "http://10.36.234.83:8090/iserver/services/map-FXFX_DATA/rest/maps/FXFX_YJ_ComprehensiveScore",
-      vectorTile: true
-    } */
-];
-//这里用于添加BIM的图层勾选
-//componentKey 是用于来绑定btn按钮的值
-const BIM_GRAPHIS_OPTION = [
-  {
-    label: "安置房BIM分析",
-    componentEvent: "cesium-3d-event",
-    componentKey: "3d2"
-  },
-  {
-    label: "机场BIM场景",
-    componentEvent: "cesium-3d-event",
-    componentKey: "3d3"
-  },
-  {
-    label: "S1线轨道场景",
-    componentEvent: "cesium-3d-event",
-    componentKey: "3d5",
-  }
-];
-//永嘉二级
-const LEAN_GRAPHIS_OPTION_YJ_HT = [
-  {
-    label: "埭下村",
-    url:"",
-    camera: {
-      x: -2875396.824866244,
-      y: 4843322.049050793,
-      z: 2993500.7331779394
-    },
-    cameraDone: true
-  }
-];
-const LEAN_GRAPHIS_OPTION_YJ_JX = [
-  {
-    label: "黄山村",
-    url:"http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_HuangShanCun",
-    camera: {
-      x: -2875396.824866244,
-      y: 4843322.049050793,
-      z: 2993500.7331779394
-    },
-    cameraDone: true
-  }
-];
-const LEAN_GRAPHIS_OPTION_YJ_DC = [
-  {
-    label: "林村",
-    url:"http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_LinCun",
-    camera: {
-      x: -2875396.824866244,
-      y: 4843322.049050793,
-      z: 2993500.7331779394
-    },
-    cameraDone: true
-  }
-];
-const LEAN_GRAPHIS_OPTION_YJ_FL = [
-  {
-    label: "外垟村",
-    url:"http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_WaiYangCun",
-    camera: {
-      x: -2875396.824866244,
-      y: 4843322.049050793,
-      z: 2993500.7331779394
-    },
-    cameraDone: true
-  }
-];
-const LEAN_GRAPHIS_OPTION_YJ_YT = [
-  {
-    label: "西塘村",
-    url:"http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_XiTangCun",
-    camera: {
-      x: -2875396.824866244,
-      y: 4843322.049050793,
-      z: 2993500.7331779394
-    },
-    cameraDone: true
-  }
-];
-//文成二级
-const LEAN_GRAPHIS_OPTION_WC_NT = [
-  {
-    label: "西塘村",
-    url:"http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_XiTangCun",
-    camera: {
-      x: -2875396.824866244,
-      y: 4843322.049050793,
-      z: 2993500.7331779394
-    },
-    cameraDone: true
-  }
-];
-const LEAN_GRAPHIS_OPTION_WC_TL = [
-  {
-    label: "西塘村",
-    url:"http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016_2/rest/realspace/datas/QX_LC_XiTangCun",
-    camera: {
-      x: -2875396.824866244,
-      y: 4843322.049050793,
-      z: 2993500.7331779394
-    },
-    cameraDone: true
-  }
-];
-//瑞安二级
-const LEAN_GRAPHIS_OPTION_RA_FY = [];
-const LEAN_GRAPHIS_OPTION_RA_GL = [];
-const LEAN_GRAPHIS_OPTION_RA_XJ = [];
-const LEAN_GRAPHIS_OPTION_RA_TX = [];
-const LEAN_GRAPHIS_OPTION_RA_MY = [];
-const LEAN_GRAPHIS_OPTION_RA_TS = [];
-//平阳二级
-const LEAN_GRAPHIS_OPTION_PY_NC = [];
-const LEAN_GRAPHIS_OPTION_PY_SM = [];
-const LEAN_GRAPHIS_OPTION_PY_AJ = [];
 //瓯海二级
 const LEAN_GRAPHIS_OPTION_OH_SY = [
   {
@@ -594,16 +397,6 @@ const LEAN_GRAPHIS_OPTION_YQ_LC = [
     cameraDone: true
   },
 ];
-const LEAN_GRAPHIS_OPTION_YQ_HQ = [];
-const LEAN_GRAPHIS_OPTION_YQ_LS = [];
-const LEAN_GRAPHIS_OPTION_YQ_BB = [];
-const LEAN_GRAPHIS_OPTION_YQ_FR = [];
-//洞头二级
-const LEAN_GRAPHIS_OPTION_DT_DP = [];
-//苍南二级
-const LEAN_GRAPHIS_OPTION_CN_LX = [];
-const LEAN_GRAPHIS_OPTION_CN_QK = [];
-const LEAN_GRAPHIS_OPTION_CN_LP = [];
 //鹿城二级
 const LEAN_GRAPHIS_OPTION_LC_BJ = [
   {
@@ -1056,130 +849,6 @@ const LEAN_GRAPHIS_OPTION_LC_YY = [
     cameraDone: true
   },
 ];
-//永嘉一级
-const LEAN_GRAPHIS_OPTION_YJ = [
-  {
-    id: "黄田街道",
-    label: "黄田街道",
-    children: LEAN_GRAPHIS_OPTION_YJ_HT.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "金溪镇",
-    label: "金溪镇",
-    children: LEAN_GRAPHIS_OPTION_YJ_JX.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "东城街道",
-    label: "东城街道",
-    children: LEAN_GRAPHIS_OPTION_YJ_DC.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "枫林镇",
-    label: "枫林镇",
-    children: LEAN_GRAPHIS_OPTION_YJ_FL.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "岩坦镇",
-    label: "岩坦镇",
-    children: LEAN_GRAPHIS_OPTION_YJ_YT.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-];
-//文成一级
-const LEAN_GRAPHIS_OPTION_WC = [
-  {
-    id: "南田镇",
-    label: "南田镇",
-    children: LEAN_GRAPHIS_OPTION_WC_NT.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "铜铃山镇",
-    label: "铜铃山镇",
-    children: LEAN_GRAPHIS_OPTION_WC_TL.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-];
-//瑞安一级
-const LEAN_GRAPHIS_OPTION_RA = [
-  {
-    id: "飞云街道",
-    label: "飞云街道",
-    children: LEAN_GRAPHIS_OPTION_RA_FY.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "高楼镇",
-    label: "高楼镇",
-    children: LEAN_GRAPHIS_OPTION_RA_GL.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "仙降街道",
-    label: "仙降街道",
-    children: LEAN_GRAPHIS_OPTION_RA_XJ.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "塘下镇",
-    label: "塘下镇",
-    children: LEAN_GRAPHIS_OPTION_RA_TX.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "马屿镇",
-    label: "马屿镇",
-    children: LEAN_GRAPHIS_OPTION_RA_MY.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "陶山镇",
-    label: "陶山镇",
-    children: LEAN_GRAPHIS_OPTION_RA_TS.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-];
-//平阳一级
-const LEAN_GRAPHIS_OPTION_PY = [
-  {
-    id: "闹村乡",
-    label: "闹村乡",
-    children: LEAN_GRAPHIS_OPTION_PY_NC.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "山门镇",
-    label: "山门镇",
-    children: LEAN_GRAPHIS_OPTION_PY_SM.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "鳌江镇",
-    label: "鳌江镇",
-    children: LEAN_GRAPHIS_OPTION_PY_AJ.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-];
 //鹿城一级
 const LEAN_GRAPHIS_OPTION_LC = [
   {
@@ -1380,70 +1049,7 @@ const LEAN_GRAPHIS_OPTION_YQ = [
       return { ...v, id: v.label };
     })
   },
- /*  {
-    id: "虹桥镇",
-    label: "虹桥镇",
-    children: LEAN_GRAPHIS_OPTION_YQ_HQ.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "柳市镇",
-    label: "柳市镇",
-    children: LEAN_GRAPHIS_OPTION_YQ_LS.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "北白象镇",
-    label: "北白象镇",
-    children: LEAN_GRAPHIS_OPTION_YQ_BB.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "芙蓉镇",
-    label: "芙蓉镇",
-    children: LEAN_GRAPHIS_OPTION_YQ_FR.map(v => {
-      return { ...v, id: v.label };
-    })
-  }, */
 ];
-//洞头一级
-const LEAN_GRAPHIS_OPTION_DT = [
-  {
-    id: "东屏街道",
-    label: "东屏街道",
-    children: LEAN_GRAPHIS_OPTION_DT_DP.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-];
-//苍南一级
-const LEAN_GRAPHIS_OPTION_CN = [
-  {
-    id: "灵溪镇",
-    label: "灵溪镇",
-    children: LEAN_GRAPHIS_OPTION_CN_LX.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "钱库镇",
-    label: "钱库镇",
-    children: LEAN_GRAPHIS_OPTION_CN_QK.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "沿浦镇",
-    label: "沿浦镇",
-    children: LEAN_GRAPHIS_OPTION_CN_LP.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-];
-
 const LEAN_GRAPHIS_OPTION = [
   {
     id: "鹿城区",
@@ -1473,299 +1079,601 @@ const LEAN_GRAPHIS_OPTION = [
       return { ...v, id: v.label };
     })
   },
-  /* {
-    id: "洞头区",
-    label: "洞头区",
-    children: LEAN_GRAPHIS_OPTION_DT.map(v => {
-      return { ...v, id: v.label };
-    })
+];
+//这里用于添加BIM的图层勾选
+//componentKey 是用于来绑定btn按钮的值
+const BIM_GRAPHIS_OPTION = [
+  {
+    label: "安置房BIM分析",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d2"
   },
   {
-    id: "永嘉县",
-    label: "永嘉县",
-    children: LEAN_GRAPHIS_OPTION_YJ.map(v => {
-      return { ...v, id: v.label };
-    })
+    label: "机场BIM场景",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d3"
   },
   {
-    id: "文成县",
-    label: "文成县",
-    children: LEAN_GRAPHIS_OPTION_WC.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
+    label: "S1线轨道场景",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d5",
+  }
+];
+//建筑三维模型
+const TOP_LEVEL_OPTION_SKXX_SW_JZSW=[
   {
-    id: "瑞安市",
-    label: "瑞安市",
-    children: LEAN_GRAPHIS_OPTION_RA.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "平阳县",
-    label: "平阳县",
-    children: LEAN_GRAPHIS_OPTION_PY.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
-    id: "苍南县",
-    label: "苍南县",
-    children: LEAN_GRAPHIS_OPTION_CN.map(v => {
-      return { ...v, id: v.label };
-    })
-  }, */
-/*   {
-    label: "中央涂村",
+    label: "白模",
     url:
-      "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_ZhongYangTu_2016_1/config",
+      "http://172.20.83.223:8098/iserver/services/3D-BaiMo/rest/realspace/datas/BaiMo_central/config"
+  },
+  {
+    label: "精模",
+    url:
+      "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/JZ/config",
+    dataurl:
+      "http://172.20.83.223:8098/iserver/services/data-SW_DATA/rest/data",
+    dlurl:
+    "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/FJZ/config",
+    riverurl:
+     "http://172.20.83.223:8098/iserver/services/3D-River_Slow/rest/realspace/datas/River@%E7%B2%BE%E6%A8%A1_%E5%AF%BC%E5%87%BA_2012/config",
+    dataBind: {
+      dataSourceName: "172.20.83.196_swdata",
+      dataSetName: "%E5%BB%BA%E7%AD%91_table"
+    },
     camera: {
-      x: -2868148.921505489,
-      y: 4845701.558019418,
-      z: 2996299.072267176
+      x: -2877074.5261789295,
+      y: 4842678.649871697,
+      z: 2993284.6421134197
     },
     cameraDone: true
-  }, */
-  /* {
-    label: "永嘉鹤盛镇",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_HESHENGZ/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.8387279805759, 28.371971130691417, 291.08784810315643]
   },
   {
-    label: "永嘉大若岩镇",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_DARUOYANZ/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.62184613528393, 28.274737966665757, 244.76462327032053]
-  },
-  {
-    label: "永嘉枫林镇",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_FENGLINZ/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.75575851539088, 28.33507791787183, 288.32367182732537]
-  },
-  {
-    label: "永嘉界坑乡",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_JIEKENGX/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.40930812949061, 28.44132591044351, 708.0313029476863]
-  },
-  {
-    label: "永嘉桥下镇1",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_QIAOXIAZ1/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.55651911551178, 28.16172350146348, 242.4084108219556]
-  },
-  {
-    label: "永嘉桥下镇2",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_QIAOXIAZ2/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.56133273898112, 28.14169291592059, 242.14159886635622]
-  },
-  {
-    label: "永嘉溪下乡",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_XIXIAX/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.48664280212724, 28.49672230235694, 577.4576632360657]
-  },
-  {
-    label: "永嘉沙头镇",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_SHATOUZ/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.76422242166228, 28.18909322620766, 459.15589999858855]
-  },
-  {
-    label: "永嘉巽宅镇",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_XUNZHAIZ/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.49072736166544, 28.337897347538647, 439.53423]
-  },
-  {
-    label: "永嘉岩头镇",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_YANTOUZ/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.76438461789809, 28.351542555895815, 606.98235]
-  },
-  {
-    label: "永嘉岩坦镇",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_YANTANZ/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.72538630132725, 28.43329372991379, 370.16315545780446]
-  },
-  {
-    label: "永嘉水云溪",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_SHUIYUNX/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.63877494046184, 28.27743052748186, 552.1622241592182]
-  },
-  {
-    label: "永嘉碧莲镇",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_BILIANZ/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.56959564155919, 28.301079769394445, 459.15589999568067]
-  },
-  {
-    label: "永嘉桥头镇",
-    url:
-      "http://10.36.234.83:8098/iserver/services/3D-SW_YJ_QX/rest/realspace/datas/QINGXIE_YJ_QIAOTOUZ/config",
-    dataurl: "http://10.36.234.83:8098/iserver/services/data-SW_Data/rest/data",
-    camera: [120.7601745, 28.19577031, 459.1559]
-  } */
+    label: "河流动态场景",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d7",
+  }
 ];
+//行政区
+const TOP_LEVEL_OPTION_SKXX_XZQ=[
+  {
+    label: "国家行政区",
+    url:"",
+  },
+  {
+    label: "省级行政区",
+    url:"",
+  },
+  {
+    label: "地级行政区",
+    url:"",
+  },
+  {
+    label: "县级行政区",
+    url:"",
+  },
+  {
+    label: "乡级行政区",
+    url:"",
+  },
+  {
+    label: "其它行政区",
+    url:"",
+  }
+];
+//测绘遥感
+const TOP_LEVEL_OPTION_SKXX_CHYG = [
+  {
+    label: "数字正射影像图",
+    url:"",
+  },
+  {
+    id: "倾斜摄影",
+    label: "倾斜摄影",
+    children: LEAN_GRAPHIS_OPTION.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    label: "全景VR",
+    url:"",
+  }
+];
+//三维模型
+const TOP_LEVEL_OPTION_SKXX_SW=[
+  {
+    label: "数字高程模型",
+    url:"",
+  },
+  {
+    id: "建筑三维模型",
+    label: "建筑三维模型",
+    children: TOP_LEVEL_OPTION_SKXX_SW_JZSW.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    label: "交通三维模型",
+    url:"",
+  },
+  {
+    label: "轨道交通模型",
+    url:"",
+  },
+  {
+    label: "管线管廊三维模型",
+    url:"",
+  },
+  {
+    label: "地下空间三维模型",
+    url:"",
+  },
+  {
+    label: "场地三维模型",
+    url:"",
+  },
+  {
+    label: "植被三维模型",
+    url:"",
+  },
+  {
+    id: "BIM",
+    label: "BIM",
+    disabled: true,
+    children: BIM_GRAPHIS_OPTION.map(v => {
+      return { ...v, id: v.label, type: "bim" };
+    })
+  },
+  {
+    label: "其它三维模型",
+    url:"",
+  },
+];
+//时空基础
+const TOP_LEVEL_OPTION_SKXX = [
+  {
+    id: "行政区",
+    label: "行政区",
+    children: TOP_LEVEL_OPTION_SKXX_XZQ.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "测绘遥感",
+    label: "测绘遥感数",
+    children: TOP_LEVEL_OPTION_SKXX_CHYG.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "三维模型",
+    label: "三维模型",
+    children: TOP_LEVEL_OPTION_SKXX_SW.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+];
+//地质调查
+const TOP_LEVEL_OPTION_ZYDC_DZDC=[
+  {
+    label: "基础地质",
+    url:"",
+  },
+  {
+    label: "地质灾害",
+    url:"",
+  },
+];
+//耕地资源
+const TOP_LEVEL_OPTION_ZYDC_GDZY=[
+  {
+    label: "耕地资源",
+    url:"",
+  },
+  {
+    label: "永久基本农田",
+    url:"",
+  },
+];
+//水资源
+const TOP_LEVEL_OPTION_ZYDC_SZY=[
+  {
+    label: "水系水文",
+    url:"",
+  },
+  {
+    label: "水利工程",
+    url:"",
+  },
+];
+//城市部件
+const TOP_LEVEL_OPTION_ZYDC_CSBJ=[
+  {
+    label: "公用设施",
+    url:"",
+  },
+  {
+    label: "道路交通",
+    url:"",
+  },
+  {
+    label: "市容环境",
+    url:"",
+  },
+  {
+    label: "园林绿化",
+    url:"",
+  },
+  {
+    label: "房屋土地",
+    url:"",
+  },
+  {
+    label: "其它设施",
+    url:"",
+  },
+];
+//资源调查
+const TOP_LEVEL_OPTION_ZYDC=[
+  {
+    label: "国土调查",
+    url:"",
+  },
+  {
+    id: "地质调查",
+    label: "地质调查",
+    children: TOP_LEVEL_OPTION_ZYDC_DZDC.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "耕地资源",
+    label: "耕地资源",
+    children: TOP_LEVEL_OPTION_ZYDC_GDZY.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "水资源",
+    label: "水资源",
+    children: TOP_LEVEL_OPTION_ZYDC_SZY.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "城市部件",
+    label: "城市部件",
+    children: TOP_LEVEL_OPTION_ZYDC_CSBJ.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+];
+//国土空间规划
+const TOP_LEVEL_OPTION_GHGK_GTKJ=[
+  {
+    label: "总体规划",
+    url:"",
+  },
+  {
+    label: "详细规划",
+    url:"",
+  },
+];
+//专项规划
+const TOP_LEVEL_OPTION_GHGK_ZXGK=[
+  {
+    label: "自然资源行业专项规划",
+    url:"",
+  },
+  {
+    label: "环保规划",
+    url:"",
+  },
+  {
+    label: "水利规划",
+    url:"",
+  },
+  {
+    label: "交通规划",
+    url:"",
+  },
+  {
+    label: "历史文化名城保护规划",
+    url:"",
+  },
+];
+//规划管控
+const TOP_LEVEL_OPTION_GHGK=[
+  {
+    id: "国土空间规划",
+    label: "国土空间规划",
+    children: TOP_LEVEL_OPTION_GHGK_GTKJ.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "专项规划",
+    label: "专项规划",
+    children: TOP_LEVEL_OPTION_GHGK_ZXGK.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "注记分类",
+    label: "注记分类",
+    children: TOP_LEVEL_OPTION_SSFL.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+
+];
+//市民中心
+const TOP_LEVEL_OPTION_GCJS_SMZX=[
+
+];
+//工程建设其他
+const TOP_LEVEL_OPTION_GCJS_QT=[
+
+];
+//工程建设
+const TOP_LEVEL_OPTION_GCJS=[
+  {
+    id: "市民中心",
+    label: "市民中心",
+    children: TOP_LEVEL_OPTION_GCJS_SMZX.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "其他",
+    label: "其他",
+    children: TOP_LEVEL_OPTION_GCJS_QT.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+];
+//法人数据
+const TOP_LEVEL_OPTION_GGZT_FRSJ=[
+  {
+    label: "机关",
+    url:"",
+  },
+  {
+    label: "事业单位",
+    url:"",
+  },
+  {
+    label: "企业",
+    url:"",
+  },
+  {
+    label: "社团",
+    url:"",
+  },
+];
+//兴趣点数据
+const TOP_LEVEL_OPTION_GGZT_XQDSJ=[
+  {
+    label: "篮球场",
+    url:"",
+  },
+  {
+    label: "图书馆",
+    url:"",
+  },
+];
+//公共专题
+const TOP_LEVEL_OPTION_GGZT=[
+  {
+    id: "法人数据",
+    label: "法人数据",
+    children: TOP_LEVEL_OPTION_GGZT_FRSJ.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "兴趣点数据",
+    label: "兴趣点数据",
+    children: TOP_LEVEL_OPTION_GGZT_XQDSJ.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  
+];
+//市政设施监测数据
+const TOP_LEVEL_OPTION_WLGZ_SZSS=[
+  {
+    label: "城市道路桥梁",
+    url:"",
+  },
+  {
+    label: "轨道交通",
+    url:"",
+  },
+  {
+    label: "供水",
+    url:"",
+  },
+  {
+    label: "排水",
+    url:"",
+  },
+  {
+    label: "燃气",
+    url:"",
+  },
+
+  {
+    label: "热力",
+    url:"",
+  },
+  {
+    label: "园林绿化",
+    url:"",
+  },
+  {
+    label: "环境卫生",
+    url:"",
+  },
+  {
+    label: "道路照明",
+    url:"",
+  },
+  {
+    label: "垃圾处理设施",
+    url:"",
+  },
+  {
+    label: "附属设施",
+    url:"",
+  },
+];
+//气象监测数据
+const TOP_LEVEL_OPTION_WLGZ_QXJC=[
+  {
+    label: "雨量",
+    url:"",
+  },
+  {
+    label: "气温",
+    url:"",
+  },
+  {
+    label: "气压",
+    url:"",
+  },
+  {
+    label: "湿度",
+    url:"",
+  },
+];
+//交通监测数据
+const TOP_LEVEL_OPTION_WLGZ_JTJC=[
+  {
+    label: "电子监控信息",
+    url:"",
+  },
+];
+//城市安防数据
+const TOP_LEVEL_OPTION_WLGZ_CSAF=[
+  {
+    label: "治安视频",
+    url:"",
+  },
+  {
+    label: "三防监测数据",
+    url:"",
+  },
+  {
+    label: "其他",
+    url:"",
+  },
+];
+//物联感知
+const TOP_LEVEL_OPTION_WLGZ=[
+  {
+    id: "市政设施监测数据",
+    label: "市政设施监测数据",
+    children: TOP_LEVEL_OPTION_WLGZ_SZSS.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "气象监测数据",
+    label: "气象监测数据",
+    children: TOP_LEVEL_OPTION_WLGZ_QXJC.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "交通监测数据",
+    label: "交通监测数据",
+    children: TOP_LEVEL_OPTION_WLGZ_JTJC.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "城市安防数据",
+    label: "城市安防数据",
+    children: TOP_LEVEL_OPTION_WLGZ_CSAF.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+];
+const TOP_LEVEL_OPTION = [
+  {
+    id: "时空基础",
+    label: "时空基础",
+    children: TOP_LEVEL_OPTION_SKXX.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "资源调查",
+    label: "资源调查",
+    children: TOP_LEVEL_OPTION_ZYDC.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "规划管控",
+    label: "规划管控",
+    children: TOP_LEVEL_OPTION_GHGK.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "工程建设",
+    label: "工程建设",
+    children: TOP_LEVEL_OPTION_GCJS.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "公共专题",
+    label: "公共专题",
+    children: TOP_LEVEL_OPTION_GGZT.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    id: "物联感知",
+    label: "物联感知",
+    children: TOP_LEVEL_OPTION_WLGZ.map(v => {
+      return { ...v, id: v.label };
+    })
+  },
+  {
+    label: "白模",
+    url:
+      "http://172.20.83.223:8098/iserver/services/3D-BaiMo/rest/realspace/datas/BaiMo_central/config"
+  },
+  {
+    label: "精模",
+    url:
+      "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/JZ/config",
+    dataurl:
+      "http://172.20.83.223:8098/iserver/services/data-SW_DATA/rest/data",
+    dlurl:
+    "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/FJZ/config",
+    riverurl:
+     "http://172.20.83.223:8098/iserver/services/3D-River_Slow/rest/realspace/datas/River@%E7%B2%BE%E6%A8%A1_%E5%AF%BC%E5%87%BA_2012/config",
+    dataBind: {
+      dataSourceName: "172.20.83.196_swdata",
+      dataSetName: "%E5%BB%BA%E7%AD%91_table"
+    },
+    camera: {
+      x: -2877074.5261789295,
+      y: 4842678.649871697,
+      z: 2993284.6421134197
+    },
+    cameraDone: true
+  },
+];
+
 const SERVER_HOST = "https://ditu.wzcitybrain.com/iserver/services";
 const SW_DATA = "/data-SW_DATA/rest/data";
 const SW_DATA_NAME = "172.20.83.196_swdata:";
 const SERVER_DEFAULT_DATA = SERVER_HOST + SW_DATA;
-// 医疗专题
-const MEDICAL_TOPIC = [
-  {
-    label: "医疗场所",
-    icon_size: "large",
-    dataset: "JZJZNL_YLJH_JHCS",
-    withExtraData: "medicalList",
-    withExtraDataGeometry: "medicalListWithGeometry",
-    saveExtraDataByGeometry: "setMedicalListWithGeometry"
-  }
-];
-// 旅游专题
-const TOUR_TOPIC = [
-  { label: "精品农家乐", dataset: "温州农家乐" },
-  { label: "旅游景点", dataset: "永嘉旅游景点地图" },
-  { label: "温州民宿", dataset: "温州民宿" },
-  { label: "百姓健身房", dataset: "百姓健身房" },
-  { label: "森林康养基地", dataset: "温州市森林康养基地" },
-  { label: "夜光经济", dataset: "夜景" },
-  {
-    label: "精品旅游路线",
-    componentEvent: "cesium-3d-event",
-    componentKey: "line1"
-  }
-];
-// 基础设施
-const BASIC_TOPIC = [
-  {
-    label: "公厕",
-    icon_size: "large",
-    dataset: "PublicToilet"
-  }
-];
-// 文化专题
-const CULTURE_TOPIC = [
-  { label: "爱国义务教育基地", dataset: "爱国主义教育基地" },
-  { label: "市区阅读", dataset: "温州市阅读" },
-  { label: "文化礼堂", dataset: "文化礼堂" },
-  { label: "文化生活", dataset: "温州文化生活" }
-];
-//  应急专题
-const EMERGENCY_TOPIC = [
-  {
-    label: "非煤矿山",
-    icon_size: "large",
-    dataset: "D_HARAZDS_NONCOALMINE"
-  },
-  {
-    label: "烟花爆竹经营单位",
-    icon_size: "large",
-    dataset: "D_HARAZDS_FIREWORKS"
-  },
-  {
-    label: "应急避灾场所",
-    icon_size: "large",
-    dataset: "JZJZNL_BZAZCS"
-  },
-  {
-    label: "应急队伍",
-    icon_size: "large",
-    dataset: "JZJZNL_YJDW"
-  },
-  {
-    label: "加油站",
-    icon_size: "large",
-    dataset: "D_HAZARDS_GasStation"
-  }
-];
-//  资源专题
-const SOURCE_TOPIC = [
-  {
-    label: "农贸市场面",
-    polygon: true,
-    dataset: "FarmersMarket_SiQu_M"
-  },
-  {
-    label: "农贸市场点",
-    icon_size: "large",
-    dataset: "FarmersMarket_SiQu_P"
-  },
-  {
-    label: "市场商场",
-    icon_size: "large",
-    dataset: "market_mall"
-  },
-  {
-    label: "学校",
-    icon_size: "large",
-    dataset: "school"
-  },
-  {
-    label: "社会福利机构",
-    icon_size: "large",
-    dataset: "D_HAZARDS_BEADHOUSESHP"
-  },
-  {
-    label: "高层建筑",
-    icon_size: "large",
-    dataset: "high_buildings_P"
-  },
-  {
-    label: "娱乐场所",
-    icon_size: "large",
-    dataset: "entertainment_place"
-  },
-  {
-    label: "文化场所",
-    icon_size: "large",
-    dataset: "D_HAZARDS_CULTURALPLACE"
-  },
-  {
-    label: "体育运动场馆",
-    icon_size: "large",
-    dataset: "sports_gymnasium"
-  },
-  {
-    label: "客运单位",
-    icon_size: "large",
-    dataset: "passenger_trans_unit"
-  }
-];
-const MODEL_3D_FINE = [
-  {
-    label: "精细三维",
-    componentEvent: "cesium-3d-event",
-    componentKey: "3d6",
-    action: "SetIsInfoFrame"
-  }
-];
-// 控规信息
-const KG_INFO = [
-  {
-    label: "控规信息",
-    url: `${SERVER_HOST}/map-KongGui_LuCheng/rest/maps/%E6%8E%A7%E8%A7%84%E4%B8%89%E5%8C%BA20200304%40172.20.83.196_swdata`
-  }
-];
-
 /**
  * 对应需要额外数据的点位
  */
@@ -1778,131 +1686,5 @@ export const CESIUM_TREE_OPTION = [
   ...TOP_LEVEL_OPTION.map(v => {
     return { ...v, id: v.label, type: "model" };
   }),
-  {
-    id: "BIM",
-    label: "BIM",
-    disabled: true,
-    children: BIM_GRAPHIS_OPTION.map(v => {
-      return { ...v, id: v.label, type: "bim" };
-    })
-  },
-  {
-    id: "倾斜摄影",
-    label: "倾斜摄影",
-    children: LEAN_GRAPHIS_OPTION.map(v => {
-      return { ...v, id: v.label, type: "qxsy" };
-    })
-  },
-  // {
-  //   id: "资源图层",
-  //   label: "资源图层",
-  //   children: [
-  //     {
-  //       id: "精细三维",
-  //       label: "精细三维",
-  //       children: MODEL_3D_FINE.map(v => {
-  //         return {
-  //           ...v,
-  //           id: v.label,
-  //           type: "model"
-  //         };
-  //       })
-  //     },
-  //     {
-  //       id: "医疗专题",
-  //       label: "医疗专题",
-  //       children: MEDICAL_TOPIC.map(v => {
-  //         return {
-  //           ...v,
-  //           id: v.label,
-  //           icon: v.label,
-  //           url: SERVER_DEFAULT_DATA,
-  //           type: "mvt",
-  //           newdataset: `${SW_DATA_NAME}${v.dataset}`
-  //         };
-  //       })
-  //     },
-  //     {
-  //       id: "旅游专题",
-  //       label: "旅游专题",
-  //       children: TOUR_TOPIC.map(v => {
-  //         return {
-  //           ...v,
-  //           id: v.label,
-  //           icon: v.label,
-  //           url: SERVER_DEFAULT_DATA,
-  //           type: "mvt",
-  //           newdataset: `${SW_DATA_NAME}${v.dataset}`
-  //         };
-  //       })
-  //     },
-  //     {
-  //       id: "文化专题",
-  //       label: "文化专题",
-  //       children: CULTURE_TOPIC.map(v => {
-  //         return {
-  //           ...v,
-  //           id: v.label,
-  //           icon: v.label,
-  //           url: SERVER_DEFAULT_DATA,
-  //           type: "mvt",
-  //           newdataset: `${SW_DATA_NAME}${v.dataset}`
-  //         };
-  //       })
-  //     },
-  //     {
-  //       id: "应急专题",
-  //       label: "应急专题",
-  //       children: EMERGENCY_TOPIC.map(v => {
-  //         return {
-  //           ...v,
-  //           id: v.label,
-  //           icon: v.label,
-  //           url: SERVER_DEFAULT_DATA,
-  //           type: "mvt",
-  //           newdataset: `${SW_DATA_NAME}${v.dataset}`,
-  //         };
-  //       })
-  //     },
-  //     {
-  //       id: "基础设施专题",
-  //       label: "基础设施专题",
-  //       children: BASIC_TOPIC.map(v => {
-  //         return {
-  //           ...v,
-  //           id: v.label,
-  //           icon: v.label,
-  //           url: SERVER_DEFAULT_DATA,
-  //           type: "mvt",
-  //           newdataset: `${SW_DATA_NAME}${v.dataset}`,
-  //         };
-  //       })
-  //     },
-  //     {
-  //       id: "资源专题",
-  //       label: "资源专题",
-  //       children: SOURCE_TOPIC.map(v => {
-  //         return {
-  //           ...v,
-  //           id: v.label,
-  //           icon: v.label,
-  //           url: SERVER_DEFAULT_DATA,
-  //           type: "mvt",
-  //           newdataset: `${SW_DATA_NAME}${v.dataset}`,
-  //         };
-  //       })
-  //     },
-  //     {
-  //       id: "控规信息",
-  //       label: "控规信息",
-  //       children: KG_INFO.map(v => {
-  //         return {
-  //           ...v,
-  //           id: v.label,
-  //           type: "image"
-  //         };
-  //       })
-  //     }
-  //   ]
-  // }
+ 
 ];

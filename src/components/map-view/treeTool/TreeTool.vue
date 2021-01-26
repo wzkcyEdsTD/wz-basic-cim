@@ -229,73 +229,7 @@ export default {
           } else {
             this.getPOIPickedFeature(node);
           }
-        } else if (node.type == "model") {
-          if (node.dlurl) {
-            //精模
-            //window.earth.scene.globe.globeAlpha = 0;
-            var ellipsoidProvider = new Cesium.EllipsoidTerrainProvider();
-            window.earth.terrainProvider = ellipsoidProvider;
-            const LAYERJM = window.earth.scene.layers.find(node.id);
-            if (!LAYERJM) {
-              const PROMISEJM = window.earth.scene.addS3MTilesLayerByScp(
-                node.url,
-                {
-                  name: node.id,
-                }
-              );
-              const dlurl = window.earth.scene.addS3MTilesLayerByScp(
-                node.dlurl,
-                {
-                  name: "dlurl",
-                }
-              );
-              const riverurl = window.earth.scene.addS3MTilesLayerByScp(
-                node.riverurl,
-                {
-                  name: "riverurl",
-                }
-              );
-              Cesium.when(PROMISEJM, async (layers) => {
-                const _LAYERJM_ = window.earth.scene.layers.find(node.id);
-                node.dataBind &&
-                  _LAYERJM_.setQueryParameter({
-                    ...node.dataBind,
-                    url: node.dataurl,
-                    isMerge: true,
-                  });
-              });
-              var mvtMap = this.$root.fwdata[12];
-              var mapboxStyle = mvtMap.mapboxStyle;
-              var layers = mapboxStyle.layers;
-              for (let j = 0; j < layers.length; j++) {
-                if (layers[j].type == "line") {
-                  mvtMap.setLayoutProperty(layers[j].id, "visibility", "none"); //显示某个图层
-                }
-              }
-              this.SetForceBimName("精模");
-
-            } else {
-              LAYERJM.visible = true;
-              this.SetForceBimName("精模");
-              var layerlength = window.earth.scene.layers._layers.values;
-              for (let i = 0; i < layerlength.length; i++) {
-                if (layerlength[i].name == "dlurl") {
-                  layerlength[i].visible = true;
-                }
-                if (layerlength[i].name == "riverurl") {
-                  layerlength[i].visible = true;
-                }
-              }
-              var mvtMap = this.$root.fwdata[12];
-              var mapboxStyle = mvtMap.mapboxStyle;
-              var layers = mapboxStyle.layers;
-              for (let j = 0; j < layers.length; j++) {
-                if (layers[j].type == "line") {
-                  mvtMap.setLayoutProperty(layers[j].id, "visibility", "none"); //显示某个图层
-                }
-              }
-            }
-          } else if (node.url) {
+        }else if(node.label=="白模"){
             const LAYER = window.earth.scene.layers.find(node.id);
             if (!LAYER) {
               const PROMISE = window.earth.scene.addS3MTilesLayerByScp(
@@ -357,6 +291,74 @@ export default {
                 })
               );
             }
+        } else if (node.label=="精模"){
+            var ellipsoidProvider = new Cesium.EllipsoidTerrainProvider();
+            window.earth.terrainProvider = ellipsoidProvider;
+            const LAYERJM = window.earth.scene.layers.find(node.id);
+            if (!LAYERJM) {
+              const PROMISEJM = window.earth.scene.addS3MTilesLayerByScp(
+                node.url,
+                {
+                  name: node.id,
+                }
+              );
+              const dlurl = window.earth.scene.addS3MTilesLayerByScp(
+                node.dlurl,
+                {
+                  name: "dlurl",
+                }
+              );
+              const riverurl = window.earth.scene.addS3MTilesLayerByScp(
+                node.riverurl,
+                {
+                  name: "riverurl",
+                }
+              );
+              Cesium.when(PROMISEJM, async (layers) => {
+                const _LAYERJM_ = window.earth.scene.layers.find(node.id);
+                node.dataBind &&
+                  _LAYERJM_.setQueryParameter({
+                    ...node.dataBind,
+                    url: node.dataurl,
+                    isMerge: true,
+                  });
+              });
+              var mvtMap = window.mvtmaps;
+              var mapboxStyle = mvtMap.mapboxStyle;
+              var layers = mapboxStyle.layers;
+              for (let j = 0; j < layers.length; j++) {
+                if (layers[j].type == "line") {
+                  mvtMap.setLayoutProperty(layers[j].id, "visibility", "none"); //显示某个图层
+                }
+              }
+              this.SetForceBimName("精模");
+
+            } else {
+              LAYERJM.visible = true;
+              this.SetForceBimName("精模");
+              var layerlength = window.earth.scene.layers._layers.values;
+              for (let i = 0; i < layerlength.length; i++) {
+                if (layerlength[i].name == "dlurl") {
+                  layerlength[i].visible = true;
+                }
+                if (layerlength[i].name == "riverurl") {
+                  layerlength[i].visible = true;
+                }
+              }
+              var mvtMap = window.mvtmaps;
+              var mapboxStyle = mvtMap.mapboxStyle;
+              var layers = mapboxStyle.layers;
+              for (let j = 0; j < layers.length; j++) {
+                if (layers[j].type == "line") {
+                  mvtMap.setLayoutProperty(layers[j].id, "visibility", "none"); //显示某个图层
+                }
+              }
+            }
+        }else if (node.type == "model") {
+          if (node.dlurl) {
+            //精模
+          } else if (node.url) {
+
           }
         } else if (node.type == "bim") {
           ["安置房BIM分析", "机场BIM场景", "S1线轨道场景"].filter(
@@ -374,7 +376,7 @@ export default {
           );
         } else if (node.ids) {
           //注记分类
-          var mvtMap = this.$root.fwdata[12];
+          var mvtMap = window.mvtmaps;
           var mapboxStyle = mvtMap.mapboxStyle;
           var layers = mapboxStyle.layers;
           for (let j = 0; j < layers.length; j++) {
@@ -507,7 +509,6 @@ export default {
           window.earth.scene.terrainProvider = new Cesium.CesiumTerrainProvider(
             {
               url:"http://172.20.83.223:8098/iserver/services/3D-DEM_TT/rest/realspace/datas/2018gddem",
-                //"http://172.20.83.223:8098/iserver/services/3D-dem/rest/realspace/datas/dem@2018dem", // 政务网永嘉地形
               requestWaterMask: true,
             }
           );
@@ -519,7 +520,7 @@ export default {
               layerlength[i].visible = false;
             }
           }
-          var mvtMap = this.$root.fwdata[12];
+          var mvtMap = window.mvtmaps;
           var mapboxStyle = mvtMap.mapboxStyle;
           var layers = mapboxStyle.layers;
           for (let j = 0; j < layers.length; j++) {
@@ -528,7 +529,7 @@ export default {
             }
           }
         } else if (node.ids) {
-          var mvtMap = this.$root.fwdata[12];
+          var mvtMap = window.mvtmaps;
           var mapboxStyle = mvtMap.mapboxStyle;
           var layers = mapboxStyle.layers;
           console.log("layers", layers);

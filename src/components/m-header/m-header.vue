@@ -3,7 +3,7 @@
     <div class="toubu">
       <img style="vertical-align: middle;width:20px;margin-right: 0.1rem;font-size: 0.21rem;" src="../../../static/image/icon.png" />温州设计集团
     </div>
-    <div class="title_first">大数据可视化分析基础平台</div>
+    <div class="title_first">温州市CIM基础平台</div>
     <div class="toubu">
       {{ nowDate }} {{ nowWeek }} {{ nowTime }}
     </div>
