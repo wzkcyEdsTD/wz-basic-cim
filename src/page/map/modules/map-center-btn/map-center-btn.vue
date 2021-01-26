@@ -5,7 +5,7 @@
       :class="currentMapType != 'sandian' || this.collapse1 ? 'collapse' : ''"
       v-if="currentMapType != 'internetthings'"
     >
-      <div class="map-type" style="display:none">
+      <div class="map-type" style="display: none">
         <div
           class="item"
           :class="
@@ -187,7 +187,7 @@
 
       <!-- 2d地图工具 -->
       <div
-        v-show="currentMapType != 'cesiumMap'"
+        v-if="currentMapType != 'cesiumMap'"
         class="map-toolbar-box"
         :class="{ active: toolShow }"
       >
@@ -219,11 +219,7 @@
         >
           <Slider></Slider>
         </div>
-        <div
-          ref="longitudeSearch"
-          class="children_point"
-          v-show="isPointSearch"
-        >
+        <div ref="longitudeSearch" class="children_point" v-show="isPointSearch">
           <LongitudeSearch></LongitudeSearch>
         </div>
       </div>
@@ -239,10 +235,7 @@
       :style="{ top: mapNew[selectIndex].top }"
     >
       <div>
-        <div
-          :key="'b' + index2"
-          v-for="(item2, index2) in mapNew[selectIndex].children"
-        >
+        <div :key="'b' + index2" v-for="(item2, index2) in mapNew[selectIndex].children">
           <label
             :class="{ active: dituType === item2.value }"
             @click="changedituType(item2)"
@@ -392,8 +385,7 @@ export default {
         const l = parseInt(style.marginLeft) + parseInt(style.width);
         this.$refs.longitudeSearch.style.top =
           client.y +
-          parseInt(window.getComputedStyle(this.$refs.longitudeSearch).height) /
-            2 +
+          parseInt(window.getComputedStyle(this.$refs.longitudeSearch).height) / 2 +
           "px";
         this.$refs.longitudeSearch.style.left = client.x + l + 4 + "px";
       }
@@ -402,9 +394,7 @@ export default {
       // window.print()
       this.$parent.$refs.baseMap.map._preserveDrawingBuffer = true;
       this.$parent.$refs.baseMap.map._render();
-      const data = this.$parent.$refs.baseMap.map
-        .getCanvas()
-        .toDataURL("image/png");
+      const data = this.$parent.$refs.baseMap.map.getCanvas().toDataURL("image/png");
       const img = document.createElement("img");
       img.src = data;
       var __this = this;
@@ -472,7 +462,7 @@ export default {
       if (item.name == "大数据底图") {
         //console.log("底图服务",window.earth.imageryLayers)
         if (window.earth.imageryLayers.get(3) == undefined) {
-           window.earth.imageryLayers.get(1).show = false;
+          window.earth.imageryLayers.get(1).show = false;
           this.datalayer = window.earth.imageryLayers.addImageryProvider(
             new Cesium.SuperMapImageryProvider({
               layers: "DSJ",
@@ -515,41 +505,30 @@ export default {
             }
           });
         });
-        if (
-          this.currentMapType === "juhe" ||
-          this.currentMapType === "sandian"
-        ) {
+        if (this.currentMapType === "juhe" || this.currentMapType === "sandian") {
           // item.name === '矢量'
           if (item.name === "矢量") {
             const result = this.mapNew[0].children.filter((val) => {
               return val.value === this.dituType;
             });
-            result.length
-              ? console.log("无需切换")
-              : this.changedituType(stand);
+            result.length ? console.log("无需切换") : this.changedituType(stand);
           } else if (item.name === "影像") {
             const result = this.mapNew[1].children.filter((val) => {
               return val.value === this.dituType;
             });
-            result.length
-              ? console.log("无需切换")
-              : this.changedituType(newYX);
+            result.length ? console.log("无需切换") : this.changedituType(newYX);
           }
         } else {
           if (item.name === "矢量") {
             const result = this.mapNew[0].children.filter((val) => {
               return val.value === this.dituType;
             });
-            result.length
-              ? console.log("无需切换")
-              : this.changedituType(bigData);
+            result.length ? console.log("无需切换") : this.changedituType(bigData);
           } else if (item.name === "影像") {
             const result = this.mapNew[1].children.filter((val) => {
               return val.value === this.dituType;
             });
-            result.length
-              ? console.log("无需切换")
-              : this.changedituType(newYX);
+            result.length ? console.log("无需切换") : this.changedituType(newYX);
           }
         }
         return;
