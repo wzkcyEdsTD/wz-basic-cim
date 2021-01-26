@@ -108,12 +108,11 @@ export default {
   },
   created() {
     // //首先要初始化viewer 不然会报错
-    // this.viewer = window.earth;
     // //开启场景倒影
-    // if (this.viewer.shadows == false) {
-    //   this.viewer.shadows = true;
+    // if (window.earth.shadows == false) {
+    //   window.earth.shadows = true;
     // }
-    // var scene = this.viewer.scene;
+    // var scene = window.earth.scene;
     // this.scene = scene;
     // var layers = this.scene.layers.layerQueue;
     // for (var i = 0; i < layers.length; i++) {
@@ -122,7 +121,7 @@ export default {
     // }
     // this.setCurrentTime();
     // this.handlerPolygon = new Cesium.DrawHandler(
-    //   this.viewer,
+    //   window.earth,
     //   Cesium.DrawMode.Polygon,
     //   0
     // );
@@ -135,12 +134,11 @@ export default {
     eventRegsiter() {
       const that = this;
       //首先要初始化viewer 不然会报错
-      this.viewer = window.earth;
       //开启场景倒影
-      if (this.viewer.shadows == false) {
-        this.viewer.shadows = true;
+      if (window.earth.shadows == false) {
+        window.earth.shadows = true;
       }
-      var scene = this.viewer.scene;
+      var scene = window.earth.scene;
       this.scene = scene;
       var layers = this.scene.layers.layerQueue;
       for (var i = 0; i < layers.length; i++) {
@@ -148,12 +146,12 @@ export default {
         layers[i].refresh();
       }
       if (!that.ShadowQuery) {
-        that.ShadowQuery = new Cesium.ShadowQueryPoints(this.viewer.scene);
+        that.ShadowQuery = new Cesium.ShadowQueryPoints(window.earth.scene);
         that.ShadowQuery.build();
       }
       this.setCurrentTime();
       this.handlerPolygon = new Cesium.DrawHandler(
-        this.viewer,
+        window.earth,
         Cesium.DrawMode.Polygon,
         0
       );
@@ -224,9 +222,9 @@ export default {
     setCurrentTime() {
       const et = new Date();
       //et.setHours(Number(this.endTime));
-      this.viewer.clock.currentTime = Cesium.JulianDate.fromDate(et);
-      this.viewer.clock.multiplier = 1;
-      this.viewer.clock.shouldAnimate = true;
+      window.earth.clock.currentTime = Cesium.JulianDate.fromDate(et);
+      window.earth.clock.multiplier = 1;
+      window.earth.clock.shouldAnimate = true;
     },
     ShadowQueryAnalysis() {
       this.handlerPolygon.deactivate();
@@ -237,7 +235,7 @@ export default {
       if (this.handlerPolygon) {
         this.handlerPolygon.deactivate();
       }
-      this.viewer.entities.removeAll();
+      window.earth.entities.removeAll();
       let layers = this.scene.layers.layerQueue;
       for (var i = 0; i < layers.length; i++) {
         layers[i].shadowType = 0;
@@ -311,7 +309,6 @@ export default {
   },
   beforeDestroy() {
     //销毁
-    this.viewer = undefined;
     this.ShadowQuery = undefined;
     this.handlerPolygon = undefined;
     this.timeInterval = null;

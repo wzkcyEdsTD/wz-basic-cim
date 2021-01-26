@@ -100,11 +100,10 @@ export default {
     }
   },
   created() {
-    this.viewer = window.earth;
-    const routes = new Cesium.RouteCollection(this.viewer.entities);
+    const routes = new Cesium.RouteCollection(window.earth.entities);
     routes.fromFile("./static/fpf/机场站内漫游.fpf");
     this.flyManager = new Cesium.FlyManager({
-      scene: this.viewer.scene,
+      scene: window.earth.scene,
       routes: routes
     });
   },
@@ -115,7 +114,6 @@ export default {
   },
   beforeDestroy() {
     this.clearStationTour();
-    this.viewer = undefined;
   },
   methods: {
     ...mapActions("map", ["SetForceBimData", "SetForceRoomData"]),
@@ -132,7 +130,7 @@ export default {
     //  相机移动
     cameraMove() {
       this.stopStationTour();
-      this.viewer.scene.camera.setView({
+      window.earth.scene.camera.setView({
         destination: {
           x: -2889836.1221072627,
           y: 4839196.223723019,
@@ -148,9 +146,9 @@ export default {
     //  初始化BIM场景
     initBimScene(fn) {
       
-      this.viewer.scene.screenSpaceCameraController.minimumZoomDistance = -20;
-      //this.viewer.scene.debugShowFramesPerSecond = true;//帧数
-      const _LAYER_ = this.viewer.scene.layers.find(LAYER_NAME[0]);
+      window.earth.scene.screenSpaceCameraController.minimumZoomDistance = -20;
+      //window.earth.scene.debugShowFramesPerSecond = true;//帧数
+      const _LAYER_ = window.earth.scene.layers.find(LAYER_NAME[0]);
       if (_LAYER_) {
         LAYERS.map(v => {
           window.earth.scene.layers.find(v.key).visible = true;
@@ -168,7 +166,7 @@ export default {
           return v.key;
         });
         const { STATION_SCENE_URL, STATION_DATA_URL } = BimSourceURL;
-        //const promise = this.viewer.scene.open(STATION_SCENE_URL);
+        //const promise = window.earth.scene.open(STATION_SCENE_URL);
         Promise.all(promise_array).then(function(layers) {
           window.earth.scene.camera.setView({
             destination: {
@@ -224,7 +222,7 @@ export default {
         //   }
         //   LAYERS.map((d, index) => {
         //     if (index > 2) return undefined;
-        //     const layer = this.viewer.scene.layers.find(d);
+        //     const layer = window.earth.scene.layers.find(d);
         //     layer.setQueryParameter({
         //       url: STATION_DATA_URL,
         //       dataSourceName: d,
@@ -266,7 +264,7 @@ export default {
       //     }
       //   });
       // Object.keys(obj).map((v) => {
-      //   const layer = this.viewer.scene.layers.find(v);
+      //   const layer = window.earth.scene.layers.find(v);
       //   layer.setObjsVisible(obj[v], true);
       // });
     },
@@ -277,8 +275,8 @@ export default {
       for (let j = 0; j < layers.length; j++) {
         mvtMap.setLayoutProperty(layers[j].id, "visibility", "none"); //隐藏某个图层
       }
-      this.viewer.scene.undergroundMode = true;
-      this.viewer.scene.globe.globeAlpha = 0;
+      window.earth.scene.undergroundMode = true;
+      window.earth.scene.globe.globeAlpha = 0;
       this.flyManager && this.flyManager.play();
     },
     pauseStationTour() {
@@ -291,8 +289,8 @@ export default {
       for (let j = 0; j < layers.length; j++) {
         mvtMap.setLayoutProperty(layers[j].id, "visibility", "visible"); //隐藏某个图层
       }
-      this.viewer.scene.undergroundMode = false;
-      this.viewer.scene.globe.globeAlpha = 1;
+      window.earth.scene.undergroundMode = false;
+      window.earth.scene.globe.globeAlpha = 1;
       this.flyManager && this.flyManager.stop();
     },
     closeStationTour() {

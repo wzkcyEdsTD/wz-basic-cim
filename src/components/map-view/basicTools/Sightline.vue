@@ -46,16 +46,15 @@ export default {
   },
   created() {
     //let that =this;
-    this.viewer = window.earth;
     this.sightLineHandler = new Cesium.DrawHandler(
-      this.viewer,
+      window.earth,
       Cesium.DrawMode.Line
     );
     this.screenSpaceEventHandler = new Cesium.ScreenSpaceEventHandler(
-      this.viewer.scene.canvas
+      window.earth.scene.canvas
     );
-    this.sightline = new Cesium.Sightline(this.viewer.scene);
-    this.pointHandler = new Cesium.PointHandler(this.viewer);
+    this.sightline = new Cesium.Sightline(window.earth.scene);
+    this.pointHandler = new Cesium.PointHandler(window.earth);
   },
   mounted() {
     this.eventRegsiter(); //监听eventDraw方法
@@ -63,7 +62,6 @@ export default {
   beforeDestroy() {
     this.sightline = undefined;
     this.viewPosition = [];
-    this.viewer = undefined;
     this.HandlerFlag = undefined;
     this.sightLineHandler = undefined;
     this.pointHandler = undefined;

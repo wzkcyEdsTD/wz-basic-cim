@@ -7,21 +7,13 @@
  * @FilePath: \wzsjjt-bd-visual\src\components\map-view\basicTools\BimAnalyse.vue
 -->
 <template>
-  <div
-    class="ThreeDContainer ThreeToTop BimThreeLeft"
-    :style="{ width: '125px' }"
-  >
+  <div class="ThreeDContainer ThreeToTop BimThreeLeft" :style="{ width: '125px' }">
     <div class="bimanalayse tframe">
       <el-form>
         <el-row>
           <el-col :span="24">
             <el-form-item class="elformbtns">
-              <el-popover
-                placement="top"
-                title="楼层控制"
-                width="300"
-                trigger="click"
-              >
+              <el-popover placement="top" title="楼层控制" width="300" trigger="click">
                 <div class="bim-analyse-tree" v-if="true">
                   <!--整栋楼层门窗显隐-->
                   <el-tree
@@ -47,10 +39,7 @@
                 </div>
                 <el-button slot="reference">楼层控制</el-button>
               </el-popover>
-              <el-button
-                v-show="false"
-                class="elformbtn"
-                @click="closeBimAnalyse"
+              <el-button v-show="false" class="elformbtn" @click="closeBimAnalyse"
                 >关闭</el-button
               >
             </el-form-item>
@@ -153,8 +142,7 @@ export default {
     // },
   },
   created() {
-    this.viewer = window.earth;
-    this.handler = new Cesium.ScreenSpaceEventHandler(this.viewer.scene.canvas);
+    this.handler = new Cesium.ScreenSpaceEventHandler(window.earth.scene.canvas);
   },
   async mounted() {
     this.initBimScene();
@@ -164,14 +152,9 @@ export default {
   beforeDestroy() {
     this.clearBimAnalyse();
     this.handler.destroy();
-    this.viewer = undefined;
   },
   methods: {
-    ...mapActions("map", [
-      "SetForceBimData",
-      "SetForceRoomData",
-      "SetForceBimIDS",
-    ]),
+    ...mapActions("map", ["SetForceBimData", "SetForceRoomData", "SetForceBimIDS"]),
     // ...mapGetters("map", ["forceBimIDS","forceBimData"]),
     //树节点点击的时候触发的事件
     treeHandler() {
@@ -235,7 +218,7 @@ export default {
       //对这个floorids进行数组进行过滤，查找最大的那个数组中包含的小数组的元素取相同的
       IDS = floorids.filter((item) => partsids.indexOf(item) > -1);
       //找到这个楼层
-      this.layer = this.viewer.scene.layers.find(LAYER_NAME);
+      this.layer = window.earth.scene.layers.find(LAYER_NAME);
       //让此时这个IDS数组里面的部件为true，就可以显示出对应的楼层
       this.layer.setObjsVisible(IDS, true);
     },
@@ -265,82 +248,9 @@ export default {
         }
       }
       console.log("安置房", IDS);
-      this.layer = this.viewer.scene.layers.find(LAYER_NAME);
+      this.layer = window.earth.scene.layers.find(LAYER_NAME);
       this.layer.setObjsVisible(IDS, true);
     },
-    // doSqlQuery1(arr) {
-    //   console.log(arr);
-    //   that.layer = this.viewer.scene.layers.find(LAYER_NAME);
-    //   that.layer.setObjsVisible(IDS, true);
-    //   return;
-    //   console.log("选中的楼层", arr);
-    //   const that = this;
-    //   if (arr.length == 19) {
-    //     //这里用于判断如果树节点的值全部被勾上也就是（19）的时候，复原整栋楼
-    //     this.$bus.$emit("cesium-3d-floorDIS", false);
-    //     return;
-    //   }
-    //   //这个方法用来折叠里面的代码，不做任何使用
-    //   //里面的代码是用来查询
-    //   function zhedie() {
-    //     // if (/all/.test(SQL)) {
-    //     //   this.$bus.$emit("cesium-3d-floorDIS", false);
-    //     //   return;
-    //     // }
-    //     //let IDS = [];
-    //     //for循环 用来控制多选楼层
-    //     // for (let j = 0; j < arr.length; j++) {
-    //     //   if (arr[j] > 0 && arr[j] < 19) {
-    //     //     var SQL = "所属楼层 = '" + arr[j] + "F'";
-    //     //     var getFeatureParam, getFeatureBySQLService, getFeatureBySQLParams;
-    //     //     //这个是用来把SQL传进去
-    //     //     getFeatureParam = new SuperMap.REST.FilterParameter({
-    //     //       attributeFilter: SQL,
-    //     //     });
-    //     //     //查找的数据表
-    //     //     getFeatureBySQLParams = new SuperMap.REST.GetFeaturesBySQLParameters({
-    //     //       queryParameter: getFeatureParam,
-    //     //       toIndex: -1,
-    //     //       datasetNames: DATA_SETS,
-    //     //      // datasetNames: ["第一栋:门"],
-    //     //       //dataSourceName：第一栋 name：结构框架
-    //     //     });
-    //     //     that.layer = this.viewer.scene.layers.find(LAYER_NAME);
-    //     //     var url =
-    //     //       "http://172.20.83.223:8098/iserver/services/data-Placement_house_onetable/rest/data";
-    //     //     getFeatureBySQLService = new SuperMap.REST.GetFeaturesBySQLService(
-    //     //       url,
-    //     //       {
-    //     //         eventListeners: {
-    //     //           processCompleted: (queryEventArgs) => {
-    //     //             //获取到当个楼层的所有部件
-    //     //             const selectedFeatures = queryEventArgs.originResult.features;
-    //     //             for (let i = 0; i < selectedFeatures.length; i++) {
-    //     //               const CategoryName = selectedFeatures[i].fieldValues["8"]; //获取部件类型
-    //     //               const value = selectedFeatures[i].fieldValues["0"]; //获取SMID值
-    //     //               console.log(selectedFeatures[i].fieldValues["0"]);
-    //     //               return
-    //     //              // const floor = selectedFeatures[i].fieldValues["22"]; //获取到当前的楼层
-    //     //               IDS.push(parseInt(value) + this.BimHash[CategoryName] - 1);//每个图层组件的起始id + smid -1 就是当前组件在cesium实例里的真实组件id
-    //     //             }
-    //     //             //为ture的时，单层楼层可见 此时ids为这个楼层中所有的部件SIMID
-    //     //             console.log("新IDS", IDS);
-    //     //             that.layer.setObjsVisible(IDS, true);
-    //     //             //resolve(IDS);
-    //     //           },
-    //     //           processFailed: () => {
-    //     //             console.log("出错了");
-    //     //             alert("查询失败！");
-    //     //           },
-    //     //         },
-    //     //       }
-    //     //     );
-    //     //     getFeatureBySQLService.processAsync(getFeatureBySQLParams);
-    //     //     console.log("查询SQL", SQL);
-    //     //   }
-    //     // }
-    //   }
-    // },
     //直接写死门、窗、户····
     getFloorParts(i) {
       let floors = [
@@ -405,7 +315,7 @@ export default {
       const that = this;
       this.$bus.$off("cesium-3d-floorDIS");
       this.$bus.$on("cesium-3d-floorDIS", (value) => {
-        const layer = this.viewer.scene.layers.find(LAYER_NAME);
+        const layer = window.earth.scene.layers.find(LAYER_NAME);
         if (value) {
           layer.setObjsVisible(this.forceBimIDS, true);
         } else {
@@ -442,40 +352,38 @@ export default {
     },
     //  初始化BIM场景
     initBimScene(fn) {
-      const _LAYER_ = this.viewer.scene.layers.find(LAYER_NAME);
+      const _LAYER_ = window.earth.scene.layers.find(LAYER_NAME);
       if (_LAYER_) {
         _LAYER_.visible = true;
-      this.viewer.scene.layers.find('Block2').visible = true;
-      this.viewer.scene.layers.find('Block3').visible = true;
-      this.viewer.scene.layers.find('Block4').visible = true;
+        window.earth.scene.layers.find("Block2").visible = true;
+        window.earth.scene.layers.find("Block3").visible = true;
+        window.earth.scene.layers.find("Block4").visible = true;
       } else {
         const { SCENE_URL, SCENE_DATA_URL } = BimSourceURL;
-        const promise1 = this.viewer.scene.addS3MTilesLayerByScp(
+        const promise1 = window.earth.scene.addS3MTilesLayerByScp(
           `http://172.20.83.223:8098/iserver/services/3D-Placement_house/rest/realspace/datas/Block2/config`,
-          { name: 'Block2' }
+          { name: "Block2" }
         );
-        const promise2 = this.viewer.scene.addS3MTilesLayerByScp(
+        const promise2 = window.earth.scene.addS3MTilesLayerByScp(
           `http://172.20.83.223:8098/iserver/services/3D-Placement_house/rest/realspace/datas/Block3/config`,
-          { name: 'Block3' }
+          { name: "Block3" }
         );
-        const promise3 = this.viewer.scene.addS3MTilesLayerByScp(
+        const promise3 = window.earth.scene.addS3MTilesLayerByScp(
           `http://172.20.83.223:8098/iserver/services/3D-Placement_house/rest/realspace/datas/Block4/config`,
-          { name: 'Block4' }
+          { name: "Block4" }
         );
-        const promise = this.viewer.scene.addS3MTilesLayerByScp(
+        const promise = window.earth.scene.addS3MTilesLayerByScp(
           `${SCENE_URL}/datas/${LAYER_NAME}/config`,
           { name: LAYER_NAME }
         );
         Cesium.when(promise, async (layers) => {
-          const layer = this.viewer.scene.layers.find(LAYER_NAME);
+          const layer = window.earth.scene.layers.find(LAYER_NAME);
           layer.setQueryParameter({
             url: SCENE_DATA_URL,
             dataSourceName: "第一栋",
             isMerge: true,
           });
-          const color = new Cesium.Color.fromCssColorString(
-            "rgba(23,92,239,0.3)"
-          );
+          const color = new Cesium.Color.fromCssColorString("rgba(23,92,239,0.3)");
           layer.selectedColor = color;
           layer.datasetInfo().then((result) => {
             console.log("result", result);
@@ -529,16 +437,16 @@ export default {
           that.onQueryComplete(JSON.parse(result).features, z);
         },
         error: (msg) => {
-          console.log("安置房贴图查询失败",msg);
+          console.log("安置房贴图查询失败", msg);
         },
       });
     },
     //  楼层贴皮
     onQueryComplete(features, height) {
-      console.log("贴片",features)
-      const layer = this.viewer.scene.layers.find(LAYER_NAME);
+      console.log("贴片", features);
+      const layer = window.earth.scene.layers.find(LAYER_NAME);
       if (this.lastHouseEntity) {
-        this.viewer.entities.remove(this.lastHouseEntity);
+        window.earth.entities.remove(this.lastHouseEntity);
         this.lastHouseEntity = null;
         this.SetForceRoomData([]);
       }
@@ -548,7 +456,7 @@ export default {
           louceng = window.a[i].v;
         }
       }
-      console.log("所属楼层",louceng);
+      console.log("所属楼层", louceng);
       const selectedFloors = features.filter(({ fieldNames, fieldValues }) => {
         // const BOTTOM = fieldNames.indexOf("BOTTOM");
         const LSG = fieldNames.indexOf("LSG");
@@ -559,7 +467,7 @@ export default {
         //   parseFloat(fieldValues[BOTTOM]) + parseFloat(fieldValues[LSG]) >=
         //     height;
         const longFloor = fieldNames.indexOf("所属楼层");
-        console.log("楼层",longFloor);
+        console.log("楼层", longFloor);
         const isTheFloor = fieldValues[longFloor] == louceng && LSG > -1;
         return isTheFloor;
       });
@@ -571,15 +479,13 @@ export default {
       )
         return;
       var bottomHeight = Number(
-        selectedFeature.fieldValues[
-          selectedFeature.fieldNames.indexOf("BOTTOM")
-        ]
+        selectedFeature.fieldValues[selectedFeature.fieldNames.indexOf("BOTTOM")]
       );
       var extrudeHeight = Number(
         selectedFeature.fieldValues[selectedFeature.fieldNames.indexOf("LSG")]
       ); // 层高（拉伸高度）
       //  获取该楼层所有ids
-      console.log(" this.bimHash",this.bimHash)
+      console.log(" this.bimHash", this.bimHash);
       queryFloorByBottom(
         this,
         //Math.floor(bottomHeight / extrudeHeight) + "F",
@@ -594,7 +500,7 @@ export default {
       for (var pt of selectedFeature.geometry.points) {
         points3D.push(pt.x, pt.y);
       }
-      this.lastHouseEntity = this.viewer.entities.add({
+      this.lastHouseEntity = window.earth.entities.add({
         polygon: {
           hierarchy: Cesium.Cartesian3.fromDegreesArray(points3D),
           material: new Cesium.Color(223 / 255, 199 / 255, 0 / 255, 0.4),
@@ -619,7 +525,7 @@ export default {
             array.push(i);
           }
         });
-      const layer = this.viewer.scene.layers.find(LAYER_NAME);
+      const layer = window.earth.scene.layers.find(LAYER_NAME);
       this.fnThrottle(layer.setObjsVisible(array, true), 1000);
     },
     //  关闭BIM分析模块
@@ -630,11 +536,11 @@ export default {
     //  清除BIM模块
     clearBimAnalyse() {
       console.log("调用安置房");
-      console.log(this.viewer.scene.layers);
-      this.viewer.scene.layers.find(LAYER_NAME).visible = false;
-      this.viewer.scene.layers.find('Block2').visible = false;
-      this.viewer.scene.layers.find('Block3').visible = false;
-      this.viewer.scene.layers.find('Block4').visible = false;
+      console.log(window.earth.scene.layers);
+      window.earth.scene.layers.find(LAYER_NAME).visible = false;
+      window.earth.scene.layers.find("Block2").visible = false;
+      window.earth.scene.layers.find("Block3").visible = false;
+      window.earth.scene.layers.find("Block4").visible = false;
     },
     //  关闭详情框
     closeBimFrame() {

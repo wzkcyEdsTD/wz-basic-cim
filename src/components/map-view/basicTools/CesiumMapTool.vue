@@ -68,19 +68,18 @@ export default {
     };
   },
   created() {
-    this.viewer = window.earth;
     this.handlerDis = new Cesium.MeasureHandler(
-      this.viewer,
+      window.earth,
       Cesium.MeasureMode.Distance,
       this.clampMode
     );
     this.handlerArea = new Cesium.MeasureHandler(
-      this.viewer,
+      window.earth,
       Cesium.MeasureMode.Area,
       this.clampMode
     );
     this.handlerHeight = new Cesium.MeasureHandler(
-      this.viewer,
+      window.earth,
       Cesium.MeasureMode.DVH
     );
   },
@@ -88,7 +87,6 @@ export default {
     this.eventRegsiter();
   },
   beforeDestroy() {
-    this.viewer = undefined;
     this.handlerDis = undefined;
     this.handlerArea = undefined;
     this.handlerHeight = undefined;

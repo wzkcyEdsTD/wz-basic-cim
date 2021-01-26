@@ -67,11 +67,10 @@ export default {
     };
   },
   created() {
-    this.viewer = window.earth;
-    this.scene = this.viewer.scene;
-    this.scene = this.viewer.globe;
+    this.scene = window.earth.scene;
+    this.scene = window.earth.globe;
     this.handlerPolygon = new Cesium.DrawHandler(
-      this.viewer,
+      window.earth,
       Cesium.DrawMode.Polygon
     );
     //this.tooltip = this.createTooltip(viewer._element)
@@ -84,7 +83,6 @@ export default {
   beforeDestroy() {
     //this.clearUnderGround();
     this.handlerPolygon.destroy;
-    this.viewer = undefined;
     this.overGroundLayer = undefined;
     this.scene = undefined;
     this.promise = undefined;
@@ -233,10 +231,10 @@ export default {
       //   window.earth.scene.layers.find("Block3").visible = true;
       //   window.earth.scene.layers.find("Block4").visible = true;
       // }
-      const _LAYER_ = this.viewer.scene.layers.find(LAYER_NAME[0]);
+      const _LAYER_ = window.earth.scene.layers.find(LAYER_NAME[0]);
       if (_LAYER_) {
         LAYER_NAME.map(
-          (d) => (this.viewer.scene.layers.find(d).visible = true)
+          (d) => (window.earth.scene.layers.find(d).visible = true)
         );
         that.globe = that.viewer.scene.globe;
         //开启地下模式
@@ -259,7 +257,7 @@ export default {
         });
       } else {
         const { UNDERGROUND_SCENE_URL } = BimSourceURL;
-        //that.promise = this.viewer.scene.open(UNDERGROUND_SCENE_URL);
+        //that.promise = window.earth.scene.open(UNDERGROUND_SCENE_URL);
         that.promise = window.earth.scene.addS3MTilesLayerByScp(
           "http://172.20.83.223:8098/iserver/services/3D-DongFangGuanXian_translate/rest/realspace/datas/DongFangGuanXian_translate/config",
           {
@@ -315,13 +313,13 @@ export default {
       console.log("相机参数4", window.earth.scene.camera.roll);
       this.clearUnderGround();
       // 设置地表图层透明度
-      this.viewer.scene.globe.globeAlpha = 1;
-      LAYER_NAME.map((d) => (this.viewer.scene.layers.find(d).visible = false));
+      window.earth.scene.globe.globeAlpha = 1;
+      LAYER_NAME.map((d) => (window.earth.scene.layers.find(d).visible = false));
       const imageryLayers = window.earth.scene.imageryLayers;
       this.overGroundLayer = imageryLayers.get(1);
       this.overGroundLayer.transparentBackColorTolerance = 0;
       this.$bus.$emit("cesium-3d-event", { value: null });
-      this.viewer.scene.camera.setView({
+      window.earth.scene.camera.setView({
         destination: {
           //方位(direction)
           x: -2885689.43805791,

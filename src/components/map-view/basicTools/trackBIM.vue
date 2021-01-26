@@ -51,7 +51,6 @@ export default {
   },
   watch: {},
   created() {
-    this.viewer = window.earth;
   },
   async mounted() {
     this.initBimScene();
@@ -59,7 +58,6 @@ export default {
   },
   beforeDestroy() {
     this.clearStationTour();
-    this.viewer = undefined;
   },
   methods: {
     ...mapActions("map", ["SetForceBimData", "SetForceRoomData"]),
@@ -158,16 +156,16 @@ export default {
     },
     //  初始化BIM场景
     initBimScene(fn) {
-      this.viewer.scene.undergroundMode = true;
-      const _LAYER_ = this.viewer.scene.layers.find(LAYER_NAME[0]);
+      window.earth.scene.undergroundMode = true;
+      const _LAYER_ = window.earth.scene.layers.find(LAYER_NAME[0]);
       console.log("_LAYER_", _LAYER_);
       if (_LAYER_) {
         LAYER_NAME.map(
-          (d) => (this.viewer.scene.layers.find(d).visible = true)
+          (d) => (window.earth.scene.layers.find(d).visible = true)
         );
       } else {
         const { track_URL } = BimSourceURL;
-        const promise = this.viewer.scene.open(track_URL);
+        const promise = window.earth.scene.open(track_URL);
         Cesium.when(promise, async (layers) => {
           window.earth.scene.camera.setView({
             destination: Cesium.Cartesian3.fromDegrees(
@@ -184,7 +182,7 @@ export default {
           });
           LAYER_NAME.map((d, index) => {
             if (index > 2) return undefined;
-            const layer = this.viewer.scene.layers.find(d);
+            const layer = window.earth.scene.layers.find(d);
             const color = new Cesium.Color.fromCssColorString(
               "rgba(23,92,239,0.3)"
             );
@@ -216,12 +214,12 @@ export default {
     //  清除BIM模块
     clearStationTour() {
       console.log("S1", LAYER_NAME[0]);
-      var dddddd = this.viewer.scene.layers.find(LAYER_NAME[0]);
+      var dddddd = window.earth.scene.layers.find(LAYER_NAME[0]);
       console.log("LAYER_NAME", dddddd);
-      this.viewer.scene.layers.find(LAYER_NAME[0]).visible = false;
-      //LAYER_NAME.map((LAYER_NAME) => (this.viewer.scene.layers.find(LAYER_NAME).visible = false));
+      window.earth.scene.layers.find(LAYER_NAME[0]).visible = false;
+      //LAYER_NAME.map((LAYER_NAME) => (window.earth.scene.layers.find(LAYER_NAME).visible = false));
       //this.flyManager && (this.flyManager = undefined);
-      //LAYER_NAME.map((d) => (this.viewer.scene.layers.find(d).visible = false));
+      //LAYER_NAME.map((d) => (window.earth.scene.layers.find(d).visible = false));
     },
   },
 };

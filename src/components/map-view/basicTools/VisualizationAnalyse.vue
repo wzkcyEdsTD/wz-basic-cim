@@ -44,13 +44,12 @@ export default {
     viewer: undefined,
   },
   created() {
-    this.viewer = window.earth;
     this.pointHandler = new Cesiums.DrawHandler(
-      this.viewer,
+      window.earth,
       Cesiums.DrawMode.Point
     );
-    this.handler = new Cesiums.ScreenSpaceEventHandler(this.viewer.scene.canvas);
-    this.viewshed3D = new Cesiums.ViewShed3D(this.viewer.scene);
+    this.handler = new Cesiums.ScreenSpaceEventHandler(window.earth.scene.canvas);
+    this.viewshed3D = new Cesiums.ViewShed3D(window.earth.scene);
   },
   mounted() {
     this.eventRegsiter();
@@ -61,7 +60,6 @@ export default {
     this.handler.destroy()
     this.viewshed3D && this.viewshed3D.destroy();
     this.viewPosition = undefined;
-    this.viewer = undefined;
     this.clearVisualize();
     1;
   },
@@ -123,9 +121,9 @@ export default {
       
       if (this.pointHandler.active) return;
       //先清除之前的可视域分析
-      this.viewer.entities.removeAll();
+      window.earth.entities.removeAll();
       this.viewshed3D.distance = 0.1;
-      this.viewer.scene.viewFlag = true;
+      window.earth.scene.viewFlag = true;
       //激活绘制点类
       this.pointHandler.activate();
     },
@@ -137,9 +135,9 @@ export default {
     },
     //  清除分析结果
     clearVisualize() {
-      this.viewer && this.viewer.entities.removeAll();
+      window.earth && window.earth.entities.removeAll();
       this.viewshed3D && (this.viewshed3D.distance = 0.1);
-      this.viewer && (this.viewer.scene.viewFlag = true);
+      window.earth && (window.earth.scene.viewFlag = true);
     },
   },
 };
