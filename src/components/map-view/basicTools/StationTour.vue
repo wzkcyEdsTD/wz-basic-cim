@@ -269,7 +269,7 @@ export default {
       // });
     },
     startStationTour() {
-      var mvtMap = this.$root.fwdata[12];
+      var mvtMap = window.mvtmaps;
       var mapboxStyle = mvtMap.mapboxStyle;
       var layers = mapboxStyle.layers;
       for (let j = 0; j < layers.length; j++) {
@@ -283,7 +283,7 @@ export default {
       this.flyManager && this.flyManager.pause();
     },
     stopStationTour() {
-      var mvtMap = this.$root.fwdata[12];
+      var mvtMap = window.mvtmaps;
       var mapboxStyle = mvtMap.mapboxStyle;
       var layers = mapboxStyle.layers;
       for (let j = 0; j < layers.length; j++) {
@@ -312,7 +312,7 @@ export default {
           roll: 0
         }
       });
-      var mvtMap = this.$root.fwdata[12];
+      var mvtMap = window.mvtmaps;
       var mapboxStyle = mvtMap.mapboxStyle;
       var layers = mapboxStyle.layers;
       for (let j = 0; j < layers.length; j++) {

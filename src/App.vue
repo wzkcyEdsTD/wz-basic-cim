@@ -42,7 +42,7 @@ export default {
       }
       this.SetUserInfo(data);
       document.getElementsByTagName("title")[0].innerText =
-        "温州设计集团大数据可视化分析基础平台";
+        "温州市CIM基础平台";
     });
     // // 下面跟我没关系
     getRoleCategory().then(res => {

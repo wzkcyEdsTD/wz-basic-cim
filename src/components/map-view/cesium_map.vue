@@ -440,19 +440,8 @@ export default {
       styles.bottomAltitude = 50;
       mvtMap.style3D = styles;
       mvtMap.refresh();
-      this.$root.fwdata[12] = mvtMap;
-      //var mvtMap = this.$root.fwdata[12];
-      // console.log("mvtMap",mvtMap);
-      // console.log("mvtMap3D",mvtMap.style3D);
-      // console.log("mvtMapmapboxstyle",mvtMap.mapboxStyle);
-      //         var mapboxStyle = mvtMap.mapboxStyle;
-      //         var layers = mapboxStyle.layers;
-      //         for (let j = 0; j < layers.length; j++) {
-      //           if (layers[j].type == "line") {
-      //             mvtMap.setLayoutProperty(layers[j].id, "visibility", "none"); //显示某个图层
-      //           }
-      //         }
-      //console.log("mvt",this.$root.fwdata[12]);
+      //window.mvtmaps = mvtMap;
+      window.mvtmaps = mvtMap;
       // 移除缓冲圈
       $(".cesium-widget-credits").hide();
       //viewer.scene.globe.depthTestAgainstTerrain = false;

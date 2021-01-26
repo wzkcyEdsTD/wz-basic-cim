@@ -5,7 +5,7 @@
       :class="currentMapType != 'sandian' || this.collapse1 ? 'collapse' : ''"
       v-if="currentMapType != 'internetthings'"
     >
-      <div class="map-type">
+      <div class="map-type" style="display:none">
         <div
           class="item"
           :class="
