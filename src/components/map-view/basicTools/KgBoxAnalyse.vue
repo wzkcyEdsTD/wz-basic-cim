@@ -6,7 +6,6 @@
         @change="changeValue"
         :min="min"
         :max="max"
-        :step="step"
         v-model="sliderValue"
         :disabled="!dataDone"
       ></el-slider>
@@ -23,7 +22,6 @@ export default {
     return {
       min: 0,
       max: 100,
-      step: 1,
       sliderValue: 1,
       dataDone: false,
     };
@@ -72,10 +70,6 @@ export default {
         v.show = boolean;
       });
     },
-    //  消除场景
-    closeStationTour() {},
-    //  清除BIM模块
-    clearStationTour() {},
   },
 };
 </script>
