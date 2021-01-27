@@ -208,6 +208,7 @@ export default {
       handlerPolygon.activate();
     },
     clearExcavate() {
+      handlerPolygon.deactivate();
       window.earth.scene.globe.removeAllExcavationRegion();
       handlerPolygon.polygon.show = false;
       handlerPolygon.polyline.show = false;
