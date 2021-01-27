@@ -243,8 +243,7 @@ export default {
         window.position = position;
         if (
           pick.primitive &&
-          pick.primitive.queryParameter.dataSetName ==
-            "%E5%BB%BA%E7%AD%91_table"
+          pick.primitive.queryParameter.dataSetName == "%E5%BB%BA%E7%AD%91_table"
         ) {
           console.log("ceshi1");
           // console.log("相机参数1", window.earth.scene.camera.position);
@@ -450,7 +449,7 @@ export default {
           }
         }
         for (let f = 0; f < _data_.length; f++) {
-          if (_data_[f].k == "直径") {
+          if (_data_[f].k == "直径" || _data_[f].k == "长度") {
             gx = true;
             break;
           }

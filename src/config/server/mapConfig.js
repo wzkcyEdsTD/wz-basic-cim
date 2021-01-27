@@ -148,13 +148,25 @@ export const BimSourceURL = {
   //地下管线  
   UNDERGROUND_SCENE_URL:
     "http://172.20.83.223:8098/iserver/services/3D-ResultNetWork_JSLINE/rest/realspace",
-  //市民中心地下管线
-  CIVILIZATION_CENTER_UNDERGROUND: "http://172.20.83.223:8098/iserver/services/3D-mongodb3/rest/realspace",
-  //市民中心地下管线数据
-  CIVILIZATION_CENTER_UNDERGROUND_DATA: "http://172.20.83.223:8098/iserver/services/data-Pipes/rest/data",
   //S1线轨道三维服务  
   track_URL:
     "http://172.20.83.223:8098/iserver/services/3D-GuiDaoS1Xian/rest/realspace",
   Rivers_URL:
     "http://172.20.83.223:8098/iserver/services/3D-ShuiYuYanShi/rest/realspace",
 };
+
+export const CIVILIZATION_CENTER_URL = {
+  //市民中心地下管线
+  UNDERGROUND: "http://172.20.83.223:8098/iserver/services/3D-mongodb3/rest/realspace",
+  //市民中心地下管线数据
+  UNDERGROUND_DATA: {
+    url: "http://172.20.83.223:8098/iserver/services/data-Pipes/rest/data",
+    dataSourceName: "Pipes_table"
+  },
+  //地上模型
+  ABOVEGROUND: "http://172.20.83.223:8098/iserver/services/3D-mongodb7/rest/realspace",
+  //地上模型数据绑定
+  ABOVEGROUND_DATA: {
+    url: "http://172.20.83.223:8098/iserver/services/data-Citizens_Parkinglot_table/rest/data",
+  },
+} 
