@@ -1225,7 +1225,8 @@ const TOP_LEVEL_OPTION_SKXX_SW = [
   },
   {
     label: "其它三维模型",
-    url: "",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d12",
   },
 ];
 //时空基础

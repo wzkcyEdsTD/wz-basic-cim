@@ -61,7 +61,7 @@ export const ServiceUrl = {
     "http://172.20.83.223:8098/iserver/services/3D-dem/rest/realspace/datas/dem@2018dem",
   // 温州白模
   WZBaimo:
-  "https://ditu.wzcitybrain.com/iserver/services/3D-mongodb/rest/realspace/datas/RES_LC_Model@baimo/config",
+    "https://ditu.wzcitybrain.com/iserver/services/3D-mongodb/rest/realspace/datas/RES_LC_Model@baimo/config",
   // 三维影像地图2019
   // SWImage: 'http://10.36.234.83:8098/iserver/services/3D-YX_2019_SW/rest/realspace/datas/YX_2019_SW',
   SWImage:
@@ -91,22 +91,22 @@ export const ServiceUrl = {
   YJBZMap:
     //"http://10.36.245.203:8090/iserver/services/map-agscache-YJSGBZB2019CGCS2000/rest/maps/YJ_SG_BZB_2019_CGCS2000",
     "http://172.20.83.223:8091/iserver/services/map-agscachev2-YJSGBZB2019CGCS2000/rest/maps/YJ_SG_BZB_2019_CGCS2000",
-  
+
   // mvt矢量服务
   YJMVT:
-   //   "http://10.36.234.83:8098/iserver/services/map-mvt-XZQHYJ/restjsr/v1/vectortile/maps/XZQH_YJ"
+    //   "http://10.36.234.83:8098/iserver/services/map-mvt-XZQHYJ/restjsr/v1/vectortile/maps/XZQH_YJ"
     "http://172.20.83.223:8098/iserver/services/map-mvt-SummaryPOI/restjsr/v1/vectortile/maps/Summary_POI",
-  
+
   //  全市区精模
   WZMODEL:
     // "https://ditu.wzcitybrain.com/iserver/services/3D-mongodb-JMLC20121/rest/realspace/datas/JM_LC_2012_1/config"
     "https://ditu.wzcitybrain.com/iserver/services/3D-mongodb-JMLC20121/rest/realspace/datas/JM_LC_2012_1/config",
-    // "http://10.36.217.240:8098/iserver/services/3D-mongodb/rest/realspace/datas/JM_LC_2012_1/config"
+  // "http://10.36.217.240:8098/iserver/services/3D-mongodb/rest/realspace/datas/JM_LC_2012_1/config"
 
-    //  大数据底图
-    DataImage:
+  //  大数据底图
+  DataImage:
     "http://172.20.83.223:8091/iserver/services/map-agscachev2-YJDSJCGCS2000/rest/maps/YJ_DSJ_CGCS2000"
-    //"https://ditu.wzcitybrain.com/iserver/services/3D-mongodb-DSJCGS2000SW/rest/realspace/datas/DSJ_CGS2000_SW"
+  //"https://ditu.wzcitybrain.com/iserver/services/3D-mongodb-DSJCGS2000SW/rest/realspace/datas/DSJ_CGS2000_SW"
 };
 
 export const dataSourceUrl = {
@@ -141,13 +141,16 @@ export const BimSourceURL = {
   //机场数据服务    
   STATION_DATA_URL:
     "http://172.20.83.223:8098/iserver/services/data-Airport_Station/rest/data",
+  //dsm - gem地形
+  DSM_DEM: "http://172.20.83.223:8098/iserver/services/3D-mongodb-DSMDEM/rest/realspace/datas/DSM_DEM",
+  //dsm - map地图
+  DSM_MAP: "http://172.20.83.223:8098/iserver/services/map-mongodb/rest/maps/DSMmap",
   //地下管线  
   UNDERGROUND_SCENE_URL:
-    //"http://172.20.83.223:8098/iserver/services/3D-mongodb3/rest/realspace",
     "http://172.20.83.223:8098/iserver/services/3D-ResultNetWork_JSLINE/rest/realspace",
   //S1线轨道三维服务  
   track_URL:
     "http://172.20.83.223:8098/iserver/services/3D-GuiDaoS1Xian/rest/realspace",
   Rivers_URL:
-    "http://172.20.83.223:8098/iserver/services/3D-ShuiYuYanShi/rest/realspace",  
+    "http://172.20.83.223:8098/iserver/services/3D-ShuiYuYanShi/rest/realspace",
 };

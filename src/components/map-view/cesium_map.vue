@@ -20,6 +20,7 @@
       <Riversline ref="riversline" v-if="showSubFrame == '3d7'" />
       <KgBoxAnalyse ref="kgboxanalyse" v-if="showSubFrame == '3d10'" />
       <CivilizationCenter ref="civilizationcenter" v-if="showSubFrame == '3d11'" />
+      <DSMAnalyse ref="dsmanalyse" v-if="showSubFrame == '3d12'" />
       <CesiumMapTool ref="cesiummaptool" v-if="showSubTool == '3t1'" />
       <VisualizationAnalyse ref="visualizationanalyse" v-if="showSubTool == '3t2'" />
       <SectionAnalyse ref="sectionanalyse" v-if="showSubTool == '3t3'" />
@@ -50,6 +51,7 @@ import trackBIM from "./basicTools/trackBIM";
 import Riversline from "./basicTools/Riversline";
 import KgBoxAnalyse from "./basicTools/KgBoxAnalyse";
 import CivilizationCenter from "./basicTools/CivilizationCenter";
+import DSMAnalyse from "./basicTools/DSMAnalyse";
 import UnderGround from "./basicTools/UnderGround";
 import VisualizationAnalyse from "./basicTools/VisualizationAnalyse";
 import SectionAnalyse from "./basicTools/SectionAnalyse";
@@ -92,6 +94,7 @@ export default {
     trackBIM,
     KgBoxAnalyse,
     CivilizationCenter,
+    DSMAnalyse,
     UnderGround,
     Riversline,
     VisualizationAnalyse,
@@ -349,14 +352,14 @@ export default {
     },
     init3DMap(fn) {
       const that = this;
-
+      window.extraHash.mainDem = new Cesium.CesiumTerrainProvider({
+        url: ServiceUrl.YJDem, // 政务网永嘉地形
+      });
       var viewer = new Cesium.Viewer("cesiumContainer", {
         infoBox: false, // 是否显示信息框
         selectionIndicator: false, // 是否显示选取指示器组件
         // 创建地形服务提供者的实例，url为SuperMap iServer发布的TIN地形服务
-        terrainProvider: new Cesium.CesiumTerrainProvider({
-          url: ServiceUrl.YJDem, // 政务网永嘉地形
-        }),
+        terrainProvider: window.extraHash.mainDem,
       });
       window.earth = viewer; // 全局变量（优化性能）
       //开启地下模式

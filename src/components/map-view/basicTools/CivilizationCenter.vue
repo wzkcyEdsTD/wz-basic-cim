@@ -47,10 +47,10 @@ export default {
   border: 1px solid rgba(81, 161, 201, 0.6);
   .el-divider--horizontal {
     margin: 8px 0;
-    background-color : #ccc;
+    background-color: #ccc;
     > .el-divider__text {
       color: #ccc;
-      padding : 0 10px;
+      padding: 0 10px;
       background: rgba(11, 20, 35, 1);
     }
   }
