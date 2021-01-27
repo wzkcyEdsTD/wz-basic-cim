@@ -16,6 +16,13 @@
   </div>
 </template>
 <script>
+const _UNDERGROUND_HASH_ = {
+  RQLINE: "燃气管线",
+  WSLINE: "污水管线",
+  JSLINE: "给水管线",
+  YSLINE: "雨水管线",
+};
+import { BimSourceURL } from "config/server/mapConfig";
 import { mapActions } from "vuex";
 export default {
   name: "CivilizationCenter",
@@ -31,10 +38,42 @@ export default {
   async mounted() {
     this.initScene();
   },
-  beforeDestroy() {},
+  beforeDestroy() {
+    this.doCivilizationCenterVisible(false);
+  },
   methods: {
     ...mapActions("map", []),
-    initScene() {},
+    initScene() {
+      this.doUndergroundInit();
+    },
+    doUndergroundInit() {
+      const {
+        CIVILIZATION_CENTER_UNDERGROUND,
+        CIVILIZATION_CENTER_UNDERGROUND_DATA,
+      } = BimSourceURL;
+      Object.keys(_UNDERGROUND_HASH_).map((key) => {
+        const _KEY_ = `civilization_center_underground_${key}`;
+        const promise = window.earth.scene.addS3MTilesLayerByScp(
+          `${CIVILIZATION_CENTER_UNDERGROUND}/datas/${key}/config`,
+          { name: _KEY_ }
+        );
+        Cesium.when(promise, async () => {
+          const layer = window.earth.scene.layers.find(_KEY_);
+          layer.setQueryParameter({
+            url: CIVILIZATION_CENTER_UNDERGROUND_DATA,
+            dataSourceName: "Pipes_table",
+            dataSetName: _UNDERGROUND_HASH_[key],
+            isMerge: true,
+          });
+        });
+      });
+      window.earth.scene.globe.globeAlpha = 0;
+    },
+    doCivilizationCenterVisible(boolean) {
+      Object.keys(_UNDERGROUND_HASH_).map((key) => {
+        window.extraHash[`civilization_center_underground_${key}`].show = boolean;
+      });
+    },
     change_S_Value(val) {},
   },
 };

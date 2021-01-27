@@ -148,6 +148,10 @@ export const BimSourceURL = {
   //地下管线  
   UNDERGROUND_SCENE_URL:
     "http://172.20.83.223:8098/iserver/services/3D-ResultNetWork_JSLINE/rest/realspace",
+  //市民中心地下管线
+  CIVILIZATION_CENTER_UNDERGROUND: "http://172.20.83.223:8098/iserver/services/3D-mongodb3/rest/realspace",
+  //市民中心地下管线数据
+  CIVILIZATION_CENTER_UNDERGROUND_DATA: "http://172.20.83.223:8098/iserver/services/data-Pipes/rest/data",
   //S1线轨道三维服务  
   track_URL:
     "http://172.20.83.223:8098/iserver/services/3D-GuiDaoS1Xian/rest/realspace",
