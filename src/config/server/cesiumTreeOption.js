@@ -1067,7 +1067,13 @@ const BIM_GRAPHIS_OPTION = [
     label: "S1线轨道场景",
     componentEvent: "cesium-3d-event",
     componentKey: "3d5",
-  }
+  },
+  {
+    label: "市民中心",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d11",
+    //componentKey: "3d8"
+  },
 ];
 //建筑三维模型
 const TOP_LEVEL_OPTION_SKXX_SW_JZSW = [
@@ -1359,32 +1365,68 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
     url: "",
   },
   {
-    label: "养老设施",
-    ids: "成果汇总_设施点@成果#1_养老设施",
-  },
-  {
-    label: "医疗设施",
-    ids: "成果汇总_设施点@成果#1_医疗设施",
-  },
-  {
-    label: "商业设施",
-    ids: "成果汇总_设施点@成果#1_商业设施",
-  },
-  {
+    id: "教育设施",
     label: "教育设施",
-    ids: "成果汇总_设施点@成果#1_教育设施",
+    icon:"医疗场所",
+    url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
+    type: "mvt",
+    newdataset: `大建大美专项规划:教育设施`
   },
   {
-    label: "体育设施",
-    ids: "成果汇总_设施点@成果#1_体育设施",
-  },
-  {
-    label: "文化设施",
-    ids: "成果汇总_设施点@成果#1_文化设施",
-  },
-  {
+    id: "绿化设施",
     label: "绿化设施",
-    ids: "成果汇总_设施点@成果#1_绿化设施",
+    icon:"医疗场所",
+    url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
+    type: "mvt",
+    newdataset: `大建大美专项规划:绿化设施`
+  },
+  {
+    id: "商业设施",
+    label: "商业设施",
+    icon:"医疗场所",
+    url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
+    type: "mvt",
+    newdataset: `大建大美专项规划:商业设施`
+  },
+  {
+    id: "体育设施",
+    label: "体育设施",
+    icon:"医疗场所",
+    url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
+    type: "mvt",
+    newdataset: `大建大美专项规划:体育设施`
+  },
+  {
+    id: "文化设施",
+    label: "文化设施",
+    icon:"医疗场所",
+    url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
+    type: "mvt",
+    newdataset: `大建大美专项规划:文化设施`
+  },
+  {
+    id: "养老设施",
+    label: "养老设施",
+    icon:"医疗场所",
+    url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
+    type: "mvt",
+    newdataset: `大建大美专项规划:养老设施`
+  },
+  {
+    id: "医疗设施",
+    label: "医疗设施",
+    icon:"医疗场所",
+    url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
+    type: "mvt",
+    newdataset: `大建大美专项规划:医疗设施`
+  },
+  {
+    id: "交通设施",
+    label: "交通设施",
+    icon:"医疗场所",
+    url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
+    type: "mvt",
+    newdataset: `大建大美专项规划:交通设施`
   },
 ];
 //规划管控
@@ -1409,24 +1451,23 @@ const TOP_LEVEL_OPTION_GHGK = [
     componentKey: "3d10"
   },
 ];
-//工程建设其他
-const TOP_LEVEL_OPTION_GCJS_QT = [
-
-];
 //工程建设
 const TOP_LEVEL_OPTION_GCJS = [
   {
-    label: "市民中心",
-    componentEvent: "cesium-3d-event",
-    componentKey: "3d11",
-    //componentKey: "3d8"
+    id: "集团项目",
+    label: "集团项目",
+    icon:"医疗场所",
+    url: "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
+    type: "mvt",
+    newdataset: `172.20.83.196_ersjdata:JTXM`
   },
   {
-    id: "其他",
-    label: "其他",
-    children: TOP_LEVEL_OPTION_GCJS_QT.map(v => {
-      return { ...v, id: v.label };
-    })
+    id: "工程项目",
+    label: "工程项目",
+    icon:"医疗场所",
+    url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
+    type: "mvt",
+    newdataset: `erweidata:V_TM_PROJECT_P`
   },
 ];
 //法人数据
@@ -1458,8 +1499,13 @@ const TOP_LEVEL_OPTION_GGZT = [
     })
   },
   {
+    id: "兴趣点数据",
     label: "兴趣点数据",
-    url: "",
+    icon:"医疗场所",
+    url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
+    type: "mvt",
+    newdataset: `erweidata:POI`
+
   },
 
 ];

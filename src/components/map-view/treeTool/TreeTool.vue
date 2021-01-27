@@ -141,6 +141,7 @@ export default {
       entityMap: {},
       featureMap: {}, //  源数据,量小
       dsjdt: "",
+      ydhx:""
     };
   },
   computed: {
@@ -225,6 +226,13 @@ export default {
               : null;
           } else {
             this.getPOIPickedFeature(node);
+            // this.dsjdt = window.earth.imageryLayers.addImageryProvider(
+            //       new Cesium.SuperMapImageryProvider({
+            //         layers: "DSJ",
+            //         url:
+            //           "http://172.20.83.223:8091/iserver/services/map-agscachev2-YJDSJCGCS2000/rest/maps/YJ_DSJ_CGCS2000",
+            //       })
+            //     );
           }
         } else if (node.label == "白模") {
           const LAYER = window.earth.scene.layers.find(node.id);

@@ -11,7 +11,10 @@
     <div id="cesiumContainer" />
     <div v-if="mapLoaded">
       <Coverage />
-      <RegionSimulateFlood ref="regionsimulateflood" v-if="showSubFrame == '3d1'" />
+      <RegionSimulateFlood
+        ref="regionsimulateflood"
+        v-if="showSubFrame == '3d1'"
+      />
       <BimAnalyse ref="bimanalyse" v-if="showSubFrame == '3d2'" />
       <StationTour ref="stationtour" v-if="showSubFrame == '3d3'" />
       <UnderGround ref="underground" v-if="showSubFrame == '3d4'" />
@@ -23,7 +26,10 @@
       <BayonetPopup ref="bayonetPopup" v-if="showSubFrame == '3d12'" />
       <Bimsmzx ref="bimsmzx" v-if="showSubFrame == '3d8'" />
       <CesiumMapTool ref="cesiummaptool" v-if="showSubTool == '3t1'" />
-      <VisualizationAnalyse ref="visualizationanalyse" v-if="showSubTool == '3t2'" />
+      <VisualizationAnalyse
+        ref="visualizationanalyse"
+        v-if="showSubTool == '3t2'"
+      />
       <SectionAnalyse ref="sectionanalyse" v-if="showSubTool == '3t3'" />
       <sightline ref="sightline" v-if="showSubTool == '3t4'" />
       <ShadowQuery ref="ShadowQuery" v-if="showSubTool == '3t5'" />
@@ -141,7 +147,8 @@ export default {
     ...mapActions("map", ["SetForceBimData", "SetForceJMData"]),
     initPostRender() {
       window.earth.scene.postRender.addEventListener(() => {
-        if (!window.earth || !this.mapLoaded || !Object.keys(this.$refs).length) return;
+        if (!window.earth || !this.mapLoaded || !Object.keys(this.$refs).length)
+          return;
         //  *****[medicalList] 医疗点位*****
         const medicalList = this.medicalListWithGeometry;
         if (medicalList && medicalList.length) {
@@ -157,7 +164,8 @@ export default {
               G_medicalList.push({ ...item, pointToWindow });
             }
           });
-          this.$refs.medicalPopup && this.$refs.medicalPopup.doPopup(G_medicalList);
+          this.$refs.medicalPopup &&
+            this.$refs.medicalPopup.doPopup(G_medicalList);
         } else {
           this.$refs.medicalPopup && this.$refs.medicalPopup.doPopup([]);
         }
@@ -186,7 +194,8 @@ export default {
         toIndex: -1,
         datasetNames: ["JinFengYuan:" + "金丰园2栋_户型面"], // 本例中“户型面”为数据源名称，“专题户型面2D”为楼层面相应的数据集名称
       });
-      var url = "http://172.20.83.223:8098/iserver/services/data-JinFengYuan/rest/data"; // 数据服务地址
+      var url =
+        "http://172.20.83.223:8098/iserver/services/data-JinFengYuan/rest/data"; // 数据服务地址
       getFeatureBySQLService = new SuperMap.REST.GetFeaturesBySQLService(url, {
         eventListeners: {
           processCompleted: async (queryEventArgs) => {
@@ -210,10 +219,14 @@ export default {
                 return;
               }
               var bottomHeight = Number(
-                selectedFeature.fieldValues[selectedFeature.fieldNames.indexOf("BOTTOM")]
+                selectedFeature.fieldValues[
+                  selectedFeature.fieldNames.indexOf("BOTTOM")
+                ]
               ); // 底部高程
               var extrudeHeight = Number(
-                selectedFeature.fieldValues[selectedFeature.fieldNames.indexOf("LSG")]
+                selectedFeature.fieldValues[
+                  selectedFeature.fieldNames.indexOf("LSG")
+                ]
               ); // 层高（拉伸高度）
               Cesium.GroundPrimitive.bottomAltitude = bottomHeight; // 矢量面贴对象的底部高程
               Cesium.GroundPrimitive.extrudeHeight = extrudeHeight; // 矢量面贴对象的拉伸高度
@@ -255,7 +268,19 @@ export default {
         console.log("点击事件", pick);
         var position = window.earth.scene.pickPosition(e.position);
         window.position = position;
-        if (
+        if (pick.id.extra_data) {
+          console.log("资源点");
+          const _data_ = Object.keys(pick.id.extra_data).map((k) => {
+            return { k, v: pick.id.extra_data[k] };
+          });
+          this.SetForceBimData(_data_);
+          window.a = _data_;
+          // this.$refs.detailPopup.getForceEntity({
+          //   extra_data: pick.id.extra_data,
+          //   fix_data: pick.id.fix_data,
+          //   position: pick.id._position._value,
+          // });
+        } else if (
           pick.primitive &&
           pick.primitive.queryParameter.dataSetName == "%E5%BB%BA%E7%AD%91_table"
         ) {
@@ -391,7 +416,9 @@ export default {
       imagelayer.transparentBackColor = new Cesium.Color(0.0, 0.0, 0.0, 1);
       imagelayer.transparentBackColorTolerance = 0.1;
       // 叠加四大流域范围
-      var promiseroute11 = Cesium.GeoJsonDataSource.load("/static/yjjson/四大流域.json");
+      var promiseroute11 = Cesium.GeoJsonDataSource.load(
+        "/static/yjjson/四大流域.json"
+      );
       promiseroute11
         .then(function (dataSource) {
           viewer.dataSources.add(dataSource);
@@ -469,6 +496,7 @@ export default {
           }
         }
         if (azf) {
+          console.log("安置房", _data_);
           that.SetForceBimData(_data_);
           window.a = _data_;
           this.$refs.bimanalyse.eventRegsiter(); //先调用详细信息后在调用房间信息防止楼板信息不再同一层的
