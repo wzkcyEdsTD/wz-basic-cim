@@ -30,6 +30,7 @@ export const forceBimName = state => state.forceBimName;
 export const forceRoomData = state => state.forceRoomData;
 export const isInfoFrame = state => state.isInfoFrame;
 export const rtmpList = state => state.rtmpList;
+export const bayonetList = state => state.bayonetList;
 export const medicalList = state => state.medicalList;
 export const medicalListWithGeometry = state => state.medicalListWithGeometry;
 export const hospitalList = state => state.hospitalList;

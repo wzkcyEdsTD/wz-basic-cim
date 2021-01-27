@@ -6,6 +6,7 @@
  * @Description:
  * @FilePath: \wzsjjt-bd-visual\src\store\modules\map\mutation-types.js
  */
+export const SET_BAYONET_LIST = "SET_BAYONET_LIST";
 export const SET_COLLAPSE1 = "SET_COLLAPSE1";
 export const SET_COLLAPSE2 = "SET_COLLAPSE2";
 export const SET_LEGEND_SHOW = "SET_LEGEND_SHOW";

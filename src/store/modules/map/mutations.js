@@ -19,6 +19,9 @@ const mutations = {
   [types.SET_LEGEND_SHOW](state, bool) {
     state.legendShow = bool;
   },
+  [types.SET_BAYONET_LIST](state, data) {
+    state.bayonetList = data;
+  },
   [types.SET_TREE](state, data) {
     state.tree = data;
   },

@@ -40,5 +40,7 @@ const state = {
   medicalListWithGeometry: [],
   //  医院
   hospitalList: [],
+  //  卡口数据
+  bayonetList: {},
 };
 export default state;

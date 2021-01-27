@@ -1,7 +1,12 @@
 import * as types from "./mutation-types";
 import router from "../../../router/index";
-import { getMedicalList } from "api/layerServerAPI";
+import { getMedicalList, getBayonetList } from "api/layerServerAPI";
 
+//  设置卡口数据
+export const fetchBayonetList = async ({ commit }) => {
+  const { result } = await getBayonetList();
+  commit(types.SET_BAYONET_LIST, result);
+};
 // 设置bim单层物体id
 export const SetForceBimIDS = function ({ commit }, data) {
   commit(types.SET_FORCE_BIM_IDS, data);
@@ -12,18 +17,18 @@ export const SetForceBimData = function ({ commit }, data) {
   commit(types.SET_FORCE_BIM_DATA, data);
 };
 //点击查看视频监控
-export const SetForceBimSP = function ({ commit},data) {
-  console.log("视频监控SetForceBimSP",data);
-  commit(types.SET_FORCE_BIM_SP,data);
+export const SetForceBimSP = function ({ commit }, data) {
+  console.log("视频监控SetForceBimSP", data);
+  commit(types.SET_FORCE_BIM_SP, data);
 }
-export const SetForceVideo = function ({ commit},data) {
-  console.log("视频监控SetForceVideo",data);
-  commit(types.SET_FORCE_Video,data);
+export const SetForceVideo = function ({ commit }, data) {
+  console.log("视频监控SetForceVideo", data);
+  commit(types.SET_FORCE_Video, data);
 }
 //点击精模弹出对应地名地址框
-export const SetForceBimName = function ({ commit},data) {
-  console.log("白模点击实现",data);
-  commit(types.SET_FORCE_BIM_NAME,data);
+export const SetForceBimName = function ({ commit }, data) {
+  console.log("白模点击实现", data);
+  commit(types.SET_FORCE_BIM_NAME, data);
 }
 //详情面板有问题
 export const SetForceJMData = function ({ commit }, data) {
@@ -32,7 +37,7 @@ export const SetForceJMData = function ({ commit }, data) {
 };
 //设置biim右侧面板点击事件
 export const SetForceBimDataByType = function ({ commit }, data) {
- // console.log('我被调用到了');
+  // console.log('我被调用到了');
   //本来应该在这里进行调用操作的，但是已经写完了，我就不改了
   commit(types.SET_FORCE_BIM_DATABYTYPE, data);
 };

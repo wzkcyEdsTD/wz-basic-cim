@@ -20,7 +20,7 @@
       <Riversline ref="riversline" v-if="showSubFrame == '3d7'" />
       <KgBoxAnalyse ref="kgboxanalyse" v-if="showSubFrame == '3d10'" />
       <CivilizationCenter ref="civilizationcenter" v-if="showSubFrame == '3d11'" />
-      <DSMAnalyse ref="dsmanalyse" v-if="showSubFrame == '3d12'" />
+      <BayonetPopup ref="bayonetPopup" v-if="showSubFrame == '3d12'" />
       <Bimsmzx ref="bimsmzx" v-if="showSubFrame == '3d8'" />
       <CesiumMapTool ref="cesiummaptool" v-if="showSubTool == '3t1'" />
       <VisualizationAnalyse ref="visualizationanalyse" v-if="showSubTool == '3t2'" />
@@ -58,6 +58,7 @@ import UnderGround from "./basicTools/UnderGround";
 import VisualizationAnalyse from "./basicTools/VisualizationAnalyse";
 import SectionAnalyse from "./basicTools/SectionAnalyse";
 import CesiumMapTool from "./basicTools/CesiumMapTool";
+import BayonetPopup from "./basicTools/BayonetPopup";
 import InfoFrame from "./commonFrame/InfoFrame";
 import Tsaddress from "./commonFrame/tsaddress";
 import Jingmoqipao from "./commonFrame/jingmoqipao";
@@ -104,6 +105,7 @@ export default {
     SectionAnalyse,
     CesiumMapTool,
     InfoFrame,
+    BayonetPopup,
     Tsaddress,
     Jingmoqipao,
     Sightline,
@@ -118,11 +120,19 @@ export default {
   },
   created() {
     window.extraHash = {};
+    //  点位信息 hash
+    window.featureMap = {};
+    //  点位icon hash
+    window.billboardMap = {};
+    //  点位label hash
+    window.labelMap = {};
+    //  特殊信息 hash
+    window.entityMapGeometry = {};
   },
   mounted() {
     this.init3DMap(() => {
       this.mapLoaded = true;
-      // this.initPostRender();
+      this.initPostRender();
       this.initHandler();
     });
     this.eventRegsiter();
@@ -159,6 +169,10 @@ export default {
             forceEntity.position
           );
           this.$refs.detailPopup.renderForceEntity(pointToWindow);
+        }
+        //  *****[bayonetList] 卡口点位*****
+        if (this.$refs.bayonetPopup) {
+          this.$refs.bayonetPopup.fixPopup();
         }
       });
     },

@@ -1097,9 +1097,9 @@ const TOP_LEVEL_OPTION_SKXX_SW_JZSW = [
     },
     cameraDone: true
   },
- 
+
 ];
-const QT_GRAPHIS_OPTION=[
+const QT_GRAPHIS_OPTION = [
   {
     label: "河流动态场景",
     componentEvent: "cesium-3d-event",
@@ -1204,7 +1204,7 @@ const TOP_LEVEL_OPTION_SKXX_SW = [
       return { ...v, id: v.label, type: "bim" };
     })
   },
-  
+
 ];
 //时空基础
 const TOP_LEVEL_OPTION_SKXX = [
@@ -1360,31 +1360,31 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   },
   {
     label: "养老设施",
-    ids:"成果汇总_设施点@成果#1_养老设施",
+    ids: "成果汇总_设施点@成果#1_养老设施",
   },
   {
     label: "医疗设施",
-    ids:"成果汇总_设施点@成果#1_医疗设施",
+    ids: "成果汇总_设施点@成果#1_医疗设施",
   },
   {
     label: "商业设施",
-    ids:"成果汇总_设施点@成果#1_商业设施",
+    ids: "成果汇总_设施点@成果#1_商业设施",
   },
   {
     label: "教育设施",
-    ids:"成果汇总_设施点@成果#1_教育设施",
+    ids: "成果汇总_设施点@成果#1_教育设施",
   },
   {
     label: "体育设施",
-    ids:"成果汇总_设施点@成果#1_体育设施",
+    ids: "成果汇总_设施点@成果#1_体育设施",
   },
   {
     label: "文化设施",
-    ids:"成果汇总_设施点@成果#1_文化设施",
+    ids: "成果汇总_设施点@成果#1_文化设施",
   },
   {
     label: "绿化设施",
-    ids:"成果汇总_设施点@成果#1_绿化设施",
+    ids: "成果汇总_设施点@成果#1_绿化设施",
   },
 ];
 //规划管控
@@ -1459,7 +1459,7 @@ const TOP_LEVEL_OPTION_GGZT = [
   },
   {
     label: "兴趣点数据",
-    url:"",
+    url: "",
   },
 
 ];
@@ -1534,7 +1534,8 @@ const TOP_LEVEL_OPTION_WLGZ_QXJC = [
 const TOP_LEVEL_OPTION_WLGZ_JTJC = [
   {
     label: "交通卡口",
-    url:"",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d12"
   },
 ];
 //城市安防数据
