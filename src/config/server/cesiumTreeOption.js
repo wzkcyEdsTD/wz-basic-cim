@@ -6,36 +6,6 @@
  * @Description:
  * @FilePath: \wzsjjt-bd-visual\src\config\server\cesiumTreeOption.js
  */
-const TOP_LEVEL_OPTION_SSFL = [
-  {
-    label: "养老设施",
-    ids: "成果汇总_设施点@成果#1_养老设施",
-  },
-  {
-    label: "医疗设施",
-    ids: "成果汇总_设施点@成果#1_医疗设施",
-  },
-  {
-    label: "商业设施",
-    ids: "成果汇总_设施点@成果#1_商业设施",
-  },
-  {
-    label: "教育设施",
-    ids: "成果汇总_设施点@成果#1_教育设施",
-  },
-  {
-    label: "体育设施",
-    ids: "成果汇总_设施点@成果#1_体育设施",
-  },
-  {
-    label: "文化设施",
-    ids: "成果汇总_设施点@成果#1_文化设施",
-  },
-  {
-    label: "绿化设施",
-    ids: "成果汇总_设施点@成果#1_绿化设施",
-  },
-];
 //瓯海二级
 const LEAN_GRAPHIS_OPTION_OH_SY = [
   {
@@ -1127,6 +1097,9 @@ const TOP_LEVEL_OPTION_SKXX_SW_JZSW = [
     },
     cameraDone: true
   },
+ 
+];
+const QT_GRAPHIS_OPTION=[
   {
     label: "河流动态场景",
     componentEvent: "cesium-3d-event",
@@ -1216,18 +1189,22 @@ const TOP_LEVEL_OPTION_SKXX_SW = [
     url: "",
   },
   {
-    id: "BIM",
-    label: "BIM",
+    id: "BIM模型",
+    label: "BIM模型",
     disabled: true,
     children: BIM_GRAPHIS_OPTION.map(v => {
       return { ...v, id: v.label, type: "bim" };
     })
   },
   {
+    id: "其它三维模型",
     label: "其它三维模型",
-    componentEvent: "cesium-3d-event",
-    componentKey: "3d12",
+    disabled: true,
+    children: QT_GRAPHIS_OPTION.map(v => {
+      return { ...v, id: v.label, type: "bim" };
+    })
   },
+  
 ];
 //时空基础
 const TOP_LEVEL_OPTION_SKXX = [
@@ -1381,6 +1358,34 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
     label: "历史文化名城保护规划",
     url: "",
   },
+  {
+    label: "养老设施",
+    ids:"成果汇总_设施点@成果#1_养老设施",
+  },
+  {
+    label: "医疗设施",
+    ids:"成果汇总_设施点@成果#1_医疗设施",
+  },
+  {
+    label: "商业设施",
+    ids:"成果汇总_设施点@成果#1_商业设施",
+  },
+  {
+    label: "教育设施",
+    ids:"成果汇总_设施点@成果#1_教育设施",
+  },
+  {
+    label: "体育设施",
+    ids:"成果汇总_设施点@成果#1_体育设施",
+  },
+  {
+    label: "文化设施",
+    ids:"成果汇总_设施点@成果#1_文化设施",
+  },
+  {
+    label: "绿化设施",
+    ids:"成果汇总_设施点@成果#1_绿化设施",
+  },
 ];
 //规划管控
 const TOP_LEVEL_OPTION_GHGK = [
@@ -1399,25 +1404,10 @@ const TOP_LEVEL_OPTION_GHGK = [
     })
   },
   {
-    id: "注记分类",
-    label: "注记分类",
-    children: TOP_LEVEL_OPTION_SSFL.map(v => {
-      return { ...v, id: v.label };
-    })
-  },
-  {
     label: "控规盒子",
     componentEvent: "cesium-3d-event",
     componentKey: "3d10"
   },
-];
-//市民中心
-const TOP_LEVEL_OPTION_GCJS_SMZX = [
-  {
-    label: "市民中心",
-    componentEvent: "cesium-3d-event",
-    componentKey: "3d11",
-  }
 ];
 //工程建设其他
 const TOP_LEVEL_OPTION_GCJS_QT = [
@@ -1426,10 +1416,10 @@ const TOP_LEVEL_OPTION_GCJS_QT = [
 //工程建设
 const TOP_LEVEL_OPTION_GCJS = [
   {
-    id: "市民中心",
     label: "市民中心",
     componentEvent: "cesium-3d-event",
     componentKey: "3d11",
+    //componentKey: "3d8"
   },
   {
     id: "其他",
@@ -1458,17 +1448,6 @@ const TOP_LEVEL_OPTION_GGZT_FRSJ = [
     url: "",
   },
 ];
-//兴趣点数据
-const TOP_LEVEL_OPTION_GGZT_XQDSJ = [
-  {
-    label: "篮球场",
-    url: "",
-  },
-  {
-    label: "图书馆",
-    url: "",
-  },
-];
 //公共专题
 const TOP_LEVEL_OPTION_GGZT = [
   {
@@ -1479,11 +1458,8 @@ const TOP_LEVEL_OPTION_GGZT = [
     })
   },
   {
-    id: "兴趣点数据",
     label: "兴趣点数据",
-    children: TOP_LEVEL_OPTION_GGZT_XQDSJ.map(v => {
-      return { ...v, id: v.label };
-    })
+    url:"",
   },
 
 ];
@@ -1557,8 +1533,8 @@ const TOP_LEVEL_OPTION_WLGZ_QXJC = [
 //交通监测数据
 const TOP_LEVEL_OPTION_WLGZ_JTJC = [
   {
-    label: "电子监控信息",
-    url: "",
+    label: "交通卡口",
+    url:"",
   },
 ];
 //城市安防数据

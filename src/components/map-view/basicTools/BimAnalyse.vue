@@ -407,7 +407,7 @@ export default {
             });
             this.endID = endID;
             this.bimHash = bimHash;
-            console.log(bimHash);
+            //console.log(bimHash);
           });
         });
       }
@@ -432,7 +432,7 @@ export default {
           },
         }),
         success: (result) => {
-          //console.log("安置房贴图查询成功",result);
+          console.log("安置房贴图查询成功",result);
           //console.log("result",JSON.parse(result).features)
           that.onQueryComplete(JSON.parse(result).features, z);
         },

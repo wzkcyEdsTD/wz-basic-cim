@@ -14,13 +14,14 @@
       <RegionSimulateFlood ref="regionsimulateflood" v-if="showSubFrame == '3d1'" />
       <BimAnalyse ref="bimanalyse" v-if="showSubFrame == '3d2'" />
       <StationTour ref="stationtour" v-if="showSubFrame == '3d3'" />
-      <trackBIM ref="trackbim" v-if="showSubFrame == '3d5'" />
       <UnderGround ref="underground" v-if="showSubFrame == '3d4'" />
+      <trackBIM ref="trackbim" v-if="showSubFrame == '3d5'" />
       <NanTangModel v-if="showSubFrame == '3d6'" />
       <Riversline ref="riversline" v-if="showSubFrame == '3d7'" />
       <KgBoxAnalyse ref="kgboxanalyse" v-if="showSubFrame == '3d10'" />
       <CivilizationCenter ref="civilizationcenter" v-if="showSubFrame == '3d11'" />
       <DSMAnalyse ref="dsmanalyse" v-if="showSubFrame == '3d12'" />
+      <Bimsmzx ref="bimsmzx" v-if="showSubFrame == '3d8'" />
       <CesiumMapTool ref="cesiummaptool" v-if="showSubTool == '3t1'" />
       <VisualizationAnalyse ref="visualizationanalyse" v-if="showSubTool == '3t2'" />
       <SectionAnalyse ref="sectionanalyse" v-if="showSubTool == '3t3'" />
@@ -46,6 +47,7 @@ import "./basicTools/ThreeTools.less";
 import Coverage from "./treeTool/TreeTool";
 import RegionSimulateFlood from "./basicTools/RegionSimulateFlood";
 import BimAnalyse from "./basicTools/BimAnalyse";
+import Bimsmzx from "./basicTools/Bimsmsz";
 import StationTour from "./basicTools/StationTour";
 import trackBIM from "./basicTools/trackBIM";
 import Riversline from "./basicTools/Riversline";
@@ -90,6 +92,7 @@ export default {
     Coverage,
     RegionSimulateFlood,
     BimAnalyse,
+    Bimsmzx,
     StationTour,
     trackBIM,
     KgBoxAnalyse,
@@ -240,8 +243,10 @@ export default {
         window.position = position;
         if (
           pick.primitive &&
-          pick.primitive.queryParameter.dataSetName == "%E5%BB%BA%E7%AD%91_table"
+          pick.primitive.queryParameter.dataSetName ==
+            "%E5%BB%BA%E7%AD%91_table"
         ) {
+          console.log("ceshi1");
           // console.log("相机参数1", window.earth.scene.camera.position);
           // console.log("相机参数2", window.earth.scene.camera.heading);
           // console.log("相机参数3", window.earth.scene.camera.pitch);
@@ -416,7 +421,6 @@ export default {
       styles.bottomAltitude = 50;
       mvtMap.style3D = styles;
       mvtMap.refresh();
-      //window.mvtmaps = mvtMap;
       window.mvtmaps = mvtMap;
       // 移除缓冲圈
       $(".cesium-widget-credits").hide();
