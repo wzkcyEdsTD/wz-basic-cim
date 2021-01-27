@@ -1153,8 +1153,12 @@ const TOP_LEVEL_OPTION_SKXX_CHYG = [
     })
   },
   {
+    id: "全景VR",
     label: "全景VR",
-    url: "",
+    icon: "医疗场所",
+    url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
+    type: "mvt",
+    newdataset: `erweidata:quanjin`
   }
 ];
 //三维模型
@@ -1367,7 +1371,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "教育设施",
     label: "教育设施",
-    icon:"医疗场所",
+    icon: "医疗场所",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:教育设施`
@@ -1375,7 +1379,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "绿化设施",
     label: "绿化设施",
-    icon:"医疗场所",
+    icon: "医疗场所",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:绿化设施`
@@ -1383,7 +1387,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "商业设施",
     label: "商业设施",
-    icon:"医疗场所",
+    icon: "医疗场所",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:商业设施`
@@ -1391,7 +1395,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "体育设施",
     label: "体育设施",
-    icon:"医疗场所",
+    icon: "医疗场所",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:体育设施`
@@ -1399,7 +1403,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "文化设施",
     label: "文化设施",
-    icon:"医疗场所",
+    icon: "医疗场所",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:文化设施`
@@ -1407,7 +1411,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "养老设施",
     label: "养老设施",
-    icon:"医疗场所",
+    icon: "医疗场所",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:养老设施`
@@ -1415,7 +1419,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "医疗设施",
     label: "医疗设施",
-    icon:"医疗场所",
+    icon: "医疗场所",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:医疗设施`
@@ -1423,7 +1427,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "交通设施",
     label: "交通设施",
-    icon:"医疗场所",
+    icon: "医疗场所",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:交通设施`
@@ -1456,7 +1460,7 @@ const TOP_LEVEL_OPTION_GCJS = [
   {
     id: "集团项目",
     label: "集团项目",
-    icon:"医疗场所",
+    icon: "医疗场所",
     url: "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     type: "mvt",
     newdataset: `172.20.83.196_ersjdata:JTXM`
@@ -1464,7 +1468,7 @@ const TOP_LEVEL_OPTION_GCJS = [
   {
     id: "工程项目",
     label: "工程项目",
-    icon:"医疗场所",
+    icon: "医疗场所",
     url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
     type: "mvt",
     newdataset: `erweidata:V_TM_PROJECT_P`
@@ -1501,7 +1505,7 @@ const TOP_LEVEL_OPTION_GGZT = [
   {
     id: "兴趣点数据",
     label: "兴趣点数据",
-    icon:"医疗场所",
+    icon: "医疗场所",
     url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
     type: "mvt",
     newdataset: `erweidata:POI`
