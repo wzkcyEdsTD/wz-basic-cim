@@ -16,6 +16,9 @@
             <button v-if="isMAX2012" @click="openRtmpVideo" class="buttons">
               查看监控
             </button>
+            <button v-if="isPROJECT_CO" @click="openqlc" class="buttons">
+              工程全流程
+            </button>
             <table>
               <tbody>
                 <tr
@@ -44,6 +47,9 @@
             </table>
           </el-tab-pane>
         </el-tabs>
+      </div>
+      <div class="rtmpVideos" v-if="openxmxx">
+        <iframe :src="code"></iframe>
       </div>
       <videolist v-if="isRtmpVideoOpen" />
       <div style="display: none" v-if="fixedForceVideoData"></div>
@@ -88,6 +94,8 @@ export default {
       item: {},
       rtmpOn: true,
       isFrame: false,
+      openxmxx: false,
+      code: "",
     };
   },
   components: { rtmpVideo, videolist },
@@ -100,6 +108,9 @@ export default {
     ...mapGetters("map", ["forceBimData", "forceRoomData", "forceBimIDS"]),
     isMAX2012() {
       return ~this.forceBimData.map((item) => item.k).indexOf("VIDEO_URL");
+    },
+    isPROJECT_CO() {
+      return ~this.forceBimData.map((item) => item.k).indexOf("PROJECT_CO");
     },
     fixedForceBimData() {
       return [
@@ -180,6 +191,18 @@ export default {
       "SetForceBimSP",
       "SetForceVideo",
     ]),
+    openqlc() {
+      console.log("测试点击事件", this.forceBimData);
+      this.openxmxx = true;
+      for (let c = 0; c < this.forceBimData.length; c++) {
+        if (this.forceBimData[c].k == "PROJECT_CO") {
+          if (this.forceBimData[c].v !=null|| this.forceBimData[c].v != "undefined" || this.forceBimData[c].v != "") {
+            this.code = "https://wzdjdm.wzcitybrain.com:8888/html/oneMap/projectInfo.html?project_code=" +this.forceBimData[c].v +"&id=543";
+          }
+        }
+      }
+      console.log("全流程", this.code);
+    },
     async openRtmpVideo() {
       if (window.entitiesID != undefined) {
         window.entitiesID.forEach((item) => {
@@ -371,6 +394,7 @@ export default {
       this.$bus.$emit("cesium-3d-floorDIS", false);
     },
     closeBimFrame() {
+        this.openxmxx = false;
       this.closeFloorStructure();
       this.SetForceBimData([]);
       this.SetForceRoomData([]);
@@ -390,7 +414,35 @@ export default {
 }
 </style>
 
-<style>
+<style lang="less" scoped>
+.rtmpVideos {
+  position: fixed;
+  top: 13%;
+  right: 21%;
+  width: 60%;
+  height: 73%;
+  > iframe {
+    width: 100%;
+    height: 100%;
+  }
+  .close {
+    position: absolute;
+    right: 4px;
+    top: 0;
+    width: 0.2rem;
+    height: 0.2rem;
+    display: block;
+    .bg-image("../../../page/map/images/zoom-in");
+    transform: rotate(-45deg);
+    transition: all 0.1s linear;
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover {
+      transform: rotate(45deg);
+    }
+  }
+}
 .buttons {
   background-color: #00a3ff;
   border: none;

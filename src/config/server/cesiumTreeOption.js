@@ -383,6 +383,19 @@ const LEAN_GRAPHIS_OPTION_LC_BJ = [
     cameraDone: true
   },
   {
+    label: "新田园",
+    url:
+      "http://172.20.83.223:8098/iserver/services/3D-mongodb-binjiangshangwuqu/rest/realspace/datas/binjiangshangwuqu/config",
+    fwmurl:
+      "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
+    camera: {
+      x: -2878793.1701936345,
+      y: 4842125.339831269,
+      z: 2994968.7328084633
+    },
+    cameraDone: true
+  },
+  {
     label: "蒲州村(2016)",
     url:
       "http://172.20.83.223:8098/iserver/services/3D-QX_LC_2016/rest/realspace/datas/QX_LC_PuZhouCun_2016/config",
@@ -1103,6 +1116,23 @@ const TOP_LEVEL_OPTION_SKXX_SW_JZSW = [
     },
     cameraDone: true
   },
+  {
+    label: "滨江商务区精模",
+    url:
+      "http://172.20.83.223:8098/iserver/services/3D-mongodb-maxcimsample/rest/realspace/datas/max_cim_sample/config",
+    dataurl:
+      "http://172.20.83.223:8098/iserver/services/data-SW_DATA/rest/data",
+    dataBind: {
+      dataSourceName: "172.20.83.196_swdata",
+      dataSetName: "%E5%BB%BA%E7%AD%91_table"
+    },
+    camera: {
+      x: -2877074.5261789295,
+      y: 4842678.649871697,
+      z: 2993284.6421134197
+    },
+    cameraDone: true
+  },
 
 ];
 const QT_GRAPHIS_OPTION = [
@@ -1276,6 +1306,7 @@ const TOP_LEVEL_OPTION_ZYDC_SZY = [
 ];
 //城市部件
 const TOP_LEVEL_OPTION_ZYDC_CSBJ = [
+
   {
     label: "公用设施",
     url: "",
@@ -1290,7 +1321,8 @@ const TOP_LEVEL_OPTION_ZYDC_CSBJ = [
   },
   {
     label: "园林绿化",
-    url: "",
+    type:"image",
+    url: "http://172.20.83.223:8090/iserver/services/map-CIMERWEI/rest/maps/YLLH_LDXZ",
   },
   {
     label: "房屋土地",
@@ -1372,7 +1404,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "教育设施",
     label: "教育设施",
-    icon: "医疗场所",
+    icon:"学校",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:教育设施`
@@ -1380,7 +1412,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "绿化设施",
     label: "绿化设施",
-    icon: "医疗场所",
+    icon:"园林绿化类",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:绿化设施`
@@ -1388,7 +1420,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "商业设施",
     label: "商业设施",
-    icon: "医疗场所",
+    icon:"市场商场",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:商业设施`
@@ -1396,7 +1428,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "体育设施",
     label: "体育设施",
-    icon: "医疗场所",
+    icon:"体育运动场馆",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:体育设施`
@@ -1404,7 +1436,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "文化设施",
     label: "文化设施",
-    icon: "医疗场所",
+    icon:"文化场所",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:文化设施`
@@ -1412,7 +1444,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "养老设施",
     label: "养老设施",
-    icon: "医疗场所",
+    icon:"社会福利机构",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:养老设施`
@@ -1428,7 +1460,7 @@ const TOP_LEVEL_OPTION_GHGK_ZXGK = [
   {
     id: "交通设施",
     label: "交通设施",
-    icon: "医疗场所",
+    icon:"客运单位",
     url: "http://172.20.83.223:8098/iserver/services/data-DaJianDaMei/rest/data",
     type: "mvt",
     newdataset: `大建大美专项规划:交通设施`
@@ -1461,7 +1493,7 @@ const TOP_LEVEL_OPTION_GCJS = [
   {
     id: "集团项目",
     label: "集团项目",
-    icon: "医疗场所",
+    icon:"企业",
     url: "http://172.20.83.223:8090/iserver/services/data-WZKG0728/rest/data",
     type: "mvt",
     newdataset: `172.20.83.196_ersjdata:JTXM`
@@ -1469,7 +1501,7 @@ const TOP_LEVEL_OPTION_GCJS = [
   {
     id: "工程项目",
     label: "工程项目",
-    icon: "医疗场所",
+    icon:"工程项目点",
     url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
     type: "mvt",
     newdataset: `erweidata:V_TM_PROJECT_P`
@@ -1506,7 +1538,7 @@ const TOP_LEVEL_OPTION_GGZT = [
   {
     id: "兴趣点数据",
     label: "兴趣点数据",
-    icon: "医疗场所",
+    icon:"公用设施类",
     url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
     type: "mvt",
     newdataset: `erweidata:POI`
@@ -1529,8 +1561,12 @@ const TOP_LEVEL_OPTION_WLGZ_SZSS = [
     url: "",
   },
   {
+    id: "排水",
     label: "排水",
-    url: "",
+    icon:"综合监测点",
+    url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
+    type: "mvt",
+    newdataset: `erweidata:V_PS_WATER_QUALITY_MONITOR_P`
   },
   {
     label: "燃气",
@@ -1678,32 +1714,32 @@ const TOP_LEVEL_OPTION = [
       return { ...v, id: v.label };
     })
   },
-  {
-    label: "白模",
-    url:
-      "http://172.20.83.223:8098/iserver/services/3D-BaiMo/rest/realspace/datas/BaiMo_central/config"
-  },
-  {
-    label: "精模",
-    url:
-      "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/JZ/config",
-    dataurl:
-      "http://172.20.83.223:8098/iserver/services/data-SW_DATA/rest/data",
-    dlurl:
-      "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/FJZ/config",
-    riverurl:
-      "http://172.20.83.223:8098/iserver/services/3D-River_Slow/rest/realspace/datas/River@%E7%B2%BE%E6%A8%A1_%E5%AF%BC%E5%87%BA_2012/config",
-    dataBind: {
-      dataSourceName: "172.20.83.196_swdata",
-      dataSetName: "%E5%BB%BA%E7%AD%91_table"
-    },
-    camera: {
-      x: -2877074.5261789295,
-      y: 4842678.649871697,
-      z: 2993284.6421134197
-    },
-    cameraDone: true
-  },
+  // {
+  //   label: "白模",
+  //   url:
+  //     "http://172.20.83.223:8098/iserver/services/3D-BaiMo/rest/realspace/datas/BaiMo_central/config"
+  // },
+  // {
+  //   label: "精模",
+  //   url:
+  //     "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/JZ/config",
+  //   dataurl:
+  //     "http://172.20.83.223:8098/iserver/services/data-SW_DATA/rest/data",
+  //   dlurl:
+  //     "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/FJZ/config",
+  //   riverurl:
+  //     "http://172.20.83.223:8098/iserver/services/3D-River_Slow/rest/realspace/datas/River@%E7%B2%BE%E6%A8%A1_%E5%AF%BC%E5%87%BA_2012/config",
+  //   dataBind: {
+  //     dataSourceName: "172.20.83.196_swdata",
+  //     dataSetName: "%E5%BB%BA%E7%AD%91_table"
+  //   },
+  //   camera: {
+  //     x: -2877074.5261789295,
+  //     y: 4842678.649871697,
+  //     z: 2993284.6421134197
+  //   },
+  //   cameraDone: true
+  // },
 ];
 
 const SERVER_HOST = "https://ditu.wzcitybrain.com/iserver/services";

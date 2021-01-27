@@ -89,7 +89,9 @@
             <div class="right">
               <input
                 type="checkbox"
-                :checked="hospitalChecked.indexOf(item.attributes.SHORTNAME) >= 0"
+                :checked="
+                  hospitalChecked.indexOf(item.attributes.SHORTNAME) >= 0
+                "
                 @click="checkedOne(item)"
               />
             </div>
@@ -141,7 +143,7 @@ export default {
       entityMap: {},
       featureMap: {}, //  源数据,量小
       dsjdt: "",
-      ydhx:""
+      ydhx: "",
     };
   },
   computed: {
@@ -226,13 +228,15 @@ export default {
               : null;
           } else {
             this.getPOIPickedFeature(node);
-            // this.dsjdt = window.earth.imageryLayers.addImageryProvider(
-            //       new Cesium.SuperMapImageryProvider({
-            //         layers: "DSJ",
-            //         url:
-            //           "http://172.20.83.223:8091/iserver/services/map-agscachev2-YJDSJCGCS2000/rest/maps/YJ_DSJ_CGCS2000",
-            //       })
-            //     );
+            if (node.id == "工程项目") {
+              this.ydhx = window.earth.imageryLayers.addImageryProvider(
+                new Cesium.SuperMapImageryProvider({
+                  layers: "YDH",
+                  url:
+                    "http://172.20.83.223:8090/iserver/services/map-CIMERWEI/rest/maps/JSGC_DJDM",
+                })
+              );
+            }
           }
         } else if (node.label == "白模") {
           const LAYER = window.earth.scene.layers.find(node.id);
@@ -262,9 +266,13 @@ export default {
                 colorTable.insert(300, new Cesium.Color(1, 1, 1));
                 colorTable.insert(160, new Cesium.Color(0.95, 0.95, 0.95));
                 colorTable.insert(76, new Cesium.Color(0.7, 0.7, 0.7));
-                colorTable.insert(0, new Cesium.Color(13 / 255, 24 / 255, 45 / 255));
+                colorTable.insert(
+                  0,
+                  new Cesium.Color(13 / 255, 24 / 255, 45 / 255)
+                );
                 hyp.ColorTable = colorTable;
-                hyp.DisplayMode = Cesium.HypsometricSettingEnum.DisplayMode.FACE;
+                hyp.DisplayMode =
+                  Cesium.HypsometricSettingEnum.DisplayMode.FACE;
                 hyp.Opacity = 1;
                 //  贴图纹理
                 hyp.emissionTextureUrl =
@@ -272,7 +280,8 @@ export default {
                 hyp.emissionTexCoordUSpeed = 0.2;
                 LAYER.hypsometricSetting = {
                   hypsometricSetting: hyp,
-                  analysisMode: Cesium.HypsometricSettingEnum.AnalysisRegionMode.ARM_ALL,
+                  analysisMode:
+                    Cesium.HypsometricSettingEnum.AnalysisRegionMode.ARM_ALL,
                 };
               }
               const _LAYER_ = window.earth.scene.layers.find(node.id);
@@ -298,15 +307,71 @@ export default {
           window.earth.terrainProvider = ellipsoidProvider;
           const LAYERJM = window.earth.scene.layers.find(node.id);
           if (!LAYERJM) {
-            const PROMISEJM = window.earth.scene.addS3MTilesLayerByScp(node.url, {
-              name: node.id,
-            });
+            const PROMISEJM = window.earth.scene.addS3MTilesLayerByScp(
+              node.url,
+              {
+                name: node.id,
+              }
+            );
             const dlurl = window.earth.scene.addS3MTilesLayerByScp(node.dlurl, {
               name: "dlurl",
             });
-            const riverurl = window.earth.scene.addS3MTilesLayerByScp(node.riverurl, {
-              name: "riverurl",
+            const riverurl = window.earth.scene.addS3MTilesLayerByScp(
+              node.riverurl,
+              {
+                name: "riverurl",
+              }
+            );
+            Cesium.when(PROMISEJM, async (layers) => {
+              const _LAYERJM_ = window.earth.scene.layers.find(node.id);
+              node.dataBind &&
+                _LAYERJM_.setQueryParameter({
+                  ...node.dataBind,
+                  url: node.dataurl,
+                  isMerge: true,
+                });
             });
+            var mvtMap = window.mvtmaps;
+            var mapboxStyle = mvtMap.mapboxStyle;
+            var layers = mapboxStyle.layers;
+            for (let j = 0; j < layers.length; j++) {
+              if (layers[j].type == "line") {
+                mvtMap.setLayoutProperty(layers[j].id, "visibility", "none"); //显示某个图层
+              }
+            }
+            this.SetForceBimName("精模");
+          } else {
+            LAYERJM.visible = true;
+            this.SetForceBimName("精模");
+            var layerlength = window.earth.scene.layers._layers.values;
+            for (let i = 0; i < layerlength.length; i++) {
+              if (layerlength[i].name == "dlurl") {
+                layerlength[i].visible = true;
+              }
+              if (layerlength[i].name == "riverurl") {
+                layerlength[i].visible = true;
+              }
+            }
+            var mvtMap = window.mvtmaps;
+            var mapboxStyle = mvtMap.mapboxStyle;
+            var layers = mapboxStyle.layers;
+            for (let j = 0; j < layers.length; j++) {
+              if (layers[j].type == "line") {
+                mvtMap.setLayoutProperty(layers[j].id, "visibility", "none"); //显示某个图层
+              }
+            }
+          }
+        } else if (node.label == "滨江商务区精模") {
+          var ellipsoidProvider = new Cesium.EllipsoidTerrainProvider();
+          window.earth.terrainProvider = ellipsoidProvider;
+          const LAYERJM = window.earth.scene.layers.find(node.id);
+          if (!LAYERJM) {
+            const PROMISEJM = window.earth.scene.addS3MTilesLayerByScp(
+              node.url,
+              {
+                name: node.id,
+              }
+            );
             Cesium.when(PROMISEJM, async (layers) => {
               const _LAYERJM_ = window.earth.scene.layers.find(node.id);
               node.dataBind &&
@@ -357,7 +422,9 @@ export default {
           );
         } else if (node.type == "image") {
           const LAYER = this.imageLayer[node.id];
-          this.imageLayer[node.id] = window.earth.imageryLayers.addImageryProvider(
+          this.imageLayer[
+            node.id
+          ] = window.earth.imageryLayers.addImageryProvider(
             new Cesium.SuperMapImageryProvider({
               url: node.url,
               name: node.id,
@@ -377,19 +444,24 @@ export default {
           //倾斜摄影+覆盖面
           const LAYERS = window.earth.scene.layers.find(node.id);
           if (!LAYERS) {
-            const PROMISES = window.earth.scene.addS3MTilesLayerByScp(node.url, {
-              name: node.id,
-            });
+            const PROMISES = window.earth.scene.addS3MTilesLayerByScp(
+              node.url,
+              {
+                name: node.id,
+              }
+            );
             var getFeatureParam, getFeatureBySQLService, getFeatureBySQLParams;
             var names = node.label.split("(")[0];
             getFeatureParam = new SuperMap.REST.FilterParameter({
               attributeFilter: "NAME like '%" + names + "%'",
             });
-            getFeatureBySQLParams = new SuperMap.REST.GetFeaturesBySQLParameters({
-              queryParameter: getFeatureParam,
-              toIndex: -1,
-              datasetNames: ["172.20.83.196_ersjdata:" + "QXSY"],
-            });
+            getFeatureBySQLParams = new SuperMap.REST.GetFeaturesBySQLParameters(
+              {
+                queryParameter: getFeatureParam,
+                toIndex: -1,
+                datasetNames: ["172.20.83.196_ersjdata:" + "QXSY"],
+              }
+            );
             getFeatureBySQLService = new SuperMap.REST.GetFeaturesBySQLService(
               node.fwmurl,
               {
@@ -452,10 +524,13 @@ export default {
         }
         node.camera &&
           this.setview(
-            node.cameraDone ? node.camera : Cesium.Cartesian3.fromDegrees(...node.camera)
+            node.cameraDone
+              ? node.camera
+              : Cesium.Cartesian3.fromDegrees(...node.camera)
           );
       } else {
         window.earth.imageryLayers.remove(this.dsjdt);
+
         const LAYER =
           node.type == "model"
             ? window.earth.scene.layers.find(node.id)
@@ -464,7 +539,11 @@ export default {
           LAYER.show = false;
           LAYER.visible = false;
         }
-        if (node.icon && this.entityMap[node.id] && window.earth.dataSources.length) {
+        if (
+          node.icon &&
+          this.entityMap[node.id] &&
+          window.earth.dataSources.length
+        ) {
           this.entityMap[node.id].show = false;
           if (node.withExtraData) {
             this[node.saveExtraDataByGeometry]([]);
@@ -478,17 +557,22 @@ export default {
             value: eventNode.length ? eventNode[0].componentKey : null,
           });
         } else if (node.dlurl) {
+          const Layers = window.earth.scene.layers.find(node.id);
+          Layers.show = false;
+          Layers.visible = false;
           this.SetForceBimName([]);
           console.log("相机参数1", window.earth.scene.camera.position);
           console.log("相机参数2", window.earth.scene.camera.heading);
           console.log("相机参数3", window.earth.scene.camera.pitch);
           console.log("相机参数4", window.earth.scene.camera.roll);
           var layerlength = window.earth.scene.layers._layers.values;
-          window.earth.scene.terrainProvider = new Cesium.CesiumTerrainProvider({
-            url:
-              "http://172.20.83.223:8098/iserver/services/3D-DEM_TT/rest/realspace/datas/2018gddem",
-            requestWaterMask: true,
-          });
+          window.earth.scene.terrainProvider = new Cesium.CesiumTerrainProvider(
+            {
+              url:
+                "http://172.20.83.223:8098/iserver/services/3D-DEM_TT/rest/realspace/datas/2018gddem",
+              requestWaterMask: true,
+            }
+          );
           for (let i = 0; i < layerlength.length; i++) {
             if (layerlength[i].name == "dlurl") {
               layerlength[i].visible = false;
@@ -505,7 +589,37 @@ export default {
               mvtMap.setLayoutProperty(layers[j].id, "visibility", "visible"); //显示某个图层
             }
           }
+        } else if (node.label == "滨江商务区精模") {
+          const Layers = window.earth.scene.layers.find(node.id);
+          Layers.show = false;
+          Layers.visible = false;
+          this.SetForceBimName([]);
+          console.log("相机参数1", window.earth.scene.camera.position);
+          console.log("相机参数2", window.earth.scene.camera.heading);
+          console.log("相机参数3", window.earth.scene.camera.pitch);
+          console.log("相机参数4", window.earth.scene.camera.roll);
+          var layerlength = window.earth.scene.layers._layers.values;
+          window.earth.scene.terrainProvider = new Cesium.CesiumTerrainProvider(
+            {
+              url:
+                "http://172.20.83.223:8098/iserver/services/3D-DEM_TT/rest/realspace/datas/2018gddem",
+              requestWaterMask: true,
+            }
+          );
+          var mvtMap = window.mvtmaps;
+          var mapboxStyle = mvtMap.mapboxStyle;
+          var layers = mapboxStyle.layers;
+          for (let j = 0; j < layers.length; j++) {
+            if (layers[j].type == "line") {
+              mvtMap.setLayoutProperty(layers[j].id, "visibility", "visible"); //显示某个图层
+            }
+          }
+        } else if (node.label == "白模") {
+          const Layers = window.earth.scene.layers.find(node.id);
+          Layers.show = false;
+          Layers.visible = false;
         } else if (node.ids) {
+          window.earth.imageryLayers.remove(this.dsjdt);
           var mvtMap = window.mvtmaps;
           var mapboxStyle = mvtMap.mapboxStyle;
           var layers = mapboxStyle.layers;
