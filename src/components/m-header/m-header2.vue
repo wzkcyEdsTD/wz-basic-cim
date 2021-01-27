@@ -1,16 +1,48 @@
 <template>
   <div class="wrapper no-print">
     <div class="toubu">
-       <a href="https://sourcelayer.wzcitybrain.com/#/sourcelayer" style="text-decoration:none;color:white;margin-right: 4%;" target="_blank">城市大脑</a>
-     <a href="http://192.168.39.169:9091/login" target="_blank" style="text-decoration:none;color:white;margin-right: 4%;">污水零直排</a>
-         <a href="http://10.36.234.84:9000/#/map" style="text-decoration:none;color:white;margin-right: 4%;" target="_blank">智慧应急</a>
+      <a
+        href="https://sourcelayer.wzcitybrain.com/#/sourcelayer"
+        style="text-decoration: none; color: white; margin-right: 4%"
+        target="_blank"
+        >城市大脑</a
+      >
+      <a
+        href="http://192.168.39.169:9091/login"
+        target="_blank"
+        style="text-decoration: none; color: white; margin-right: 4%"
+        >污水零直排</a
+      >
+      <img
+        style="
+          vertical-align: middle;
+          width: 20px;
+          margin-right: 0.1rem;
+          font-size: 0.21rem;
+        "
+        src="../../../static/image/icon.png"
+      />温州设计集团
     </div>
     <div class="title_first">温州市CIM基础平台</div>
     <div class="toubu">
-     <a href="http://10.36.198.161:3000/cim/#/sourcelayer" style="text-decoration:none;color:white;margin-right: 4%;" target="_blank">基层治理</a>
-     <a href="http://125.124.19.162:8888/" target="_blank" style="text-decoration:none;color:white;margin-right: 4%;">智慧停车</a>
-
-       <img style="vertical-align: middle;width:20px;margin-right: 0.1rem;font-size: 0.21rem;" src="../../../static/image/icon.png" />温州设计集团
+      <a
+        href="http://10.36.198.161:3000/cim/#/sourcelayer"
+        style="text-decoration: none; color: white; margin-right: 4%"
+        target="_blank"
+        >政法系统</a
+      >
+      <a
+        href="http://10.36.234.84:9090/cas/login?service=http://10.36.234.84:9000/login/cas"
+        target="_blank"
+        style="text-decoration: none; color: white; margin-right: 4%"
+        >智慧应急</a
+      >
+      <a
+        href="http://125.124.19.162:8888/"
+        style="text-decoration: none; color: white; margin-right: 4%"
+        target="_blank"
+        >智慧停车</a
+      >
     </div>
     <div class="nav1" :class="{ nofull: ulWidth < boxWidth }">
       <div class="nav-box">
@@ -663,13 +695,13 @@ export default {
       padding: 0.1rem;
     }
   }
-  .toubu{
+  .toubu {
     color: white;
     flex: 1;
     text-align: center;
     line-height: 0.6rem;
     font-size: 18px;
-    }
+  }
   .list_line {
     width: 0.01rem;
     height: 0.16rem;

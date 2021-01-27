@@ -88,43 +88,6 @@ export default {
     this.promise = undefined;
   },
   methods: {
-    eventtouming() {
-      const that = this;
-      //监听滑动条变化，改变alpha的值，设置地表透明度
-      var viewModel = {
-        color: "#ffffff",
-        overGroundAlpha: 0,
-      };
-      Cesium.when(this.promise, function (layers) {
-        const imageryLayers = window.earth.scene.imageryLayers;
-        that.overGroundLayer = imageryLayers.get(1);
-        //进行图层的透明控制
-        Cesium.knockout.track(viewModel);
-        var tlbar = document.getElementById("toolbar");
-        Cesium.knockout.applyBindings(viewModel, tlbar);
-        Cesium.knockout.getObservable(viewModel, "overGroundAlpha").subscribe(
-          // 设置地表图层透明度 1为不透明 0为透明
-          function (newValue) {
-            that.overGroundLayer.transparentBackColorTolerance = newValue;
-            if (newValue == 1) {
-              window.earth.scene.globe.globeAlpha = 0;
-            } else if (newValue != 1) {
-              window.earth.scene.globe.globeAlpha = 1;
-            }
-          }
-        );
-        that.handlerPolygon.activeEvt.addEventListener(function (isActive) {
-          if (isActive == true) {
-            window.earth.enableCursorStyle = false;
-            window.earth._element.style.cursor = "";
-            $("body").removeClass("drawCur").addClass("drawCur");
-          } else {
-            window.earth.enableCursorStyle = true;
-            $("body").removeClass("drawCur");
-          }
-        });
-      });
-    },
     //  事件绑定
     eventRegsiter() {
       const that = this;
