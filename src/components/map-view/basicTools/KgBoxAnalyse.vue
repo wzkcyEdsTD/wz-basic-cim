@@ -1,15 +1,5 @@
 <template>
   <div class="ThreeDContainer kg-box-analyse" :style="{ width: '300px' }">
-    <div>盒子高度：{{ sliderValue }}</div>
-    <div class="slider-wrapper" @click.stop>
-      <el-slider
-        @change="changeValue"
-        :min="min"
-        :max="max"
-        v-model="sliderValue"
-        :disabled="!dataDone"
-      ></el-slider>
-    </div>
     <KgLegend />
   </div>
 </template>
@@ -37,38 +27,25 @@ export default {
     ...mapActions("map", []),
     //  初始化BIM场景
     initBimScene() {
-      if (window.extraHash.kgKml) {
+      const layer = window.earth.scene.layers.find("kgbox");
+      if (layer) {
         this.entityVisible(true);
-        this.dataDone = true;
       } else {
-        window.earth.dataSources
-          .add(
-            Cesium.KmlDataSource.load("/static/kml/polygon.kml", {
-              camera: window.earth.scene.camera,
-              canvas: window.earth.scene.canvas,
-              clampToGround: true,
-            })
-          )
-          .then((data) => {
-            window.extraHash.kgKml = data;
-            window.earth.zoomTo(data);
-            this.dataDone = true;
-            //  初始高度1
-            this.changeValue(1);
-          });
+        const promise = window.earth.scene.addS3MTilesLayerByScp(
+          `http://172.20.83.223:8098/iserver/services/3D-kongui/rest/realspace/datas/konggui/config`,
+          { name: "kgbox" }
+        );
+        Cesium.when(promise, async () => {
+          const _layer_ = window.earth.scene.layers.find("kgbox");
+          var s = new Cesium.Style3D();
+          s.fillForeColor = new Cesium.Color(1.0, 1.0, 1.0, 0.3);
+          _layer_.style3D = s;
+        });
       }
     },
-    //  slider init
-    changeValue(val) {
-      window.extraHash.kgKml.entities.values.map((v) => {
-        v.polygon["extrudedHeight"] = parseFloat(val);
-      });
-    },
     entityVisible(boolean) {
-      this.changeValue(1);
-      window.extraHash.kgKml.entities.values.map((v) => {
-        v.show = boolean;
-      });
+      const layer = window.earth.scene.layers.find("kgbox");
+      layer.visible = boolean;
     },
   },
 };
