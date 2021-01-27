@@ -169,4 +169,9 @@ export const CIVILIZATION_CENTER_URL = {
   ABOVEGROUND_DATA: {
     url: "http://172.20.83.223:8098/iserver/services/data-Citizens_Parkinglot_table/rest/data",
   },
+  GEOLOGY: "http://172.20.83.223:8098/iserver/services/3D-mongodb-CIMGeology/rest/realspace",
+  GEOLOGY_DATA: {
+    url: "http://172.20.83.223:8098/iserver/services/data-DiZhiTi_table/rest/data",
+    dataSourceName: "地质体_table"
+  }
 } 

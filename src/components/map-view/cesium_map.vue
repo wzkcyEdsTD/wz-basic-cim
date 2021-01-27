@@ -11,10 +11,7 @@
     <div id="cesiumContainer" />
     <div v-if="mapLoaded">
       <Coverage />
-      <RegionSimulateFlood
-        ref="regionsimulateflood"
-        v-if="showSubFrame == '3d1'"
-      />
+      <RegionSimulateFlood ref="regionsimulateflood" v-if="showSubFrame == '3d1'" />
       <BimAnalyse ref="bimanalyse" v-if="showSubFrame == '3d2'" />
       <StationTour ref="stationtour" v-if="showSubFrame == '3d3'" />
       <UnderGround ref="underground" v-if="showSubFrame == '3d4'" />
@@ -24,12 +21,10 @@
       <KgBoxAnalyse ref="kgboxanalyse" v-if="showSubFrame == '3d10'" />
       <CivilizationCenter ref="civilizationcenter" v-if="showSubFrame == '3d11'" />
       <BayonetPopup ref="bayonetPopup" v-if="showSubFrame == '3d12'" />
+      <GeologyAnalyse ref="geologyanalyse" v-if="showSubFrame == '3d13'" />
       <Bimsmzx ref="bimsmzx" v-if="showSubFrame == '3d8'" />
       <CesiumMapTool ref="cesiummaptool" v-if="showSubTool == '3t1'" />
-      <VisualizationAnalyse
-        ref="visualizationanalyse"
-        v-if="showSubTool == '3t2'"
-      />
+      <VisualizationAnalyse ref="visualizationanalyse" v-if="showSubTool == '3t2'" />
       <SectionAnalyse ref="sectionanalyse" v-if="showSubTool == '3t3'" />
       <sightline ref="sightline" v-if="showSubTool == '3t4'" />
       <ShadowQuery ref="ShadowQuery" v-if="showSubTool == '3t5'" />
@@ -55,6 +50,7 @@ import RegionSimulateFlood from "./basicTools/RegionSimulateFlood";
 import BimAnalyse from "./basicTools/BimAnalyse";
 import Bimsmzx from "./basicTools/Bimsmsz";
 import StationTour from "./basicTools/StationTour";
+import GeologyAnalyse from "./basicTools/GeologyAnalyse";
 import trackBIM from "./basicTools/trackBIM";
 import Riversline from "./basicTools/Riversline";
 import KgBoxAnalyse from "./basicTools/KgBoxAnalyse";
@@ -106,6 +102,7 @@ export default {
     CivilizationCenter,
     DSMAnalyse,
     UnderGround,
+    GeologyAnalyse,
     Riversline,
     VisualizationAnalyse,
     SectionAnalyse,
@@ -147,8 +144,7 @@ export default {
     ...mapActions("map", ["SetForceBimData", "SetForceJMData"]),
     initPostRender() {
       window.earth.scene.postRender.addEventListener(() => {
-        if (!window.earth || !this.mapLoaded || !Object.keys(this.$refs).length)
-          return;
+        if (!window.earth || !this.mapLoaded || !Object.keys(this.$refs).length) return;
         //  *****[medicalList] 医疗点位*****
         const medicalList = this.medicalListWithGeometry;
         if (medicalList && medicalList.length) {
@@ -164,8 +160,7 @@ export default {
               G_medicalList.push({ ...item, pointToWindow });
             }
           });
-          this.$refs.medicalPopup &&
-            this.$refs.medicalPopup.doPopup(G_medicalList);
+          this.$refs.medicalPopup && this.$refs.medicalPopup.doPopup(G_medicalList);
         } else {
           this.$refs.medicalPopup && this.$refs.medicalPopup.doPopup([]);
         }
@@ -194,8 +189,7 @@ export default {
         toIndex: -1,
         datasetNames: ["JinFengYuan:" + "金丰园2栋_户型面"], // 本例中“户型面”为数据源名称，“专题户型面2D”为楼层面相应的数据集名称
       });
-      var url =
-        "http://172.20.83.223:8098/iserver/services/data-JinFengYuan/rest/data"; // 数据服务地址
+      var url = "http://172.20.83.223:8098/iserver/services/data-JinFengYuan/rest/data"; // 数据服务地址
       getFeatureBySQLService = new SuperMap.REST.GetFeaturesBySQLService(url, {
         eventListeners: {
           processCompleted: async (queryEventArgs) => {
@@ -219,14 +213,10 @@ export default {
                 return;
               }
               var bottomHeight = Number(
-                selectedFeature.fieldValues[
-                  selectedFeature.fieldNames.indexOf("BOTTOM")
-                ]
+                selectedFeature.fieldValues[selectedFeature.fieldNames.indexOf("BOTTOM")]
               ); // 底部高程
               var extrudeHeight = Number(
-                selectedFeature.fieldValues[
-                  selectedFeature.fieldNames.indexOf("LSG")
-                ]
+                selectedFeature.fieldValues[selectedFeature.fieldNames.indexOf("LSG")]
               ); // 层高（拉伸高度）
               Cesium.GroundPrimitive.bottomAltitude = bottomHeight; // 矢量面贴对象的底部高程
               Cesium.GroundPrimitive.extrudeHeight = extrudeHeight; // 矢量面贴对象的拉伸高度
@@ -416,9 +406,7 @@ export default {
       imagelayer.transparentBackColor = new Cesium.Color(0.0, 0.0, 0.0, 1);
       imagelayer.transparentBackColorTolerance = 0.1;
       // 叠加四大流域范围
-      var promiseroute11 = Cesium.GeoJsonDataSource.load(
-        "/static/yjjson/四大流域.json"
-      );
+      var promiseroute11 = Cesium.GeoJsonDataSource.load("/static/yjjson/四大流域.json");
       promiseroute11
         .then(function (dataSource) {
           viewer.dataSources.add(dataSource);
@@ -490,7 +478,7 @@ export default {
           }
         }
         for (let f = 0; f < _data_.length; f++) {
-          if (_data_[f].k == "直径" || _data_[f].k == "长度") {
+          if (_data_[f].k == "直径" || _data_[f].k == "长度" || _data_[f].k == "地质层") {
             gx = true;
             break;
           }

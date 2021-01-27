@@ -1188,7 +1188,8 @@ const TOP_LEVEL_OPTION_SKXX_SW = [
   },
   {
     label: "地下空间三维模型",
-    url: "",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d13"
   },
   {
     label: "场地三维模型",
