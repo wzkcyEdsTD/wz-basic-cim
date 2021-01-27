@@ -1,16 +1,9 @@
 <template>
   <div class="ThreeDContainer civilization-center" :style="{ width: '400px' }">
-    <el-divider content-position="left" v-if="false">楼梯分层</el-divider>
-    <div class="civilization-frame" v-if="false">
-      <div>分离高度：{{ hValue }}</div>
-      <div class="slider-wrapper" @click.stop>
-        <el-slider
-          @change="change_Height_Value"
-          :min="hMin"
-          :max="hMax"
-          v-model="hValue"
-        ></el-slider>
-      </div>
+    <el-divider content-position="left">范围裁剪</el-divider>
+    <div class="civilization-frame">
+      <el-button class="elformbtn" @click="doTailor">开始裁剪</el-button>
+      <el-button class="elformbtn" @click="clearTailor">清除</el-button>
     </div>
     <el-divider content-position="left">地表透明度</el-divider>
     <div class="civilization-frame">
@@ -52,16 +45,15 @@ const _ABOVEGROUND_HASH_ = {
   Block: "citizens_table",
 };
 let handlerPolygon = undefined;
+let handlerBox = undefined;
+let editorBox = undefined;
+let boxEntity = undefined;
 import { CIVILIZATION_CENTER_URL } from "config/server/mapConfig";
 import { mapActions } from "vuex";
 export default {
   name: "CivilizationCenter",
   data() {
     return {
-      //  分层数据
-      hMin: 0,
-      hMax: 100,
-      hValue: 0,
       //  透明度
       aMin: 0,
       aMax: 100,
@@ -71,6 +63,7 @@ export default {
   async mounted() {
     this.initScene();
     this.initExcavate();
+    this.initTailor();
     this.cameraMove();
   },
   beforeDestroy() {
@@ -153,6 +146,88 @@ export default {
         handlerPolygon.deactivate();
         handlerPolygon.activate();
       });
+    },
+    initTailor() {
+      handlerBox = new Cesium.DrawHandler(window.earth, Cesium.DrawMode.Box);
+      handlerBox.drawEvt.addEventListener((e) => {
+        boxEntity = e.object;
+        var newDim = boxEntity.box.dimensions.getValue();
+        var position = boxEntity.position.getValue(0);
+        var boxOption = {
+          dimensions: newDim,
+          position,
+          clipMode: "clip_behind_all_plane",
+          heading: 0,
+        };
+
+        //box编辑
+        editorBox = new Cesium.BoxEditor(window.earth, boxEntity);
+        editorBox.editEvt.addEventListener((e) => {
+          boxEntity.box.dimensions = e.dimensions;
+          boxEntity.position = e.position;
+          boxEntity.orientation = e.orientation;
+          this.setClipBox();
+        });
+        editorBox.distanceDisplayCondition = new Cesium.DistanceDisplayCondition(0, 950);
+        editorBox.activate();
+        this.setAllLayersClipOptions(boxOption);
+        handlerBox.clear();
+        handlerBox.deactivate();
+      });
+    },
+    setClipBox() {
+      var newDim = boxEntity.box.dimensions.getValue();
+      var position = boxEntity.position.getValue(0);
+      var heading = 0;
+      if (typeof boxEntity.orientation != "undefined") {
+        let rotationM3 = Cesium.Matrix3.fromQuaternion(
+          boxEntity.orientation._value,
+          new Cesium.Matrix3()
+        );
+        let localFrame = Cesium.Matrix4.fromRotationTranslation(
+          rotationM3,
+          Cesium.Cartesian3.ZERO,
+          new Cesium.Matrix4()
+        );
+        let inverse = Cesium.Matrix4.inverse(
+          Cesium.Transforms.eastNorthUpToFixedFrame(position),
+          new Cesium.Matrix4()
+        );
+        let hprm = Cesium.Matrix4.multiply(inverse, localFrame, new Cesium.Matrix4());
+        var rotation = Cesium.Matrix4.getMatrix3(hprm, new Cesium.Matrix3());
+        let hpr = Cesium.HeadingPitchRoll.fromQuaternion(
+          Cesium.Quaternion.fromRotationMatrix(rotation)
+        );
+        heading = hpr.heading;
+      }
+      var boxOptions = {
+        dimensions: newDim,
+        position,
+        clipMode: "clip_behind_all_plane",
+        heading,
+      };
+      this.setAllLayersClipOptions(boxOptions);
+    },
+    setAllLayersClipOptions(boxOptions) {
+      Object.keys({ ..._UNDERGROUND_HASH_, ..._ABOVEGROUND_HASH_ }).map((key) => {
+        const _KEY_ = `civilization_center_${key}`;
+        const layer = window.earth.scene.layers.find(_KEY_);
+        layer.setCustomClipBox(boxOptions);
+      });
+    },
+    doTailor() {
+      handlerBox.activate();
+    },
+    clearTailor() {
+      Object.keys({ ..._UNDERGROUND_HASH_, ..._ABOVEGROUND_HASH_ }).map((key) => {
+        const _KEY_ = `civilization_center_${key}`;
+        const layer = window.earth.scene.layers.find(_KEY_);
+        layer.clearCustomClipBox();
+      });
+      editorBox.deactivate();
+      handlerBox.clear();
+      handlerBox.deactivate();
+      window.earth.entities.removeAll();
     },
     /**
      * 图层控制
