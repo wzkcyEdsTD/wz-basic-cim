@@ -1032,7 +1032,7 @@ export default {
     console.log("初始化");
     this.dataUrl = MAP_CONFIG.dataurl;
     this.basemapTiles = MAP_CONFIG.basemapTiles;
-    this.createBaseMapAndLayer();
+    // this.createBaseMapAndLayer();
 
     var me = this;
     window.showInfo = function () {

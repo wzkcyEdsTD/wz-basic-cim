@@ -233,9 +233,9 @@ export default {
       getFeatureBySQLService.processAsync(getFeatureBySQLParams);
     },
     initHandler() {
-      this.handler = new Cesium.ScreenSpaceEventHandler(window.earth.scene.canvas);
+      const handler = new Cesium.ScreenSpaceEventHandler(window.earth.scene.canvas);
       // 监听左键点击事件
-      this.handler.setInputAction((e) => {
+      handler.setInputAction((e) => {
         //console.log("精模",e)
         const pick = window.earth.scene.pick(e.position);
         console.log("点击事件", pick);
