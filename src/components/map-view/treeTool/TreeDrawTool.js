@@ -31,6 +31,7 @@ const fixFieldsByArr = fields => {
     const reg = new RegExp("[\\u4E00-\\u9FFF]+", "g");
     reg.test(caption) ? (fieldHash[name] = caption) : undefined;
   });
+  console.log("转化",fieldHash);
   return fieldHash;
 };
 

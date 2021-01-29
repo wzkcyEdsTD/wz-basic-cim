@@ -226,6 +226,15 @@ export default {
                   this
                 )
               : null;
+            if (node.id == "工程项目") {
+              this.ydhx = window.earth.imageryLayers.addImageryProvider(
+                new Cesium.SuperMapImageryProvider({
+                  layers: "YDH",
+                  url:
+                    "http://172.20.83.223:8090/iserver/services/map-CIMERWEI/rest/maps/JSGC_DJDM",
+                })
+              );
+            }
           } else {
             this.getPOIPickedFeature(node);
             if (node.id == "工程项目") {
@@ -417,7 +426,7 @@ export default {
           } else if (node.url) {
           }
         } else if (node.type == "bim") {
-          ["安置房BIM分析", "机场BIM场景", "S1线轨道场景"].filter(
+          ["安置房BIM分析", "机场BIM场景", "S1线轨道场景", "市民中心", "超高层"].filter(
             (v) => v != node.id && this.$refs.tree.setChecked(v, false)
           );
         } else if (node.type == "image") {
@@ -529,6 +538,7 @@ export default {
               : Cesium.Cartesian3.fromDegrees(...node.camera)
           );
       } else {
+        window.earth.imageryLayers.remove(this.ydhx);
         window.earth.imageryLayers.remove(this.dsjdt);
 
         const LAYER =

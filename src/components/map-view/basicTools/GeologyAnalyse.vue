@@ -19,7 +19,7 @@ const _ABOVEGROUND_HASH_ = {
   B1土建: "B1土建_table",
 };
 const _GEOLOGY_HASH_ = {
-  CIM_Geology: "地质体",
+  CIM_Geology: "地质体7",
 };
 export default {
   name: "GeologyAnalyse",

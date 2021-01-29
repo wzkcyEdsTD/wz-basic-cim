@@ -1085,7 +1085,11 @@ const BIM_GRAPHIS_OPTION = [
     label: "市民中心",
     componentEvent: "cesium-3d-event",
     componentKey: "3d11",
-    //componentKey: "3d8"
+  },
+  {
+    label: "超高层",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d14",
   },
 ];
 //建筑三维模型
@@ -1100,7 +1104,7 @@ const TOP_LEVEL_OPTION_SKXX_SW_JZSW = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/JZ/config",
     dataurl:
-      "http://172.20.83.223:8098/iserver/services/data-SW_DATA/rest/data",
+      "http://172.20.83.223:8098/iserver/services/data-SW_Data/rest/data",
     dlurl:
       "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/FJZ/config",
     riverurl:
@@ -1110,9 +1114,9 @@ const TOP_LEVEL_OPTION_SKXX_SW_JZSW = [
       dataSetName: "%E5%BB%BA%E7%AD%91_table"
     },
     camera: {
-      x: -2877074.5261789295,
-      y: 4842678.649871697,
-      z: 2993284.6421134197
+      x: -2876906.002533756,
+      y: 4841075.198844643,
+      z: 2995213.4453336787,
     },
     cameraDone: true
   },
@@ -1121,15 +1125,15 @@ const TOP_LEVEL_OPTION_SKXX_SW_JZSW = [
     url:
       "http://172.20.83.223:8098/iserver/services/3D-mongodb-maxcimsample/rest/realspace/datas/max_cim_sample/config",
     dataurl:
-      "http://172.20.83.223:8098/iserver/services/data-SW_DATA/rest/data",
+      "http://172.20.83.223:8098/iserver/services/data-SW_Data/rest/data",
     dataBind: {
       dataSourceName: "172.20.83.196_swdata",
       dataSetName: "%E5%BB%BA%E7%AD%91_table"
     },
     camera: {
-      x: -2877074.5261789295,
-      y: 4842678.649871697,
-      z: 2993284.6421134197
+      x: -2876906.002533756,
+      y: 4841075.198844643,
+      z: 2995213.4453336787,
     },
     cameraDone: true
   },
@@ -1185,7 +1189,7 @@ const TOP_LEVEL_OPTION_SKXX_CHYG = [
   {
     id: "全景VR",
     label: "全景VR",
-    icon: "医疗场所",
+    icon: "视频监控",
     url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
     type: "mvt",
     newdataset: `erweidata:quanjin`
@@ -1214,7 +1218,8 @@ const TOP_LEVEL_OPTION_SKXX_SW = [
   },
   {
     label: "管线管廊三维模型",
-    url: "",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d15"
   },
   {
     label: "地下空间三维模型",
@@ -1286,7 +1291,8 @@ const TOP_LEVEL_OPTION_ZYDC_DZDC = [
 const TOP_LEVEL_OPTION_ZYDC_GDZY = [
   {
     label: "耕地资源",
-    url: "",
+    type:"image",
+    url: "http://172.20.83.223:8090/iserver/services/map-CIMERWEI/rest/maps/GDZY",
   },
   {
     label: "永久基本农田",
@@ -1297,11 +1303,16 @@ const TOP_LEVEL_OPTION_ZYDC_GDZY = [
 const TOP_LEVEL_OPTION_ZYDC_SZY = [
   {
     label: "水系水文",
-    url: "",
+    type:"image",
+    url: "http://172.20.83.223:8090/iserver/services/map-CIMERWEI/rest/maps/river",
   },
   {
+    id: "水利工程",
     label: "水利工程",
-    url: "",
+    icon:"水位监测点",
+    url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
+    type: "mvt",
+    newdataset: `erweidata:river_sz`
   },
 ];
 //城市部件
@@ -1337,7 +1348,8 @@ const TOP_LEVEL_OPTION_ZYDC_CSBJ = [
 const TOP_LEVEL_OPTION_ZYDC = [
   {
     label: "国土调查",
-    url: "",
+    type:"image",
+    url: "http://172.20.83.223:8090/iserver/services/map-CIMERWEI/rest/maps/GTDC",
   },
   {
     id: "地质调查",
@@ -1376,7 +1388,8 @@ const TOP_LEVEL_OPTION_GHGK_GTKJ = [
   },
   {
     label: "详细规划",
-    url: "",
+    componentEvent: "cesium-3d-event",
+    componentKey: "3d10"
   },
 ];
 //专项规划
@@ -1482,11 +1495,11 @@ const TOP_LEVEL_OPTION_GHGK = [
       return { ...v, id: v.label };
     })
   },
-  {
-    label: "控规盒子",
-    componentEvent: "cesium-3d-event",
-    componentKey: "3d10"
-  },
+  // {
+  //   label: "控规盒子",
+  //   componentEvent: "cesium-3d-event",
+  //   componentKey: "3d10"
+  // },
 ];
 //工程建设
 const TOP_LEVEL_OPTION_GCJS = [
@@ -1510,12 +1523,20 @@ const TOP_LEVEL_OPTION_GCJS = [
 //法人数据
 const TOP_LEVEL_OPTION_GGZT_FRSJ = [
   {
+    id: "机关",
     label: "机关",
-    url: "",
+    icon:"机关",
+    url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
+    type: "mvt",
+    newdataset: `erweidata:POI_JGDW`
   },
   {
+    id: "事业单位",
     label: "事业单位",
-    url: "",
+    icon:"事业单位",
+    url: "http://172.20.83.223:8090/iserver/services/data-CIMERWEI/rest/data",
+    type: "mvt",
+    newdataset: `erweidata:POI_QSYDW`
   },
   {
     label: "企业",
@@ -1714,32 +1735,6 @@ const TOP_LEVEL_OPTION = [
       return { ...v, id: v.label };
     })
   },
-  // {
-  //   label: "白模",
-  //   url:
-  //     "http://172.20.83.223:8098/iserver/services/3D-BaiMo/rest/realspace/datas/BaiMo_central/config"
-  // },
-  // {
-  //   label: "精模",
-  //   url:
-  //     "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/JZ/config",
-  //   dataurl:
-  //     "http://172.20.83.223:8098/iserver/services/data-SW_DATA/rest/data",
-  //   dlurl:
-  //     "http://172.20.83.223:8098/iserver/services/3D-mongodb4/rest/realspace/datas/FJZ/config",
-  //   riverurl:
-  //     "http://172.20.83.223:8098/iserver/services/3D-River_Slow/rest/realspace/datas/River@%E7%B2%BE%E6%A8%A1_%E5%AF%BC%E5%87%BA_2012/config",
-  //   dataBind: {
-  //     dataSourceName: "172.20.83.196_swdata",
-  //     dataSetName: "%E5%BB%BA%E7%AD%91_table"
-  //   },
-  //   camera: {
-  //     x: -2877074.5261789295,
-  //     y: 4842678.649871697,
-  //     z: 2993284.6421134197
-  //   },
-  //   cameraDone: true
-  // },
 ];
 
 const SERVER_HOST = "https://ditu.wzcitybrain.com/iserver/services";

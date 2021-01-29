@@ -7,7 +7,8 @@
  * @FilePath: \wz-city-culture-tour\src\components\medical-view\commonFrame\DetailPopup\DetailPopup.vue
 -->
 <template>
-  <div id="forcePopUp" v-if="forcePosition.x && forcePosition.y">
+  <!-- <div id="forcePopUp" v-if="forcePosition.x && forcePosition.y"> -->
+     <div id="forcePopUp" v-if="false">
     <div
       id="forcePopUpContent"
       class="leaflet-popup"

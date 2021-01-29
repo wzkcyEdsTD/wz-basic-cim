@@ -32,10 +32,18 @@
               </tbody>
             </table>
           </el-tab-pane>
-          <el-tab-pane label="房间信息" name="room" v-if="fixedForceRoomData.length">
+          <el-tab-pane
+            label="房间信息"
+            name="room"
+            v-if="fixedForceRoomData.length"
+          >
             <div v-if="forceBimIDS.length">
-              <button @click="openFloorStructure" class="buttons">查看楼层结构</button>
-              <button @click="closeFloorStructure" class="buttons">关闭楼层结构</button>
+              <button @click="openFloorStructure" class="buttons">
+                查看楼层结构
+              </button>
+              <button @click="closeFloorStructure" class="buttons">
+                关闭楼层结构
+              </button>
             </div>
             <table>
               <tbody>
@@ -49,6 +57,7 @@
         </el-tabs>
       </div>
       <div class="rtmpVideos" v-if="openxmxx">
+        <i class="close" @click="closeRtmpVideo"></i>
         <iframe :src="code"></iframe>
       </div>
       <videolist v-if="isRtmpVideoOpen" />
@@ -110,14 +119,14 @@ export default {
       return ~this.forceBimData.map((item) => item.k).indexOf("VIDEO_URL");
     },
     isPROJECT_CO() {
-      return ~this.forceBimData.map((item) => item.k).indexOf("PROJECT_CO");
+      return ~this.forceBimData.map((item) => item.k).indexOf("项目代码");
     },
     fixedForceBimData() {
       return [
         ...this.forceBimData
           .filter(({ k, v }) => !~FILTER_KEYS.indexOf(k))
           .map(({ k, v }) => {
-            if (k == "QJMC") this.isFrame = v;
+            if (k == "全景地址") this.isFrame = v;
             return { k: HASH_KEYS[k] || k, v };
           }),
       ];
@@ -152,7 +161,8 @@ export default {
         type: "Polygon",
         coordinates: queryCoordinates,
       };
-      var dataurls = "http://172.20.83.223:8090/iserver/services/data-EW_DATA/rest/data";
+      var dataurls =
+        "http://172.20.83.223:8090/iserver/services/data-EW_DATA/rest/data";
       var geometryParam = [];
       geometryParam = new SuperMap.GetFeaturesByGeometryParameters({
         attributeFilter: "SMID>0",
@@ -195,10 +205,20 @@ export default {
       console.log("测试点击事件", this.forceBimData);
       this.openxmxx = true;
       for (let c = 0; c < this.forceBimData.length; c++) {
-        if (this.forceBimData[c].k == "PROJECT_CO") {
-          if (this.forceBimData[c].v !=null|| this.forceBimData[c].v != "undefined" || this.forceBimData[c].v != "") {
-            this.code = "https://wzdjdm.wzcitybrain.com:8888/html/oneMap/projectInfo.html?project_code=" +this.forceBimData[c].v +"&id=543";
+        if (this.forceBimData[c].k == "项目代码") {
+          if (
+            this.forceBimData[c].v != null ||
+            this.forceBimData[c].v != "undefined" ||
+            this.forceBimData[c].v != ""
+          ) {
+            this.code =
+              "https://wzdjdm.wzcitybrain.com:8888/html/oneMap/projectInfo.html?project_code=" +
+              this.forceBimData[c].v +
+              "&id=";
           }
+        }
+        if (this.forceBimData[c].k == "项目编号") {
+          this.code = this.code + this.forceBimData[c].v;
         }
       }
       console.log("全流程", this.code);
@@ -256,7 +276,10 @@ export default {
           outlineWidth: 4,
           showBackground: true,
           backgroundColor: Cesium.Color(0.165, 0.165, 0.165, 0.1),
-          distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 10000),
+          distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+            0,
+            10000
+          ),
           eyeOffset: new Cesium.Cartesian3(0.0, -260.0, 0),
           scaleByDistance: new Cesium.NearFarScalar(5000, 1, 10000, 0.5),
           disableDepthTestDistance: Number.POSITIVE_INFINITY,
@@ -295,7 +318,16 @@ export default {
     openFloorStructure() {
       window.earth.entities.removeAll();
       var LC = "";
-      var component = ["门", "窗", "墙", "楼板", "结构柱", "结构框架", "梯段", "平台"];
+      var component = [
+        "门",
+        "窗",
+        "墙",
+        "楼板",
+        "结构柱",
+        "结构框架",
+        "梯段",
+        "平台",
+      ];
       var dataSetNames = component.map(function (value, index) {
         return "第一栋:" + value;
       });
@@ -343,11 +375,13 @@ export default {
               addFeature(Polygon_selected[i]);
             }
             function addFeature(feature) {
-              var unit = feature.fieldValues[feature.fieldNames.indexOf("UNIT")];
+              var unit =
+                feature.fieldValues[feature.fieldNames.indexOf("UNIT")];
               var center = feature.geometry.center;
               var color_type = color_list[unit_list.indexOf(unit)];
               var lonLatArr = getLonLatArray(feature.geometry.points);
-              var bottom = feature.fieldValues[feature.fieldNames.indexOf("BOTTOM")];
+              var bottom =
+                feature.fieldValues[feature.fieldNames.indexOf("BOTTOM")];
               var LSG = feature.fieldValues[feature.fieldNames.indexOf("LSG")];
               var headheight = parseFloat(bottom) + parseFloat(LSG);
               window.earth.entities.add({
@@ -389,12 +423,15 @@ export default {
       getFeatureBySQLService.processAsync(getFeatureBySQLParams);
       this.$bus.$emit("cesium-3d-floorDIS", true);
     },
+    closeRtmpVideo() {
+      this.openxmxx = false;
+    },
     closeFloorStructure() {
       window.earth.entities.removeAll();
       this.$bus.$emit("cesium-3d-floorDIS", false);
     },
     closeBimFrame() {
-        this.openxmxx = false;
+      this.openxmxx = false;
       this.closeFloorStructure();
       this.SetForceBimData([]);
       this.SetForceRoomData([]);

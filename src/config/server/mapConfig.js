@@ -95,7 +95,8 @@ export const ServiceUrl = {
   // mvt矢量服务
   YJMVT:
     //   "http://10.36.234.83:8098/iserver/services/map-mvt-XZQHYJ/restjsr/v1/vectortile/maps/XZQH_YJ"
-    "http://172.20.83.223:8098/iserver/services/map-mvt-SummaryPOI/restjsr/v1/vectortile/maps/Summary_POI",
+    //"http://172.20.83.223:8098/iserver/services/map-mvt-SummaryPOI/restjsr/v1/vectortile/maps/Summary_POI",
+    "http://172.20.83.223:8098/iserver/services/map-mvt-SummaryPOILine/restjsr/v1/vectortile/maps/Summary_POI_Line",
 
   //  全市区精模
   WZMODEL:
@@ -174,4 +175,12 @@ export const CIVILIZATION_CENTER_URL = {
     url: "http://172.20.83.223:8098/iserver/services/data-DiZhiTi_table/rest/data",
     dataSourceName: "地质体_table"
   }
+} 
+export const CHAO_CENTER_URL = {
+  //地上模型
+  ABOVEGROUND: "http://172.20.83.223:8098/iserver/services/3D-mongodb8/rest/realspace",
+  //地上模型数据绑定
+  ABOVEGROUND_DATA: {
+    url: "http://172.20.83.223:8098/iserver/services/data-Citizens_Parkinglot_table/rest/data",
+  },
 } 

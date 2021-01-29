@@ -11,7 +11,10 @@
     <div id="cesiumContainer" />
     <div v-if="mapLoaded">
       <Coverage />
-      <RegionSimulateFlood ref="regionsimulateflood" v-if="showSubFrame == '3d1'" />
+      <RegionSimulateFlood
+        ref="regionsimulateflood"
+        v-if="showSubFrame == '3d1'"
+      />
       <BimAnalyse ref="bimanalyse" v-if="showSubFrame == '3d2'" />
       <StationTour ref="stationtour" v-if="showSubFrame == '3d3'" />
       <UnderGround ref="underground" v-if="showSubFrame == '3d4'" />
@@ -19,12 +22,20 @@
       <NanTangModel v-if="showSubFrame == '3d6'" />
       <Riversline ref="riversline" v-if="showSubFrame == '3d7'" />
       <KgBoxAnalyse ref="kgboxanalyse" v-if="showSubFrame == '3d10'" />
-      <CivilizationCenter ref="civilizationcenter" v-if="showSubFrame == '3d11'" />
+      <CivilizationCenter
+        ref="civilizationcenter"
+        v-if="showSubFrame == '3d11'"
+      />
       <BayonetPopup ref="bayonetPopup" v-if="showSubFrame == '3d12'" />
       <GeologyAnalyse ref="geologyanalyse" v-if="showSubFrame == '3d13'" />
+      <Chaogc ref="chaogc" v-if="showSubFrame == '3d14'" />
+      <Gxgl ref="gxgl" v-if="showSubFrame == '3d15'" />
       <Bimsmzx ref="bimsmzx" v-if="showSubFrame == '3d8'" />
       <CesiumMapTool ref="cesiummaptool" v-if="showSubTool == '3t1'" />
-      <VisualizationAnalyse ref="visualizationanalyse" v-if="showSubTool == '3t2'" />
+      <VisualizationAnalyse
+        ref="visualizationanalyse"
+        v-if="showSubTool == '3t2'"
+      />
       <SectionAnalyse ref="sectionanalyse" v-if="showSubTool == '3t3'" />
       <sightline ref="sightline" v-if="showSubTool == '3t4'" />
       <ShadowQuery ref="ShadowQuery" v-if="showSubTool == '3t5'" />
@@ -51,6 +62,8 @@ import BimAnalyse from "./basicTools/BimAnalyse";
 import Bimsmzx from "./basicTools/Bimsmsz";
 import StationTour from "./basicTools/StationTour";
 import GeologyAnalyse from "./basicTools/GeologyAnalyse";
+import Chaogc from "./basicTools/Chaogc";
+import Gxgl from "./basicTools/Gxgl";
 import trackBIM from "./basicTools/trackBIM";
 import Riversline from "./basicTools/Riversline";
 import KgBoxAnalyse from "./basicTools/KgBoxAnalyse";
@@ -103,6 +116,8 @@ export default {
     DSMAnalyse,
     UnderGround,
     GeologyAnalyse,
+    Chaogc,
+    Gxgl,
     Riversline,
     VisualizationAnalyse,
     SectionAnalyse,
@@ -144,7 +159,8 @@ export default {
     ...mapActions("map", ["SetForceBimData", "SetForceJMData"]),
     initPostRender() {
       window.earth.scene.postRender.addEventListener(() => {
-        if (!window.earth || !this.mapLoaded || !Object.keys(this.$refs).length) return;
+        if (!window.earth || !this.mapLoaded || !Object.keys(this.$refs).length)
+          return;
         //  *****[medicalList] 医疗点位*****
         const medicalList = this.medicalListWithGeometry;
         if (medicalList && medicalList.length) {
@@ -160,7 +176,8 @@ export default {
               G_medicalList.push({ ...item, pointToWindow });
             }
           });
-          this.$refs.medicalPopup && this.$refs.medicalPopup.doPopup(G_medicalList);
+          this.$refs.medicalPopup &&
+            this.$refs.medicalPopup.doPopup(G_medicalList);
         } else {
           this.$refs.medicalPopup && this.$refs.medicalPopup.doPopup([]);
         }
@@ -189,7 +206,8 @@ export default {
         toIndex: -1,
         datasetNames: ["JinFengYuan:" + "金丰园2栋_户型面"], // 本例中“户型面”为数据源名称，“专题户型面2D”为楼层面相应的数据集名称
       });
-      var url = "http://172.20.83.223:8098/iserver/services/data-JinFengYuan/rest/data"; // 数据服务地址
+      var url =
+        "http://172.20.83.223:8098/iserver/services/data-JinFengYuan/rest/data"; // 数据服务地址
       getFeatureBySQLService = new SuperMap.REST.GetFeaturesBySQLService(url, {
         eventListeners: {
           processCompleted: async (queryEventArgs) => {
@@ -213,10 +231,14 @@ export default {
                 return;
               }
               var bottomHeight = Number(
-                selectedFeature.fieldValues[selectedFeature.fieldNames.indexOf("BOTTOM")]
+                selectedFeature.fieldValues[
+                  selectedFeature.fieldNames.indexOf("BOTTOM")
+                ]
               ); // 底部高程
               var extrudeHeight = Number(
-                selectedFeature.fieldValues[selectedFeature.fieldNames.indexOf("LSG")]
+                selectedFeature.fieldValues[
+                  selectedFeature.fieldNames.indexOf("LSG")
+                ]
               ); // 层高（拉伸高度）
               Cesium.GroundPrimitive.bottomAltitude = bottomHeight; // 矢量面贴对象的底部高程
               Cesium.GroundPrimitive.extrudeHeight = extrudeHeight; // 矢量面贴对象的拉伸高度
@@ -250,7 +272,9 @@ export default {
       getFeatureBySQLService.processAsync(getFeatureBySQLParams);
     },
     initHandler() {
-      const handler = new Cesium.ScreenSpaceEventHandler(window.earth.scene.canvas);
+      const handler = new Cesium.ScreenSpaceEventHandler(
+        window.earth.scene.canvas
+      );
       // 监听左键点击事件
       handler.setInputAction((e) => {
         //console.log("精模",e)
@@ -260,8 +284,12 @@ export default {
         window.position = position;
         if (pick.id.extra_data) {
           console.log("资源点");
-          const _data_ = Object.keys(pick.id.extra_data).map((k) => {
-            return { k, v: pick.id.extra_data[k] };
+          // const _data_ = Object.keys(pick.id.extra_data).map((k) => {
+          //   return { k, v: pick.id.extra_data[k] };
+          // });
+          // 修改
+          const _data_ = Object.keys(pick.id.fix_data).map((k) => {
+            return { k, v: pick.id.fix_data[k] };
           });
           this.SetForceBimData(_data_);
           window.a = _data_;
@@ -272,7 +300,8 @@ export default {
           // });
         } else if (
           pick.primitive &&
-          pick.primitive.queryParameter.dataSetName == "%E5%BB%BA%E7%AD%91_table"
+          pick.primitive.queryParameter.dataSetName ==
+            "%E5%BB%BA%E7%AD%91_table"
         ) {
           console.log("ceshi1");
           // console.log("相机参数1", window.earth.scene.camera.position);
@@ -406,7 +435,9 @@ export default {
       imagelayer.transparentBackColor = new Cesium.Color(0.0, 0.0, 0.0, 1);
       imagelayer.transparentBackColorTolerance = 0.1;
       // 叠加四大流域范围
-      var promiseroute11 = Cesium.GeoJsonDataSource.load("/static/yjjson/四大流域.json");
+      var promiseroute11 = Cesium.GeoJsonDataSource.load(
+        "/static/yjjson/四大流域.json"
+      );
       promiseroute11
         .then(function (dataSource) {
           viewer.dataSources.add(dataSource);
@@ -445,10 +476,10 @@ export default {
         name: "testMVT",
         viewer: viewer,
       });
-      var styles = new Cesium.Style3D();
-      styles.bottomAltitude = 50;
-      mvtMap.style3D = styles;
-      mvtMap.refresh();
+      // var styles = new Cesium.Style3D();
+      // styles.bottomAltitude = 50;
+      // mvtMap.style3D = styles;
+      // mvtMap.refresh();
       window.mvtmaps = mvtMap;
       // 移除缓冲圈
       $(".cesium-widget-credits").hide();
@@ -478,7 +509,11 @@ export default {
           }
         }
         for (let f = 0; f < _data_.length; f++) {
-          if (_data_[f].k == "直径" || _data_[f].k == "长度" || _data_[f].k == "地质层") {
+          if (
+            _data_[f].k == "直径" ||
+            _data_[f].k == "长度" ||
+            _data_[f].k == "地质层"
+          ) {
             gx = true;
             break;
           }
@@ -494,6 +529,75 @@ export default {
           that.SetForceJMData(_data_);
         } else {
           console.log("精模点击事件", _data_);
+          var nums = _data_[0].v;
+          var getFeatureParam, getFeatureBySQLService, getFeatureBySQLParams;
+          getFeatureParam = new SuperMap.REST.FilterParameter({
+            attributeFilter: "SMID="+nums,
+          });
+          getFeatureBySQLParams = new SuperMap.REST.GetFeaturesBySQLParameters({
+            queryParameter: getFeatureParam,
+            toIndex: -1,
+            datasetNames: ["jingmo:" + "max_cim_sample_table"], // 本例中“户型面”为数据源名称，“专题户型面2D”为楼层面相应的数据集名称
+          });
+          var url =
+            "http://172.20.83.223:8098/iserver/services/data-jingmotable/rest/data"; // 数据服务地址
+          getFeatureBySQLService = new SuperMap.REST.GetFeaturesBySQLService(
+            url,
+            {
+              eventListeners: {
+                processCompleted: async (queryEventArgs) => {
+                  console.log("精模查询成功",queryEventArgs)
+                  for(let i = 0;i<_data_.length;i++){
+                    for(let j =0;j<queryEventArgs.originResult.features[0].fieldNames.length;j++){
+                      if(_data_[i].k=="地址"){
+                       if(queryEventArgs.originResult.features[0].fieldNames[j]=="ADDRESS"){
+                         _data_[i].v=queryEventArgs.originResult.features[0].fieldValues[j]
+                       }
+                      }
+                       if(_data_[i].k=="小区名称"){
+                       if(queryEventArgs.originResult.features[0].fieldNames[j]=="XIOAQUNAME"){
+                         _data_[i].v=queryEventArgs.originResult.features[0].fieldValues[j]
+                       }
+                      }
+                       if(_data_[i].k=="幢数"){
+                       if(queryEventArgs.originResult.features[0].fieldNames[j]=="HOURSENUMBER"){
+                         _data_[i].v=queryEventArgs.originResult.features[0].fieldValues[j]
+                       }
+                      }
+                       if(_data_[i].k=="所在地区"){
+                       if(queryEventArgs.originResult.features[0].fieldNames[j]=="CITY"){
+                         _data_[i].v=queryEventArgs.originResult.features[0].fieldValues[j]
+                       }
+                      }
+                       if(_data_[i].k=="省级区划名"){
+                       if(queryEventArgs.originResult.features[0].fieldNames[j]=="PROVINCE"){
+                         _data_[i].v=queryEventArgs.originResult.features[0].fieldValues[j]
+                       }
+                      }
+                       if(_data_[i].k=="设区市区划名"){
+                       if(queryEventArgs.originResult.features[0].fieldNames[j]=="CITY"){
+                         _data_[i].v=queryEventArgs.originResult.features[0].fieldValues[j]
+                       }
+                      }
+                       if(_data_[i].k=="县级区划名"){
+                       if(queryEventArgs.originResult.features[0].fieldNames[j]=="DISTRICT"){
+                         _data_[i].v=queryEventArgs.originResult.features[0].fieldValues[j]
+                       }
+                      }
+                      if(_data_[i].k=="乡镇（街道）区划名"){
+                       if(queryEventArgs.originResult.features[0].fieldNames[j]=="STREET"){
+                         _data_[i].v=queryEventArgs.originResult.features[0].fieldValues[j]
+                       }
+                      }
+                    }
+                  }
+
+                }, // 查询成功时的回调函数
+                processFailed: (msg) => console.log("查询失败", msg), // 查询失败时的回调函数
+              },
+            }
+          );
+          getFeatureBySQLService.processAsync(getFeatureBySQLParams);
           window.jingmo = _data_;
           //that.SetForceJMData(_data_);
           //console.log("精模");

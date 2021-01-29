@@ -36,6 +36,8 @@ export default {
   data() {
     return {
       isRtmpVideoOpen: "",
+      dataBind :'',
+      datamapid:''
     };
   },
   computed: {
@@ -50,16 +52,31 @@ export default {
     ...mapActions("map", ["SetForceBimSP"]),
     async Zoom(data) {
       var datas = "";
+      console.log("点击视频监控", data);
+      if (data.NAME == "GS黎明路－惠民路1(交警)") {
+        this.datamapid = {
+          FCode: "9",
+          MpID: "122213000100000397000005",
+        };
+      }
+      if (data.NAME == "DS6黎明中路-航标路口") {
+        this.datamapid = {
+          FCode: "9",
+          MpID: "122225000100001509001877",
+        };
+      }
+      if (data.NAME == "DS6黎明路-洪殿路口信号灯杆(元弼道观)(民宗)") {
+        this.datamapid = {
+          FCode: "9",
+          MpID: "122213000100000397000003",
+        };
+      }
       //const { datas } = await getExtraVideo({"FCode":"9","MpID":"122213000100000561003896"});
-      var datamapid = {
-        FCode: "9",
-        MpID: "122213000100000561003896",
-        //MpID:"122213000100000131001744"
-      };
+
       $.ajax({
         type: "post",
         url: "http://10.36.198.161:3000/forward/getExtraVideo",
-        data: datamapid,
+        data: this.datamapid,
         success: (result) => {
           datas = result;
           console.log("查询成功", datas.data.Flv);
